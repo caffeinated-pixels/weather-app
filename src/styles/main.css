@@ -77,3 +77,7 @@ select {
 html {
   font-family: 'Roboto', sans-serif;
 }
+
+body {
+  background: #a9d4e2;
+}
