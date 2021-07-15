@@ -4,6 +4,7 @@ const WeatherDataContext = React.createContext()
 
 function WeatherDataContextProvider({ children }) {
   const [weatherData, setWeatherData] = useState({})
+  const [weatherIcon, setWeatherIcon] = useState({})
   const [locationData] = useState('Toronto, CA')
 
   // const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall'
@@ -17,12 +18,24 @@ function WeatherDataContextProvider({ children }) {
   useEffect(() => {
     fetch('./weatherDataPlaceholder.json')
       .then(response => response.json())
-      .then(data => setWeatherData(data))
+      .then(data => processWeatherData(data))
       .catch(error => console.log(error))
   }, [])
 
+  function processWeatherData(data) {
+    const iconCode = data.current.weather[0].icon
+    const iconUrlBase = `https://openweathermap.org/img/wn/${iconCode}`
+    setWeatherData(data)
+    setWeatherIcon({
+      small: `${iconUrlBase}@2x.png`,
+      large: `${iconUrlBase}@4x.png`
+    })
+  }
+
   return (
-    <WeatherDataContext.Provider value={{ locationData, weatherData }}>
+    <WeatherDataContext.Provider
+      value={{ locationData, weatherData, weatherIcon }}
+    >
       {children}
     </WeatherDataContext.Provider>
   )
