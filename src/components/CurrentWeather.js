@@ -1,5 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function CurrentWeather() {
-  return <h2>Current weather</h2>
+  const { weatherData } = useContext(WeatherDataContext)
+
+  return (
+    <h2>
+      Current temp {weatherData.current && Math.round(weatherData.current.temp)}
+      °C
+    </h2>
+  )
 }
