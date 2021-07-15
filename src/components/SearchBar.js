@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function SearchBar() {
-  return <h2>Search Bar!</h2>
+  const locationData = useContext(WeatherDataContext)
+
+  return <h2>{locationData}</h2>
 }
