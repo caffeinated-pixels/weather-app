@@ -2,16 +2,25 @@ import React, { useContext } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function CurrentWeather() {
-  const { weatherData, weatherIcon } = useContext(WeatherDataContext)
+  const { weatherData, weatherIcon, isLoading } = useContext(WeatherDataContext)
+  let currentTemp = 0
+  let weatherDescription = ''
+
+  console.log(isLoading)
+
+  if (!isLoading) {
+    console.log(weatherData.current.temp)
+    currentTemp = Math.round(weatherData.current.temp)
+    weatherDescription = weatherData.current.weather[0].description
+  }
 
   return (
     <>
       <h2>
-        Current temp{' '}
-        {weatherData.current && Math.round(weatherData.current.temp)}
+        Current temp {currentTemp}
         °C
       </h2>
-      <p>{weatherIcon.small}</p>
+      {<img src={weatherIcon.small} alt={weatherDescription} />}
     </>
   )
 }

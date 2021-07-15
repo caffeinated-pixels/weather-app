@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 const WeatherDataContext = React.createContext()
 
 function WeatherDataContextProvider({ children }) {
+  const [isLoading, setIsLoading] = useState(true)
   const [weatherData, setWeatherData] = useState({})
   const [weatherIcon, setWeatherIcon] = useState({})
   const [locationData] = useState('Toronto, CA')
@@ -25,16 +26,19 @@ function WeatherDataContextProvider({ children }) {
   function processWeatherData(data) {
     const iconCode = data.current.weather[0].icon
     const iconUrlBase = `https://openweathermap.org/img/wn/${iconCode}`
+
     setWeatherData(data)
     setWeatherIcon({
       small: `${iconUrlBase}@2x.png`,
       large: `${iconUrlBase}@4x.png`
     })
+
+    setIsLoading(false)
   }
 
   return (
     <WeatherDataContext.Provider
-      value={{ locationData, weatherData, weatherIcon }}
+      value={{ locationData, weatherData, weatherIcon, isLoading }}
     >
       {children}
     </WeatherDataContext.Provider>
