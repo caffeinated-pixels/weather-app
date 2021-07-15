@@ -7,6 +7,9 @@ $search-box-blue: #b6e4f3;
 $stripes-lt-blue: #7da7b4;
 $stripes-dk-blue: #527c89;
 
+$text-white: #fff;
+$text-black: #000;
+
 // MIXINS
 @mixin mq($size) {
   @media only screen and (min-width: $size) {

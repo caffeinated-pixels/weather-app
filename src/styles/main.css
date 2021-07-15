@@ -84,4 +84,33 @@ body {
 
 .header {
   background: #ea6f52;
+  color: #fff;
+  text-align: center;
+}
+
+.header__contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0.4em 0.75em;
+}
+
+.header__contents__logo {
+  display: grid;
+  grid-template-columns: 25px auto;
+  align-items: center;
+}
+
+.header__contents__logo__txt {
+  font-size: 1.125rem;
+  margin-left: 0.5em;
+}
+
+.header__contents__link {
+  font-size: 0.5625rem;
+  text-decoration: none;
+  color: inherit;
 }

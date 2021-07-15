@@ -2,4 +2,39 @@
 
 .header {
   background: $header-orange;
+  color: $text-white;
+  text-align: center;
+
+  &__contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 800px;
+
+    margin: 0 auto;
+    padding: 0.4em 0.75em;
+
+    &__logo {
+      display: grid;
+      grid-template-columns: max(25px) auto;
+      align-items: center;
+
+      &__img {
+        // max-width: 25px;
+      }
+
+      &__txt {
+        font-size: 1.125rem;
+        margin-left: 0.5em;
+      }
+    }
+
+    &__link {
+      font-size: 0.5625rem;
+      text-decoration: none;
+      color: inherit;
+    }
+  }
 }
