@@ -6,10 +6,7 @@ export default function CurrentWeather() {
   let currentTemp = 0
   let weatherDescription = ''
 
-  console.log(isLoading)
-
   if (!isLoading) {
-    console.log(weatherData.current.temp)
     currentTemp = Math.round(weatherData.current.temp)
     weatherDescription = weatherData.current.weather[0].description
   }
