@@ -16,6 +16,7 @@
 .hourly-box {
   font-size: 0.75rem;
   padding: 0.5em;
+  min-width: 70px;
 }
 
 .hourly-light {
@@ -24,4 +25,22 @@
 
 .hourly-dark {
   background: $stripes-dk-blue;
+}
+
+.hourly-time {
+  margin-bottom: -0.5em;
+}
+
+.hourly-temp {
+  margin-top: -0.5em;
+}
+
+.hourly-icon-wrapper {
+  object-fit: cover;
+  width: 50px;
+  margin: 0 auto;
+}
+
+.hourly-icon {
+  margin: 0 auto;
 }
