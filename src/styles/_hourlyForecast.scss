@@ -1,0 +1,27 @@
+// main: ./main.scss
+
+.hourly-forecast-ribbon {
+  display: flex;
+  overflow-x: auto;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+
+  max-width: $container-max-width;
+  margin: 0 auto;
+
+  text-align: center;
+  color: white;
+}
+
+.hourly-box {
+  font-size: 0.75rem;
+  padding: 0.5em;
+}
+
+.hourly-light {
+  background: $stripes-lt-blue;
+}
+
+.hourly-dark {
+  background: $stripes-dk-blue;
+}
