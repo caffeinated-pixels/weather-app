@@ -13,8 +13,22 @@ export default function CurrentWeatherMain() {
 
   return (
     <div className="current-main">
-      {<img src={weatherIcon.small} alt={weatherDescription} />}
-      <h2>{currentTemp}°C</h2>
+      <div className="main-top">
+        <div className="main-weather-icon">
+          {<img src={weatherIcon.small} alt={weatherDescription} />}
+        </div>
+
+        <div className="main-temp-summary">
+          <p className="main-current-temp">{currentTemp}°C</p>
+          <p className="main-minmax-temp">18°C / 25°C</p>
+        </div>
+      </div>
+
+      <div className="main-bottom">
+        <p className="main-description">overcast clouds</p>
+        <p className="main-feels-like">feels like 23°C</p>
+        <p className="main-wind">5km/h WSW</p>
+      </div>
     </div>
   )
 }
