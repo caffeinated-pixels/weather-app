@@ -114,3 +114,9 @@ body {
   text-decoration: none;
   color: inherit;
 }
+
+.locationbar {
+  display: flex;
+  width: 100%;
+  background: yellow;
+}
