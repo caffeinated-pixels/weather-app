@@ -2,9 +2,26 @@
 
 .locationbar {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+
   width: 100%;
-  background: yellow;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0.5em 0.6em;
+
+  // background: yellow;
 }
 
-.locationbar__location {
+.locationbar__icon {
+}
+
+.locationbar__city {
+  background: $locationbar-blue;
+  border-radius: 10px;
+
+  width: 70%;
+  // font-size: 1.5rem;
+  text-align: center;
 }

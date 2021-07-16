@@ -3,12 +3,14 @@
 // COLOR VARIABLES
 $header-orange: #ea6f52;
 $body-blue: #a9d4e2;
-$search-box-blue: #b6e4f3;
+$locationbar-blue: #b6e4f3;
 $stripes-lt-blue: #7da7b4;
 $stripes-dk-blue: #527c89;
 
 $text-white: #fff;
 $text-black: #000;
+
+$container-max-width: 800px;
 
 // MIXINS
 @mixin mq($size) {
