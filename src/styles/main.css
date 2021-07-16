@@ -241,3 +241,24 @@ body {
 .hourly-icon {
   margin: 0 auto;
 }
+
+.daily-box {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  justify-items: center;
+  align-items: center;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.daily-icon-wrapper {
+  object-fit: cover;
+}
+
+.daily-light {
+  background: #7da7b4;
+}
+
+.daily-dark {
+  background: #527c89;
+}

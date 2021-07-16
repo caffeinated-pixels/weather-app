@@ -1,0 +1,23 @@
+// main: ./main.scss
+
+.daily-box {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  justify-items: center;
+  align-items: center;
+
+  color: white;
+  font-size: 1.25rem;
+}
+
+.daily-icon-wrapper {
+  object-fit: cover;
+}
+
+.daily-light {
+  background: $stripes-lt-blue;
+}
+
+.daily-dark {
+  background: $stripes-dk-blue;
+}
