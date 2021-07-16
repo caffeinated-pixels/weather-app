@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 import { monthLookup } from '../helpers/timeLookup'
+import generateIconInfo from '../helpers/generateIconInfo'
 
 function createHourlyComponents(hourlyData) {
   return hourlyData.map((hourly, i) => {
     const backgroundColor = i % 2 === 0 ? 'hourly-light' : 'hourly-dark'
+    const [iconUrl, iconAltText] = generateIconInfo(hourly.weather[0], '2x')
     const date = new Date(hourly.dt * 1000)
     const hour = date.getHours()
 
@@ -22,11 +24,7 @@ function createHourlyComponents(hourlyData) {
       <div key={`hourly-${i}`} className={`hourly-box ${backgroundColor}`}>
         <p className="hourly-time">{hourDisplay}</p>
         <div className="hourly-icon-wrapper">
-          <img
-            className="hourly-icon"
-            src="https://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-          />
+          <img className="hourly-icon" src={iconUrl} alt={iconAltText} />
         </div>
 
         <p className="hourly-temp">{Math.round(hourly.temp)}°C</p>
