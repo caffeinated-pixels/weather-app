@@ -1,0 +1,25 @@
+.current-weather {
+  display: grid;
+  grid-template-columns: 60% 1fr;
+}
+
+.current-extra {
+  font-size: 0.8rem;
+  // background: lightyellow;
+
+  padding-left: 1em;
+  border-left: 2px solid black;
+}
+
+.extra-list {
+  padding-left: 0;
+}
+
+.extra-list-item {
+  list-style: none;
+  padding: 0.25em 0;
+}
+
+.text-bold {
+  font-weight: bold;
+}

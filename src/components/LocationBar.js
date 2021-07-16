@@ -9,7 +9,7 @@ export default function LocationBar() {
       <i className="locationbar__icon fas fa-location-arrow"></i>
       <div className="locationbar__city">{locationData}</div>
       <i className="locationbar__icon fas fa-search-location"></i>
-      <i class="locationbar__icon fas fa-caret-square-down"></i>
+      <i className="locationbar__icon fas fa-caret-square-down"></i>
     </div>
   )
 }

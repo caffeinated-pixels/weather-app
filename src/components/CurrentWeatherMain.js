@@ -12,12 +12,9 @@ export default function CurrentWeatherMain() {
   }
 
   return (
-    <>
-      <h2>
-        Current temp {currentTemp}
-        °C
-      </h2>
+    <div className="current-main">
       {<img src={weatherIcon.small} alt={weatherDescription} />}
-    </>
+      <h2>{currentTemp}°C</h2>
+    </div>
   )
 }
