@@ -41,7 +41,7 @@ function WeatherDataContextProvider({ children }) {
       }
     }
 
-    fetchItems()
+    setTimeout(() => fetchItems(), 1000)
   }, [])
 
   function processWeatherData(data) {

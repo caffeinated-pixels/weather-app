@@ -34,3 +34,14 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto) 1fr auto;
 }
+
+// when loading, there will only be 3 rows (Header, Loading, Footer)
+.app-loading {
+  grid-template-rows: auto 1fr auto;
+}
+
+.loading-screen {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
