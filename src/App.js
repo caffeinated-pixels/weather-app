@@ -4,6 +4,7 @@ import LocationBar from './components/LocationBar'
 import CurrentWeather from './components/CurrentWeather'
 import HourlyForecast from './components/HourlyForecast'
 import DailyForecast from './components/DailyForecast'
+import Footer from './components/Footer'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <CurrentWeather />
       <HourlyForecast />
       <DailyForecast />
+      <Footer />
     </>
   )
 }
