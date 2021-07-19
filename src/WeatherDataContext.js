@@ -5,7 +5,6 @@ const WeatherDataContext = React.createContext()
 function WeatherDataContextProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true)
   const [weatherData, setWeatherData] = useState({})
-  const [weatherIcon, setWeatherIcon] = useState({})
   const [locationData] = useState('Toronto, CA')
 
   // const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall'
@@ -32,7 +31,7 @@ function WeatherDataContextProvider({ children }) {
           throw Error('Fetch request to Open Weather API failed')
 
         const weatherData = await response.json()
-        processWeatherData(weatherData)
+        setWeatherData(weatherData)
       } catch (error) {
         console.log(error)
       } finally {
@@ -44,20 +43,9 @@ function WeatherDataContextProvider({ children }) {
     setTimeout(() => fetchItems(), 1000)
   }, [])
 
-  function processWeatherData(data) {
-    const iconCode = data.current.weather[0].icon
-    const iconUrlBase = `https://openweathermap.org/img/wn/${iconCode}`
-
-    setWeatherData(data)
-    setWeatherIcon({
-      small: `${iconUrlBase}@2x.png`,
-      large: `${iconUrlBase}@4x.png`
-    })
-  }
-
   return (
     <WeatherDataContext.Provider
-      value={{ locationData, weatherData, weatherIcon, isLoading }}
+      value={{ locationData, weatherData, isLoading }}
     >
       {children}
     </WeatherDataContext.Provider>
