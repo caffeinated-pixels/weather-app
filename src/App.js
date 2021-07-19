@@ -8,13 +8,13 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <>
+    <div className="app">
       <Header />
       <LocationBar />
       <CurrentWeather />
       <HourlyForecast />
       <DailyForecast />
       <Footer />
-    </>
+    </div>
   )
 }

@@ -82,6 +82,13 @@ body {
   background: #a9d4e2;
 }
 
+.app {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, auto) 1fr auto;
+}
+
 .header {
   background: #ea6f52;
   color: #fff;
@@ -204,6 +211,7 @@ body {
   overflow-x: auto;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
@@ -239,6 +247,13 @@ body {
 }
 
 .hourly-icon {
+  margin: 0 auto;
+}
+
+.daily-forecast {
+  overflow-y: auto;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
 }
 
