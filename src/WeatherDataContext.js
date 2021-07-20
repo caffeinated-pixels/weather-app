@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import getUserLocation from './helpers/getUserLocation'
 
 const WeatherDataContext = React.createContext()
+getUserLocation()
 
 function WeatherDataContextProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true)
