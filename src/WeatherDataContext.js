@@ -30,6 +30,7 @@ function WeatherDataContextProvider({ children }) {
       }
 
       setLocation(userCoords)
+      fetchWeatherData(userCoords)
     }
 
     function error(err) {
@@ -46,9 +47,15 @@ function WeatherDataContextProvider({ children }) {
     }
   }
 
-  async function fetchWeatherData() {
+  async function fetchWeatherData({ latitude, longitude }) {
+    const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall'
+    const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY
+    const units = 'metric'
+
+    const fullUrl = `${baseUrl}?lat=${latitude}&lon=${longitude}&units=${units}&APPID=${apiKey}`
+
     try {
-      const response = await fetch('./weatherDataPlaceholder.json')
+      const response = await fetch(fullUrl)
 
       if (!response.ok) throw Error('Fetch request to Open Weather API failed')
 
@@ -63,12 +70,7 @@ function WeatherDataContextProvider({ children }) {
   }
 
   useEffect(() => {
-    async function callAPIs() {
-      await getUserLocation()
-      setTimeout(() => fetchWeatherData(), 1000)
-    }
-
-    callAPIs()
+    getUserLocation()
   }, [])
 
   return (
