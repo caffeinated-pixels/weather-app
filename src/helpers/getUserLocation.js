@@ -1,4 +1,4 @@
-const getUserLocation = () => {
+const getUserLocation = async () => {
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -17,7 +17,18 @@ const getUserLocation = () => {
     console.warn(`ERROR(${err.code}): ${err.message}`)
   }
 
-  navigator.geolocation.getCurrentPosition(success, error, options)
+  // const prom = new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, options))
+
+  try {
+    const pos = await new Promise((resolve, reject) =>
+      navigator.geolocation.getCurrentPosition(resolve, reject, options)
+    )
+    // const lat = pos.coords.latitude
+    success(pos)
+    // console.log(lat)
+  } catch (err) {
+    console.log(error(err))
+  }
 }
 
 export default getUserLocation
