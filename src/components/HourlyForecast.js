@@ -34,13 +34,9 @@ function createHourlyComponents(hourlyData) {
 }
 
 export default function HourlyForecast() {
-  const { weatherData, isLoading } = useContext(WeatherDataContext)
+  const { weatherData } = useContext(WeatherDataContext)
 
-  const hourlyBoxes = isLoading ? (
-    <p>still loading</p>
-  ) : (
-    createHourlyComponents(weatherData.hourly)
-  )
+  const hourlyBoxes = createHourlyComponents(weatherData.hourly)
 
   return <section className="hourly-forecast-ribbon">{hourlyBoxes}</section>
 }
