@@ -34,13 +34,9 @@ function createDailyComponents(dailyData) {
 }
 
 export default function DailyForecast() {
-  const { weatherData, isLoading } = useContext(WeatherDataContext)
+  const { weatherData } = useContext(WeatherDataContext)
 
-  const dailyBoxes = isLoading ? (
-    <p>Still loading ...</p>
-  ) : (
-    createDailyComponents(weatherData.daily)
-  )
+  const dailyBoxes = createDailyComponents(weatherData.daily)
 
   return <section className="daily-forecast">{dailyBoxes}</section>
 }
