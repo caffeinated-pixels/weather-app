@@ -99,6 +99,14 @@ body {
   align-content: center;
 }
 
+.stripe-light {
+  background: #7da7b4;
+}
+
+.stripe-dark {
+  background: #527c89;
+}
+
 .header {
   background: #ea6f52;
   color: #fff;
@@ -236,14 +244,6 @@ body {
   line-height: 1;
 }
 
-.hourly-light {
-  background: #7da7b4;
-}
-
-.hourly-dark {
-  background: #527c89;
-}
-
 .hourly-time {
   margin-bottom: -0.5em;
 }
@@ -285,14 +285,6 @@ body {
 
 .daily-icon-wrapper {
   object-fit: cover;
-}
-
-.daily-light {
-  background: #7da7b4;
-}
-
-.daily-dark {
-  background: #527c89;
 }
 
 .footer {

@@ -6,7 +6,7 @@ function createDailyComponents(dailyData) {
   // console.log(dailyData)
 
   const components = dailyData.map((daily, i) => {
-    const backgroundColor = i % 2 === 0 ? 'daily-light' : 'daily-dark'
+    const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
     const [iconUrl, iconAltText] = generateIconInfo(daily.weather[0], '2x')
 

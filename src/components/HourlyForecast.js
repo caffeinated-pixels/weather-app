@@ -5,7 +5,7 @@ import generateIconInfo from '../helpers/generateIconInfo'
 
 function createHourlyComponents(hourlyData) {
   return hourlyData.map((hourly, i) => {
-    const backgroundColor = i % 2 === 0 ? 'hourly-light' : 'hourly-dark'
+    const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
     const [iconUrl, iconAltText] = generateIconInfo(hourly.weather[0], '2x')
     const precipProb = hourly.pop * 100
 

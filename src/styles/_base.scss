@@ -45,3 +45,12 @@ body {
   justify-content: center;
   align-content: center;
 }
+
+// SHARED CLASSES
+.stripe-light {
+  background: $stripes-lt-blue;
+}
+
+.stripe-dark {
+  background: $stripes-dk-blue;
+}
