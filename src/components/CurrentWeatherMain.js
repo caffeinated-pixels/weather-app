@@ -39,7 +39,7 @@ export default function CurrentWeatherMain() {
         <p className="main-description">{weatherDescription}</p>
         <p className="main-feels-like">feels like {feelsLikeTemp}°C</p>
         <p className="main-wind">
-          {windSpeedKmh}km/h {windDirection}
+          {windSpeedKmh} km/h {windDirection}
         </p>
       </div>
     </div>
