@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 import generateIconInfo from '../helpers/generateIconInfo'
+import getWindDirection from '../helpers/getWindDirection'
 
 export default function CurrentWeatherMain() {
   const { weatherData } = useContext(WeatherDataContext)
@@ -17,6 +18,7 @@ export default function CurrentWeatherMain() {
   const feelsLikeTemp = Math.round(current.feels_like)
   const windSpeedMs = current.wind_speed
   const windSpeedKmh = (windSpeedMs * 3.6).toFixed(1)
+  const windDirection = getWindDirection(current.wind_deg)
 
   return (
     <div className="current-main">
@@ -36,7 +38,9 @@ export default function CurrentWeatherMain() {
       <div className="main-bottom">
         <p className="main-description">{weatherDescription}</p>
         <p className="main-feels-like">feels like {feelsLikeTemp}°C</p>
-        <p className="main-wind">{windSpeedKmh}km/h WSW</p>
+        <p className="main-wind">
+          {windSpeedKmh}km/h {windDirection}
+        </p>
       </div>
     </div>
   )
