@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 // import getUserLocation from './helpers/getUserLocation'
 
 const WeatherDataContext = React.createContext()
@@ -16,7 +16,7 @@ function WeatherDataContextProvider({ children }) {
   //
   // const fullUrl = `${baseUrl}?lat=${lat}&lon=${lon}&units=${units}&APPID=${apiKey}`
 
-  function getUserLocation() {
+  const getUserLocation = useCallback(() => {
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -38,7 +38,7 @@ function WeatherDataContextProvider({ children }) {
     }
 
     navigator.geolocation.getCurrentPosition(success, error, options)
-  }
+  }, [])
 
   async function fetchWeatherData({ latitude, longitude }) {
     const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall'
@@ -64,7 +64,7 @@ function WeatherDataContextProvider({ children }) {
 
   useEffect(() => {
     getUserLocation()
-  }, [])
+  }, [getUserLocation])
 
   return (
     <WeatherDataContext.Provider
