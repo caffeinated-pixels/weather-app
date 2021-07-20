@@ -7,6 +7,8 @@ function createHourlyComponents(hourlyData) {
   return hourlyData.map((hourly, i) => {
     const backgroundColor = i % 2 === 0 ? 'hourly-light' : 'hourly-dark'
     const [iconUrl, iconAltText] = generateIconInfo(hourly.weather[0], '2x')
+    const precipProb = hourly.pop * 100
+
     const date = new Date(hourly.dt * 1000)
     const hour = date.getHours()
 
@@ -26,7 +28,7 @@ function createHourlyComponents(hourlyData) {
         <div className="hourly-icon-wrapper">
           <img className="hourly-icon" src={iconUrl} alt={iconAltText} />
         </div>
-
+        <p className="precip-prob">{precipProb}%</p>
         <p className="hourly-temp">{Math.round(hourly.temp)}°C</p>
       </div>
     )

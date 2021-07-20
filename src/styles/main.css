@@ -233,6 +233,7 @@ body {
   font-size: 0.75rem;
   padding: 0.5em;
   min-width: 70px;
+  line-height: 1;
 }
 
 .hourly-light {
@@ -247,8 +248,13 @@ body {
   margin-bottom: -0.5em;
 }
 
-.hourly-temp {
+.precip-prob {
   margin-top: -0.5em;
+  font-size: 0.7rem;
+}
+
+.hourly-temp {
+  margin-top: 0.5em;
 }
 
 .hourly-icon-wrapper {
