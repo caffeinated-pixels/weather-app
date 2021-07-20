@@ -16,7 +16,7 @@ function WeatherDataContextProvider({ children }) {
   //
   // const fullUrl = `${baseUrl}?lat=${lat}&lon=${lon}&units=${units}&APPID=${apiKey}`
 
-  async function getUserLocation() {
+  function getUserLocation() {
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -37,14 +37,7 @@ function WeatherDataContextProvider({ children }) {
       console.warn(`ERROR(${err.code}): ${err.message}`)
     }
 
-    try {
-      const pos = await new Promise((resolve, reject) =>
-        navigator.geolocation.getCurrentPosition(resolve, reject, options)
-      )
-      success(pos)
-    } catch (err) {
-      console.log(error(err))
-    }
+    navigator.geolocation.getCurrentPosition(success, error, options)
   }
 
   async function fetchWeatherData({ latitude, longitude }) {
