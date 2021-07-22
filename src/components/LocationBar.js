@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function LocationBar() {
-  const { browserGeolocation } = useContext(WeatherDataContext)
-  const { city, country } = browserGeolocation
+  const { locationName } = useContext(WeatherDataContext)
+  const { city, country } = locationName
 
   return (
     <div className="locationbar">

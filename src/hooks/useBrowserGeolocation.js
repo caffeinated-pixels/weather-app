@@ -15,18 +15,7 @@ export default function useBrowserGeolocation() {
       const latitude = pos.coords.latitude
       const longitude = pos.coords.longitude
 
-      const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY
-      const url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
-
-      try {
-        const response = await fetch(url)
-        const geocodingResult = await response.json()
-        const city = geocodingResult[0].name
-        const country = geocodingResult[0].country
-        setLocation({ latitude, longitude, city, country })
-      } catch (error) {
-        console.log(`Geocoding error: ${error}`)
-      }
+      setLocation({ latitude, longitude })
     }
 
     function error(err) {
