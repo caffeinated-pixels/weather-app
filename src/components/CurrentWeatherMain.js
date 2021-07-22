@@ -5,7 +5,7 @@ import getWindDirection from '../helpers/getWindDirection'
 
 export default function CurrentWeatherMain() {
   const { weatherData } = useContext(WeatherDataContext)
-  console.log(weatherData)
+  // console.log(weatherData)
   const { current, daily } = weatherData
 
   const [iconUrl, iconAltText] = generateIconInfo(current.weather[0], '4x')

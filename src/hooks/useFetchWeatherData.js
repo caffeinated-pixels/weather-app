@@ -7,11 +7,10 @@ export default function useFetchWeatherData() {
   })
 
   const fetchWeatherData = useCallback(
-    async locationData => {
+    async (locationData, units = 'metric') => {
       console.log('API call')
       const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall'
       const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY
-      const units = 'metric'
 
       const fullUrl = `${baseUrl}?lat=${locationData.latitude}&lon=${locationData.longitude}&units=${units}&APPID=${apiKey}`
 
