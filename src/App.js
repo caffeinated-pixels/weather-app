@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Header from './components/Header'
 import LoadingScreen from './components/LoadingScreen'
 
-import LocationBar from './components/LocationBar'
+import ControlsBar from './components/ControlsBar'
 import CurrentWeather from './components/CurrentWeather'
 import HourlyForecast from './components/HourlyForecast'
 import DailyForecast from './components/DailyForecast'
@@ -22,7 +22,7 @@ export default function App() {
         <LoadingScreen />
       ) : (
         <>
-          <LocationBar />
+          <ControlsBar />
           <CurrentWeather />
           <HourlyForecast />
           <DailyForecast />

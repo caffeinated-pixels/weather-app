@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
-export default function LocationBar() {
+export default function ControlsBar() {
   const [menuOpen, setIsMenuOpen] = useState(false)
   const { locationName, handleChangeUnits } = useContext(WeatherDataContext)
   const { city, country } = locationName
