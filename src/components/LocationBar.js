@@ -3,7 +3,7 @@ import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function LocationBar() {
   const { locationData } = useContext(WeatherDataContext)
-  console.log(locationData)
+  console.log(`location Bar log: ${locationData.latitude}`)
 
   return (
     <div className="locationbar">
