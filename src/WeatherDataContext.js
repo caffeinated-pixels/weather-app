@@ -5,7 +5,7 @@ import useFetchWeatherData from './hooks/useFetchWeatherData'
 const WeatherDataContext = React.createContext()
 
 function WeatherDataContextProvider({ children }) {
-  const [locationData, getBrowserGeolocation] = useBrowserGeolocation()
+  const [browserGeolocation, getBrowserGeolocation] = useBrowserGeolocation()
   const [{ weatherData, isLoading }, fetchWeatherData] = useFetchWeatherData({
     latitude: 43.7001,
     longitude: -79.4163
@@ -19,14 +19,14 @@ function WeatherDataContextProvider({ children }) {
   useEffect(() => {
     console.log('2nd context use effect')
 
-    if (locationData.latitude) {
-      fetchWeatherData(locationData)
+    if (browserGeolocation.latitude) {
+      fetchWeatherData(browserGeolocation)
     }
-  }, [locationData, fetchWeatherData])
+  }, [browserGeolocation, fetchWeatherData])
 
   return (
     <WeatherDataContext.Provider
-      value={{ locationData, weatherData, isLoading }}
+      value={{ browserGeolocation, weatherData, isLoading }}
     >
       {children}
     </WeatherDataContext.Provider>
