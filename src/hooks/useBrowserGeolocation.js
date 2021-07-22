@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react'
 
-export default function useGeolocation() {
+export default function useBrowserGeolocation() {
   const [userLocation, setLocation] = useState({})
 
-  const getUserLocation = useCallback(async () => {
+  const getBrowserGeolocation = useCallback(async () => {
     console.log('get getCurrentPosition call')
     const options = {
       enableHighAccuracy: true,
@@ -27,5 +27,5 @@ export default function useGeolocation() {
     navigator.geolocation.getCurrentPosition(success, error, options)
   }, [])
 
-  return [userLocation, getUserLocation]
+  return [userLocation, getBrowserGeolocation]
 }
