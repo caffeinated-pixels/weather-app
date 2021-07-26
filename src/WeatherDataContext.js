@@ -17,22 +17,32 @@ function WeatherDataContextProvider({ children }) {
 
   const handleChangeUnits = event => {
     setUnits(event.target.id)
-    fetchWeatherData(browserGeolocation, event.target.id)
   }
 
+  // after mounting, get user's coords from browser
   useEffect(() => {
     console.log('1st context use effect')
     getBrowserGeolocation()
   }, [getBrowserGeolocation])
 
+  /* once we have the user's coords, we can call the weather API
+  we also need to re-call the API if units change */
   useEffect(() => {
     console.log('2nd context use effect')
 
     if (browserGeolocation.latitude) {
-      fetchWeatherData(browserGeolocation)
+      fetchWeatherData(browserGeolocation, units)
+    }
+  }, [units, browserGeolocation, fetchWeatherData, fetchLocationName])
+
+  /* we need to call a different API to get the city name & country
+  only re-call the API if the location changes */
+  useEffect(() => {
+    console.log('3rd context use effect')
+    if (browserGeolocation.latitude) {
       fetchLocationName(browserGeolocation)
     }
-  }, [browserGeolocation, fetchWeatherData, fetchLocationName])
+  }, [browserGeolocation, fetchLocationName])
 
   return (
     <WeatherDataContext.Provider
