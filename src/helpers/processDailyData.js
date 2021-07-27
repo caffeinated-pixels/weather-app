@@ -1,7 +1,9 @@
 import generateIconInfo from './generateIconInfo'
 
 export default function processDailyData(dailyData, units) {
-  // console.log(dailyData)
+  console.log('processing daily data')
+
+  const tempUnits = units === 'metric' ? '°C' : '°F'
 
   const components = dailyData.map((daily, i) => {
     const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
@@ -11,8 +13,8 @@ export default function processDailyData(dailyData, units) {
     const date = new Date(daily.dt * 1000)
     const dateDisplay = date.toDateString().slice(0, -5)
 
-    const minTemp = Math.round(daily.temp.min)
-    const maxTemp = Math.round(daily.temp.max)
+    const minTemp = Math.round(daily.temp.min) + tempUnits
+    const maxTemp = Math.round(daily.temp.max) + tempUnits
 
     return (
       <div key={`daily-${i}`} className={`daily-box ${backgroundColor}`}>
@@ -22,7 +24,7 @@ export default function processDailyData(dailyData, units) {
         </div>
 
         <p className="daily-temp">
-          {minTemp}°C / {maxTemp}°C
+          {minTemp} / {maxTemp}
         </p>
       </div>
     )
