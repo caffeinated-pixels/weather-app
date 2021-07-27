@@ -17,7 +17,7 @@ function WeatherDataContextProvider({ children }) {
   const [browserGeolocation, getBrowserGeolocation] = useBrowserGeolocation()
   const [locationName, fetchLocationName] = useFetchLocationName()
   const [
-    { weatherData, processedWeatherData, isLoading },
+    { processedWeatherData, isLoading },
     fetchWeatherData
   ] = useFetchWeatherData(torontoCoords)
 
@@ -54,7 +54,6 @@ function WeatherDataContextProvider({ children }) {
     <WeatherDataContext.Provider
       value={{
         locationName,
-        weatherData,
         processedWeatherData,
         isLoading,
         units,
