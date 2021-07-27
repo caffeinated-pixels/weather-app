@@ -6,6 +6,9 @@ export default function ControlsBar() {
   const [menuOpen, setIsMenuOpen] = useState(false)
 
   console.log('location bar render')
+  const iconClass = menuOpen
+    ? 'far fa-caret-square-up'
+    : 'fas fa-caret-square-down'
 
   const handleMenuBtnClick = () => {
     setIsMenuOpen(prevState => !prevState)
@@ -15,7 +18,7 @@ export default function ControlsBar() {
     <div className="locationbar">
       {menuOpen ? <UnitsButtons /> : <SearchBar />}
       <i
-        className="locationbar__icon fas fa-caret-square-down"
+        className={`locationbar__icon ${iconClass}`}
         onClick={handleMenuBtnClick}
       ></i>
     </div>
