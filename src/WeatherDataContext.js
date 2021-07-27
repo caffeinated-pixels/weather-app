@@ -5,15 +5,20 @@ import useFetchLocationName from './hooks/useFetchLocationName'
 
 const WeatherDataContext = React.createContext()
 
+// default coords to be used if can't get browser location
+const torontoCoords = {
+  latitude: 43.7001,
+  longitude: -79.4163
+}
+
 function WeatherDataContextProvider({ children }) {
   console.log('context rerender')
   const [units, setUnits] = useState('metric')
   const [browserGeolocation, getBrowserGeolocation] = useBrowserGeolocation()
   const [locationName, fetchLocationName] = useFetchLocationName()
-  const [{ weatherData, isLoading }, fetchWeatherData] = useFetchWeatherData({
-    latitude: 43.7001,
-    longitude: -79.4163
-  })
+  const [{ weatherData, isLoading }, fetchWeatherData] = useFetchWeatherData(
+    torontoCoords
+  )
 
   const handleChangeUnits = event => {
     setUnits(event.target.id)
