@@ -8,12 +8,12 @@ export default function CurrentWeatherMain() {
   const {
     iconUrl,
     iconAltText,
-    currentTemp,
     weatherDescription,
+    currentTemp,
     minTemp,
     maxTemp,
     feelsLikeTemp,
-    windSpeedKmh,
+    windSpeed,
     windDirection
   } = processedWeatherData
 
@@ -25,18 +25,18 @@ export default function CurrentWeatherMain() {
         </div>
 
         <div className="main-temp-summary">
-          <p className="main-current-temp">{currentTemp}°C</p>
+          <p className="main-current-temp">{currentTemp}</p>
           <p className="main-minmax-temp">
-            {minTemp}°C / {maxTemp}°C
+            {minTemp} / {maxTemp}
           </p>
         </div>
       </div>
 
       <div className="main-bottom">
         <p className="main-description">{weatherDescription}</p>
-        <p className="main-feels-like">feels like {feelsLikeTemp}°C</p>
+        <p className="main-feels-like">feels like {feelsLikeTemp}</p>
         <p className="main-wind">
-          {windSpeedKmh} km/h {windDirection}
+          {windSpeed} {windDirection}
         </p>
       </div>
     </div>
