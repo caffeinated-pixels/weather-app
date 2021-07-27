@@ -57,7 +57,8 @@ function WeatherDataContextProvider({ children }) {
         processedWeatherData,
         isLoading,
         units,
-        handleChangeUnits
+        handleChangeUnits,
+        getBrowserGeolocation
       }}
     >
       {children}
