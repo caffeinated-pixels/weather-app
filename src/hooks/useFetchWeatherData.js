@@ -10,6 +10,10 @@ export default function useFetchWeatherData() {
   const fetchWeatherData = useCallback(
     async (locationData, units = 'metric') => {
       console.log('API call')
+
+      // NOTE: in two minds about doing this! Might be something to change when I add in proper error handling
+      setWeatherData(prev => ({ ...prev, isLoading: true }))
+
       const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall'
       const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY
 
