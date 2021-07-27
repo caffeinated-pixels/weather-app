@@ -3,10 +3,14 @@ import generateIconInfo from './generateIconInfo'
 
 export default function processHourlyData(hourlyData, units) {
   console.log('processing hourly data')
+
+  const tempUnits = units === 'metric' ? '°C' : '°F'
+
   return hourlyData.map((hourly, i) => {
     const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
     const [iconUrl, iconAltText] = generateIconInfo(hourly.weather[0], '2x')
-    const precipProb = (hourly.pop * 100).toFixed(0)
+    const precipProb = (hourly.pop * 100).toFixed(0) + '%'
+    const hourlyTemp = Math.round(hourly.temp) + tempUnits
 
     const date = new Date(hourly.dt * 1000)
     const hour = date.getHours()
@@ -27,8 +31,8 @@ export default function processHourlyData(hourlyData, units) {
         <div className="hourly-icon-wrapper">
           <img className="hourly-icon" src={iconUrl} alt={iconAltText} />
         </div>
-        <p className="precip-prob">{precipProb}%</p>
-        <p className="hourly-temp">{Math.round(hourly.temp)}°C</p>
+        <p className="precip-prob">{precipProb}</p>
+        <p className="hourly-temp">{hourlyTemp}</p>
       </div>
     )
   })
