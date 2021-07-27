@@ -1,7 +1,7 @@
 import { monthLookup } from './timeLookup'
 import generateIconInfo from './generateIconInfo'
 
-export default function processHourlyData(hourlyData) {
+export default function processHourlyData(hourlyData, units) {
   console.log('processing hourly data')
   return hourlyData.map((hourly, i) => {
     const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'

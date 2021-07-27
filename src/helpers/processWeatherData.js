@@ -1,6 +1,7 @@
 import generateIconInfo from './generateIconInfo'
 import getWindDirection from './getWindDirection'
 import processHourlyData from './processHourlyData'
+import processDailyData from './processDailyData'
 
 export default function processWeatherData(weatherData, units) {
   console.log('processing weather data')
@@ -45,7 +46,8 @@ export default function processWeatherData(weatherData, units) {
   const pressure = current.pressure + ' hPa'
 
   // PROCESS HOULRY DATA INTO ARRAY OF JSX ELEMENTS
-  const hourlyBoxes = processHourlyData(hourly)
+  const hourlyBoxes = processHourlyData(hourly, units)
+  const dailyBoxes = processDailyData(daily, units)
 
   return {
     iconUrl,
@@ -63,6 +65,7 @@ export default function processWeatherData(weatherData, units) {
     dewPoint,
     uvIndex,
     pressure,
-    hourlyBoxes
+    hourlyBoxes,
+    dailyBoxes
   }
 }
