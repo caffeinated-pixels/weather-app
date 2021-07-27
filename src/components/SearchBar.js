@@ -6,7 +6,7 @@ export default function SearchBar() {
   const { city, country } = locationName
   return (
     <>
-      <i className="locationbar__icon fas fa-location-arrow"></i>
+      <i className="locationbar__icon fas fa-map-marker-alt"></i>
       <div className="locationbar__city">
         {city}, {country}
       </div>
