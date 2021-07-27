@@ -3,7 +3,6 @@ import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function CurrentWeatherMain() {
   const { processedWeatherData } = useContext(WeatherDataContext)
-  // console.log(processedWeatherData)
 
   const {
     iconUrl,

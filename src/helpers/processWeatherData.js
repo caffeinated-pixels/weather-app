@@ -3,7 +3,7 @@ import getWindDirection from './getWindDirection'
 
 export default function processWeatherData(weatherData, units) {
   console.log('processing weather data')
-  const { current, daily } = weatherData
+  const { current, daily, hourly } = weatherData
 
   // ICON & DESCRIPTION
   const [iconUrl, iconAltText] = generateIconInfo(current.weather[0], '4x')
@@ -21,10 +21,27 @@ export default function processWeatherData(weatherData, units) {
     units === 'metric'
       ? (current.wind_speed * 3.6).toFixed(1) + ' km/h'
       : current.wind_speed + ' mph'
-  /* for metric, wind is in m/s - so we convert to km/h (m/s * 3.6)
-      for imperial, it's in mph - so no conversion necessary */
+  /* for metric, API returns m/s - so we convert to km/h (m/s * 3.6)
+      for imperial, API returns mph - so no conversion necessary */
 
   const windDirection = getWindDirection(current.wind_deg)
+
+  // VISIBILITY
+  const visibility =
+    units === 'metric'
+      ? (current.visibility / 1000).toFixed(1) + ' km'
+      : (current.visibility * 0.00062137).toFixed(1) + ' mi'
+  /* API always returns metres regardless of unit param
+        for metric, convert to km (m / 1000)
+        for imperial, convert to mi (m * 0.00062137)
+      */
+
+  // OTHER WEATHER DATA VALUES
+  const precipProb = hourly[0].pop * 100 + '%'
+  const humidity = current.humidity + '%'
+  const dewPoint = Math.round(current.dew_point) + tempUnit
+  const uvIndex = current.uvi.toFixed(1)
+  const pressure = current.pressure + ' hPa'
 
   return {
     iconUrl,
@@ -35,6 +52,12 @@ export default function processWeatherData(weatherData, units) {
     maxTemp,
     feelsLikeTemp,
     windSpeed,
-    windDirection
+    windDirection,
+    visibility,
+    precipProb,
+    humidity,
+    dewPoint,
+    uvIndex,
+    pressure
   }
 }
