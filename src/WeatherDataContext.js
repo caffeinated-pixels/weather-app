@@ -16,9 +16,10 @@ function WeatherDataContextProvider({ children }) {
   const [units, setUnits] = useState('metric')
   const [browserGeolocation, getBrowserGeolocation] = useBrowserGeolocation()
   const [locationName, fetchLocationName] = useFetchLocationName()
-  const [{ weatherData, isLoading }, fetchWeatherData] = useFetchWeatherData(
-    torontoCoords
-  )
+  const [
+    { weatherData, processedWeatherData, isLoading },
+    fetchWeatherData
+  ] = useFetchWeatherData(torontoCoords)
 
   const handleChangeUnits = event => {
     setUnits(event.target.id)
@@ -51,7 +52,14 @@ function WeatherDataContextProvider({ children }) {
 
   return (
     <WeatherDataContext.Provider
-      value={{ locationName, weatherData, isLoading, units, handleChangeUnits }}
+      value={{
+        locationName,
+        weatherData,
+        processedWeatherData,
+        isLoading,
+        units,
+        handleChangeUnits
+      }}
     >
       {children}
     </WeatherDataContext.Provider>

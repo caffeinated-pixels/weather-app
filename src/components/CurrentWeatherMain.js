@@ -1,25 +1,21 @@
 import React, { useContext } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
-import generateIconInfo from '../helpers/generateIconInfo'
-import getWindDirection from '../helpers/getWindDirection'
 
 export default function CurrentWeatherMain() {
-  const { weatherData } = useContext(WeatherDataContext)
-  // console.log(weatherData)
-  const { current, daily } = weatherData
+  const { processedWeatherData } = useContext(WeatherDataContext)
+  // console.log(processedWeatherData)
 
-  const [iconUrl, iconAltText] = generateIconInfo(current.weather[0], '4x')
-
-  const currentTemp = Math.round(current.temp)
-  const weatherDescription = current.weather[0].description
-
-  const minTemp = Math.round(daily[0].temp.min)
-  const maxTemp = Math.round(daily[0].temp.max)
-
-  const feelsLikeTemp = Math.round(current.feels_like)
-  const windSpeedMs = current.wind_speed
-  const windSpeedKmh = (windSpeedMs * 3.6).toFixed(1)
-  const windDirection = getWindDirection(current.wind_deg)
+  const {
+    iconUrl,
+    iconAltText,
+    currentTemp,
+    weatherDescription,
+    minTemp,
+    maxTemp,
+    feelsLikeTemp,
+    windSpeedKmh,
+    windDirection
+  } = processedWeatherData
 
   return (
     <div className="current-main">

@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import processWeatherData from '../helpers/processWeatherData.js'
 
 export default function useFetchWeatherData() {
   const [weatherData, setWeatherData] = useState({
@@ -21,7 +22,8 @@ export default function useFetchWeatherData() {
           throw Error('Fetch request to Open Weather API failed')
 
         const weatherData = await response.json()
-        setWeatherData({ weatherData, isLoading: false })
+        const processedWeatherData = processWeatherData(weatherData, units)
+        setWeatherData({ weatherData, processedWeatherData, isLoading: false })
       } catch (error) {
         console.log(error)
       }
