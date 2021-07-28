@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import useBrowserGeolocation from './hooks/useBrowserGeolocation'
+// import useBrowserGeolocation from './hooks/useBrowserGeolocation'
+import useGetWeatherLocation from './hooks/useGetWeatherLocation'
 import useFetchWeatherData from './hooks/useFetchWeatherData'
 import useFetchGeocodingDirect from './hooks/useFetchGeocodingDirect'
 
@@ -14,7 +15,8 @@ const torontoCoords = {
 function WeatherDataContextProvider({ children }) {
   console.log('context rerender')
   const [units, setUnits] = useState('metric')
-  const [browserGeolocation, getBrowserGeolocation] = useBrowserGeolocation()
+  // const [browserGeolocation, getBrowserGeolocation] = useBrowserGeolocation()
+  const [weatherLocation, getWeatherLocation] = useGetWeatherLocation()
   const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
   const [
     { processedWeatherData, isLoading },
@@ -35,28 +37,28 @@ function WeatherDataContextProvider({ children }) {
   // after mounting, get user's coords from browser
   useEffect(() => {
     console.log('1st context use effect')
-    getBrowserGeolocation()
-  }, [getBrowserGeolocation])
+    getWeatherLocation()
+  }, [getWeatherLocation])
 
   /* once we have the user's coords, we can call the weather API
   we also need to re-call the API if units change */
   useEffect(() => {
     console.log('2nd context use effect')
 
-    if (browserGeolocation.latitude) {
-      fetchWeatherData(browserGeolocation, units)
+    if (weatherLocation.latitude) {
+      fetchWeatherData(weatherLocation, units)
     }
-  }, [units, browserGeolocation, fetchWeatherData])
+  }, [units, weatherLocation, fetchWeatherData])
 
   return (
     <WeatherDataContext.Provider
       value={{
-        browserGeolocation,
+        weatherLocation,
         processedWeatherData,
         isLoading,
         units,
         handleChangeUnits,
-        getBrowserGeolocation,
+        getWeatherLocation,
         handleSearchSubmit
       }}
     >
