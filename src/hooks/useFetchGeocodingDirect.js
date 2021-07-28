@@ -20,7 +20,7 @@ export default function useFetchGeocodingDirect() {
           throw Error('Fetch request to Geocoding Direct API failed')
 
         const geocodingApiResults = await response.json()
-        console.log(geocodingApiResults)
+        // console.log(geocodingApiResults)
         setLocationResults(geocodingApiResults)
       } catch (error) {
         console.log(error)

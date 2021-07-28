@@ -59,7 +59,7 @@ function WeatherDataContextProvider({ children }) {
         latitude: locationResults[0].lat,
         longitude: locationResults[0].lon
       }
-      console.log(firstResult)
+
       getWeatherLocation(firstResult)
     }
   }, [locationResults, getWeatherLocation])
