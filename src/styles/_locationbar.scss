@@ -41,12 +41,14 @@
 }
 
 .form-wrapper {
-  background: lightyellow;
+  // background: lightyellow;
+  display: flex;
   // width: 100px;
 }
 
 .locationbar__city {
   background: $locationbar-blue;
+  border: none;
   border-radius: 10px;
   display: block;
 

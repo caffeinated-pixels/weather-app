@@ -177,11 +177,12 @@ body {
 }
 
 .form-wrapper {
-  background: lightyellow;
+  display: flex;
 }
 
 .locationbar__city {
   background: #b6e4f3;
+  border: none;
   border-radius: 10px;
   display: block;
   margin: 0 auto;

@@ -25,10 +25,10 @@ export default function SearchBar() {
           value={searchInput}
           onChange={e => setSearchInput(e.target.value)}
         />
+        <button type="submit" className="icon-button">
+          <i className="locationbar__icon fas fa-search-location"></i>
+        </button>
       </form>
-      <button className="icon-button">
-        <i className="locationbar__icon fas fa-search-location"></i>
-      </button>
     </>
   )
 }
