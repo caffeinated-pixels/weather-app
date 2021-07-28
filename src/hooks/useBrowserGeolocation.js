@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import fetchGeocodingAPI from '../helpers/fetchGeocodingReverse'
 
 export default function useBrowserGeolocation() {
   const [browserGeolocation, setLocation] = useState({})
@@ -15,7 +16,10 @@ export default function useBrowserGeolocation() {
       const latitude = pos.coords.latitude
       const longitude = pos.coords.longitude
 
-      setLocation({ latitude, longitude })
+      // now call Geocoding API to get city name & country
+      const [city, country] = await fetchGeocodingAPI({ latitude, longitude })
+
+      setLocation({ latitude, longitude, city, country })
     }
 
     function error(err) {

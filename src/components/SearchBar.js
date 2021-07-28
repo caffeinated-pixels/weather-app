@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function SearchBar() {
-  const { locationName, getBrowserGeolocation } = useContext(WeatherDataContext)
-  const { city, country } = locationName
+  const { browserGeolocation, getBrowserGeolocation } = useContext(
+    WeatherDataContext
+  )
+  const { city, country } = browserGeolocation
   const [searchInput, setSearchInput] = useState(`${city}, ${country}`)
 
   const handleSubmit = e => {
