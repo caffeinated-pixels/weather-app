@@ -17,10 +17,9 @@ export default function ControlsBar() {
   return (
     <div className="locationbar">
       {menuOpen ? <UnitsButtons /> : <SearchBar />}
-      <i
-        className={`locationbar__icon ${iconClass}`}
-        onClick={handleMenuBtnClick}
-      ></i>
+      <button className="icon-button" onClick={handleMenuBtnClick}>
+        <i className={`locationbar__icon ${iconClass}`}></i>
+      </button>
     </div>
   )
 }

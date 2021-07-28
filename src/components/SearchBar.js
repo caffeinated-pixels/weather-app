@@ -12,11 +12,13 @@ export default function SearchBar() {
 
   return (
     <>
-      <i
-        className="locationbar__icon fas fa-map-marker-alt"
-        onClick={() => getWeatherLocation()}
-      ></i>
-      <form onSubmit={e => handleSearchSubmit(e, searchInput)}>
+      <button className="icon-button" onClick={() => getWeatherLocation()}>
+        <i className="locationbar__icon fas fa-map-marker-alt"></i>
+      </button>
+      <form
+        className="form-wrapper"
+        onSubmit={e => handleSearchSubmit(e, searchInput)}
+      >
         <input
           type="text"
           className="locationbar__city"
@@ -24,7 +26,9 @@ export default function SearchBar() {
           onChange={e => setSearchInput(e.target.value)}
         />
       </form>
-      <i className="locationbar__icon fas fa-search-location"></i>
+      <button className="icon-button">
+        <i className="locationbar__icon fas fa-search-location"></i>
+      </button>
     </>
   )
 }

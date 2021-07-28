@@ -146,15 +146,46 @@ body {
   align-items: center;
   font-size: 1.5rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0.5em 0.6em;
+}
+
+.icon-button {
+  background: none;
+  display: inline-block;
+  border: none;
+  padding: 0 0.4em;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.icon-button:hover,
+.icon-button:focus {
+  color: #ea6f52;
+}
+
+.icon-button:focus {
+  outline: 1px solid #ea6f52;
+  outline-offset: -4px;
+}
+
+.icon-button:active {
+  transform: scale(0.96);
+}
+
+.form-wrapper {
+  background: lightyellow;
 }
 
 .locationbar__city {
   background: #b6e4f3;
   border-radius: 10px;
-  width: 70%;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
   text-align: center;
 }
 

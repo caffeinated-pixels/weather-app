@@ -7,7 +7,7 @@
   font-size: 1.5rem;
 
   width: 100%;
-  max-width: $container-max-width;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0.5em 0.6em;
 }
@@ -15,11 +15,43 @@
 .locationbar__icon {
 }
 
+.icon-button {
+  background: none;
+  display: inline-block;
+  border: none;
+  padding: 0 0.4em;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.icon-button:hover,
+.icon-button:focus {
+  color: $header-orange;
+}
+
+.icon-button:focus {
+  outline: 1px solid $header-orange;
+  outline-offset: -4px;
+}
+
+.icon-button:active {
+  transform: scale(0.96);
+}
+
+.form-wrapper {
+  background: lightyellow;
+  // width: 100px;
+}
+
 .locationbar__city {
   background: $locationbar-blue;
   border-radius: 10px;
+  display: block;
 
-  width: 70%;
+  margin: 0 auto;
+  width: 100%;
   // font-size: 1.5rem;
   text-align: center;
 }
