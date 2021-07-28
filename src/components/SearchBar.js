@@ -14,7 +14,7 @@ export default function SearchBar() {
     <>
       <i
         className="locationbar__icon fas fa-map-marker-alt"
-        onClick={getWeatherLocation}
+        onClick={() => getWeatherLocation()}
       ></i>
       <form onSubmit={e => handleSearchSubmit(e, searchInput)}>
         <input

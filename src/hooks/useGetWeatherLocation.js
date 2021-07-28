@@ -9,7 +9,8 @@ export default function useGetWeatherLocation() {
 
   const getWeatherLocation = useCallback(selectedLocation => {
     if (selectedLocation) {
-      // setWeatherLocation(selectedLocation)
+      console.log('getWeatherLocation param')
+      setWeatherLocation(selectedLocation)
     } else {
       console.log('get getCurrentPosition call')
       const options = {

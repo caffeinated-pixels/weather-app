@@ -50,6 +50,20 @@ function WeatherDataContextProvider({ children }) {
     }
   }, [units, weatherLocation, fetchWeatherData])
 
+  useEffect(() => {
+    console.log('3rd context use effect')
+    if (locationResults[0]) {
+      const firstResult = {
+        city: locationResults[0].name,
+        country: locationResults[0].country,
+        latitude: locationResults[0].lat,
+        longitude: locationResults[0].lon
+      }
+      console.log(firstResult)
+      getWeatherLocation(firstResult)
+    }
+  }, [locationResults, getWeatherLocation])
+
   return (
     <WeatherDataContext.Provider
       value={{
