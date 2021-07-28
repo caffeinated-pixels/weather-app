@@ -2,16 +2,13 @@ import React, { useContext, useState } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function SearchBar() {
-  const { browserGeolocation, getBrowserGeolocation } = useContext(
-    WeatherDataContext
-  )
+  const {
+    browserGeolocation,
+    getBrowserGeolocation,
+    handleSearchSubmit
+  } = useContext(WeatherDataContext)
   const { city, country } = browserGeolocation
   const [searchInput, setSearchInput] = useState(`${city}, ${country}`)
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    console.log('submit search input')
-  }
 
   return (
     <>
@@ -19,7 +16,7 @@ export default function SearchBar() {
         className="locationbar__icon fas fa-map-marker-alt"
         onClick={getBrowserGeolocation}
       ></i>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={e => handleSearchSubmit(e, searchInput)}>
         <input
           type="text"
           className="locationbar__city"

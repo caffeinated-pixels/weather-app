@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useBrowserGeolocation from './hooks/useBrowserGeolocation'
 import useFetchWeatherData from './hooks/useFetchWeatherData'
+import useFetchGeocodingDirect from './hooks/useFetchGeocodingDirect'
 
 const WeatherDataContext = React.createContext()
 
@@ -14,6 +15,7 @@ function WeatherDataContextProvider({ children }) {
   console.log('context rerender')
   const [units, setUnits] = useState('metric')
   const [browserGeolocation, getBrowserGeolocation] = useBrowserGeolocation()
+  const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
   const [
     { processedWeatherData, isLoading },
     fetchWeatherData
@@ -21,6 +23,13 @@ function WeatherDataContextProvider({ children }) {
 
   const handleChangeUnits = event => {
     setUnits(event.target.id)
+  }
+
+  const handleSearchSubmit = (e, searchInput) => {
+    e.preventDefault()
+    console.log('submission detected!')
+    console.log(searchInput)
+    fetchLocationResults(searchInput)
   }
 
   // after mounting, get user's coords from browser
@@ -47,7 +56,8 @@ function WeatherDataContextProvider({ children }) {
         isLoading,
         units,
         handleChangeUnits,
-        getBrowserGeolocation
+        getBrowserGeolocation,
+        handleSearchSubmit
       }}
     >
       {children}
