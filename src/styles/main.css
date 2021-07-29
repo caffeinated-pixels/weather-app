@@ -140,6 +140,18 @@ body {
   color: inherit;
 }
 
+button {
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
 .locationbar {
   display: flex;
   justify-content: space-between;
@@ -149,17 +161,13 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 0.5em 0.2em;
+  min-height: 65px;
 }
 
 .icon-button {
   background: none;
-  display: inline-block;
-  border: none;
   padding: 0 0.4em;
   margin: 0;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: center;
 }
 
 .icon-button:hover,
@@ -194,6 +202,35 @@ body {
 
 .search-input:focus {
   outline: 2px solid #ea6f52;
+}
+
+.units-button-wrapper {
+  flex: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.units-button {
+  border-radius: 7px;
+  font-size: 1.1rem;
+  padding: 0.25em 0.5em;
+  background: #527c89;
+  color: white;
+}
+
+.units-button-active {
+  background: #ea6f52;
+  color: #fff;
+}
+
+.units-button:hover,
+.units-button:focus {
+  filter: brightness(110%);
+}
+
+.units-button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
 }
 
 .current-weather {
