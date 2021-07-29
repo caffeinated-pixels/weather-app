@@ -6,7 +6,8 @@ export default function SearchBar() {
     weatherLocation,
     getWeatherLocation,
     handleSearchSubmit,
-    locationResults
+    locationResults,
+    handleResultsChoice
   } = useContext(WeatherDataContext)
   const { city, country } = weatherLocation
   const [searchInput, setSearchInput] = useState(`${city}, ${country}`)
@@ -15,7 +16,7 @@ export default function SearchBar() {
   let searchResults
 
   if (locationResults[0]) {
-    console.log(locationResults)
+    // console.log(locationResults)
     searchResults = locationResults.map((location, i) => {
       const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
@@ -24,7 +25,7 @@ export default function SearchBar() {
           key={`result${i}`}
           className={`search-result ${backgroundColor}`}
           role="listitem"
-          onClick={() => console.log('result clicked')}
+          onClick={() => handleResultsChoice(i)}
         >
           <p>
             {location.name}, {location.country}

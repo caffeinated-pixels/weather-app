@@ -8,6 +8,12 @@ export default function useFetchGeocodingDirect() {
 
   const fetchLocationResults = useCallback(
     async cityNameToQuery => {
+      if (!cityNameToQuery) {
+        setLocationResults({})
+        return
+        // if no argument provided, clear the results and return
+      }
+
       console.log('Geocoding Direct API call (hook)')
 
       const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY

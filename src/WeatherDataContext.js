@@ -34,6 +34,21 @@ function WeatherDataContextProvider({ children }) {
     fetchLocationResults(searchInput)
   }
 
+  const handleResultsChoice = index => {
+    console.log(index)
+    const resultChoice = {
+      city: locationResults[0].name,
+      country: locationResults[0].country,
+      latitude: locationResults[0].lat,
+      longitude: locationResults[0].lon
+    }
+
+    getWeatherLocation(resultChoice)
+
+    // call with no argument to clear results
+    fetchLocationResults()
+  }
+
   // after mounting, get user's coords from browser
   useEffect(() => {
     console.log('1st context use effect')
@@ -74,7 +89,8 @@ function WeatherDataContextProvider({ children }) {
         handleChangeUnits,
         getWeatherLocation,
         handleSearchSubmit,
-        locationResults
+        locationResults,
+        handleResultsChoice
       }}
     >
       {children}
