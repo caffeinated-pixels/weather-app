@@ -192,6 +192,10 @@ body {
   text-align: center;
 }
 
+.search-input:focus {
+  outline: 2px solid #ea6f52;
+}
+
 .current-weather {
   display: grid;
   grid-template-columns: 60% 1fr;
