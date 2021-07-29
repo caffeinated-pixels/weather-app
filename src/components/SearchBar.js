@@ -46,9 +46,8 @@ export default function SearchBar() {
         className="form-wrapper"
         onSubmit={e => handleSearchSubmit(e, searchInput)}
       >
-        <button type="submit" className="icon-button">
-          <i className="locationbar__icon fas fa-search-location"></i>
-        </button>
+        <i className="search-icon fas fa-search-location"></i>
+
         <input
           type="text"
           className="search-input"

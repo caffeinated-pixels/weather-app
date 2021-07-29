@@ -25,9 +25,6 @@ button:active {
   min-height: 65px;
 }
 
-.locationbar__icon {
-}
-
 .icon-button {
   background: none;
 
@@ -54,7 +51,12 @@ button:active {
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: relative;
+}
+
+.search-icon {
+  padding: 0.25em 0.4em;
 }
 
 .search-input {
