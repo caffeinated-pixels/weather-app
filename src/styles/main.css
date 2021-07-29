@@ -189,6 +189,7 @@ button:active {
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .search-input {
@@ -202,6 +203,24 @@ button:active {
 
 .search-input:focus {
   outline: 2px solid #ea6f52;
+}
+
+.search-result-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+}
+
+.search-result {
+  cursor: pointer;
+}
+
+.search-result:hover,
+.search-result:focus {
+  color: #ea6f52;
 }
 
 .units-button-wrapper {
