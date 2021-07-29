@@ -15,7 +15,6 @@ export default function processWeatherData(weatherData, units) {
   const tempUnit = units === 'metric' ? '°C' : '°F'
   const currentTemp = Math.round(current.temp) + tempUnit
   const minTemp = Math.round(daily[0].temp.min) + tempUnit
-  console.log(daily[0].temp.min, minTemp)
   const maxTemp = Math.round(daily[0].temp.max) + tempUnit
   const feelsLikeTemp = Math.round(current.feels_like) + tempUnit
 
