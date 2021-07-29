@@ -9,8 +9,9 @@ export default function SearchBar() {
     locationResults,
     handleResultsChoice
   } = useContext(WeatherDataContext)
-  const { city, country } = weatherLocation
-  const [searchInput, setSearchInput] = useState(`${city}, ${country}`)
+  const { city, country, state } = weatherLocation
+  const currentLocation = `${city}, ${state ? state + ', ' : ''}${country}`
+  const [searchInput, setSearchInput] = useState(currentLocation)
   // console.log(locationResults)
 
   let searchResults
@@ -28,7 +29,8 @@ export default function SearchBar() {
           onClick={() => handleResultsChoice(i)}
         >
           <p>
-            {location.name}, {location.country}
+            {location.name}, {location.state && `${location.state}, `}
+            {location.country}
           </p>
         </div>
       )
@@ -54,7 +56,7 @@ export default function SearchBar() {
           value={searchInput}
           onChange={e => setSearchInput(e.target.value)}
           onFocus={() => setSearchInput('')}
-          onBlur={() => setSearchInput(`${city}, ${country}`)}
+          onBlur={() => setSearchInput(currentLocation)}
         />
         <div className="search-result-wrapper" role="list">
           {searchResults}

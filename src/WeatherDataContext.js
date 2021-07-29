@@ -37,11 +37,14 @@ function WeatherDataContextProvider({ children }) {
   const handleResultsChoice = index => {
     console.log(index)
     const resultChoice = {
-      city: locationResults[0].name,
-      country: locationResults[0].country,
-      latitude: locationResults[0].lat,
-      longitude: locationResults[0].lon
+      city: locationResults[index].name,
+      country: locationResults[index].country,
+      state: locationResults[index].state,
+      latitude: locationResults[index].lat,
+      longitude: locationResults[index].lon
     }
+
+    console.log(resultChoice)
 
     getWeatherLocation(resultChoice)
 
