@@ -14,6 +14,7 @@ export default function processDailyData(dailyData, units) {
     const dateDisplay = date.toDateString().slice(0, -5)
 
     const minTemp = Math.round(daily.temp.min) + tempUnits
+    console.log(daily.temp.min, minTemp)
     const maxTemp = Math.round(daily.temp.max) + tempUnits
 
     return (
