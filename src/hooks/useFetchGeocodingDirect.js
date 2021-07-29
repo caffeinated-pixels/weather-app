@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react'
-import processLocationResults from '../helpers/processLocationResults'
 
 /* In 'direct' mode, we can query the Open Weather Geocoding API with a city
 name. It will return an array of results (up to 5 using the limit param) */
@@ -22,8 +21,7 @@ export default function useFetchGeocodingDirect() {
 
         const geocodingApiResults = await response.json()
         // console.log(geocodingApiResults)
-        const jsxElements = processLocationResults(geocodingApiResults)
-        setLocationResults({ geocodingApiResults, jsxElements })
+        setLocationResults(geocodingApiResults)
       } catch (error) {
         console.log(error)
       }
