@@ -55,6 +55,11 @@ button:active {
   position: relative;
 }
 
+.form-wrapper:focus-within {
+  outline: 2px solid $header-orange;
+  box-shadow: 1px 1px 5px grey;
+}
+
 .search-icon {
   padding: 0.25em 0.4em;
 }
@@ -72,16 +77,20 @@ button:active {
 }
 
 .search-input:focus {
-  outline: 2px solid $header-orange;
+  outline: none;
 }
 
 .search-result-wrapper {
   position: absolute;
-  top: 100%;
+  top: 120%;
   left: 0;
   right: 0;
   text-align: center;
   color: white;
+  // box-shadow: ;
+  // border: 2px solid white;
+  // border-radius: 10px;
+  box-shadow: 1px 1px 5px grey;
 }
 
 .search-result {
