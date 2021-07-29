@@ -148,7 +148,7 @@ body {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 0.5em 0.6em;
+  padding: 0.5em 0.2em;
 }
 
 .icon-button {
@@ -177,7 +177,10 @@ body {
 }
 
 .form-wrapper {
+  background: #b6e4f3;
+  border-radius: 10px;
   display: flex;
+  justify-content: space-between;
 }
 
 .locationbar__city {

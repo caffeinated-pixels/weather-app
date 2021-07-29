@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 0.5em 0.6em;
+  padding: 0.5em 0.2em;
 }
 
 .locationbar__icon {
@@ -42,7 +42,10 @@
 
 .form-wrapper {
   // background: lightyellow;
+  background: $locationbar-blue;
+  border-radius: 10px;
   display: flex;
+  justify-content: space-between;
   // width: 100px;
 }
 
