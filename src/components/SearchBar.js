@@ -19,15 +19,18 @@ export default function SearchBar() {
         className="form-wrapper"
         onSubmit={e => handleSearchSubmit(e, searchInput)}
       >
-        <input
-          type="text"
-          className="locationbar__city"
-          value={searchInput}
-          onChange={e => setSearchInput(e.target.value)}
-        />
         <button type="submit" className="icon-button">
           <i className="locationbar__icon fas fa-search-location"></i>
         </button>
+        <input
+          type="text"
+          className="search-input"
+          placeholder="search for a city"
+          value={searchInput}
+          onChange={e => setSearchInput(e.target.value)}
+          onFocus={() => setSearchInput('')}
+          onBlur={() => setSearchInput(`${city}, ${country}`)}
+        />
       </form>
     </>
   )

@@ -183,7 +183,7 @@ body {
   justify-content: space-between;
 }
 
-.locationbar__city {
+.search-input {
   background: #b6e4f3;
   border: none;
   border-radius: 10px;
