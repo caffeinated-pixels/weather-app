@@ -1,41 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
+import SearchResults from './SearchResults'
 
 export default function SearchBar() {
   const {
     weatherLocation,
     getWeatherLocation,
     handleSearchSubmit,
-    locationResults,
-    handleResultsChoice
+    locationResults
   } = useContext(WeatherDataContext)
   const { city, country, state } = weatherLocation
   const currentLocation = `${city}, ${state ? state + ', ' : ''}${country}`
   const [searchInput, setSearchInput] = useState(currentLocation)
-  // console.log(locationResults)
-
-  let searchResults
-
-  if (locationResults[0]) {
-    // console.log(locationResults)
-    searchResults = locationResults.map((location, i) => {
-      const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
-
-      return (
-        <div
-          key={`result${i}`}
-          className={`search-result ${backgroundColor}`}
-          role="listitem"
-          onClick={() => handleResultsChoice(i)}
-        >
-          <p>
-            {location.name}, {location.state && `${location.state}, `}
-            {location.country}
-          </p>
-        </div>
-      )
-    })
-  }
 
   return (
     <>
@@ -57,9 +33,7 @@ export default function SearchBar() {
           onFocus={() => setSearchInput('')}
           onBlur={() => setSearchInput(currentLocation)}
         />
-        <div className="search-result-wrapper" role="list">
-          {searchResults}
-        </div>
+        {locationResults[0] && <SearchResults />}
       </form>
     </>
   )
