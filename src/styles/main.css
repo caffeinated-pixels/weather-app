@@ -223,6 +223,16 @@ button:active {
   text-align: center;
   color: white;
   box-shadow: 1px 1px 5px grey;
+  animation: fadein 150ms ease-in;
+}
+
+@keyframes fadein {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .search-result {

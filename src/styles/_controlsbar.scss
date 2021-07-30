@@ -91,6 +91,20 @@ button:active {
   // border: 2px solid white;
   // border-radius: 10px;
   box-shadow: 1px 1px 5px grey;
+  animation: fadein 150ms ease-in;
+}
+
+@keyframes fadein {
+  from {
+    // opacity: 0;
+    transform: scale(0);
+    // transform: translateY(-100%);
+  }
+  to {
+    // opacity: 1;
+    transform: scale(1);
+    // transform: translateY(0);
+  }
 }
 
 .search-result {
