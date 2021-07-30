@@ -93,7 +93,8 @@ function WeatherDataContextProvider({ children }) {
         getWeatherLocation,
         handleSearchSubmit,
         locationResults,
-        handleResultsChoice
+        handleResultsChoice,
+        fetchLocationResults
       }}
     >
       {children}
