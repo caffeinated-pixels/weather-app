@@ -41,8 +41,16 @@ export default function SearchResults() {
   }, [closeResults])
 
   return (
-    <ul id="search-results" className="search-result-wrapper" tabIndex="0">
-      {searchResults}
-    </ul>
+    <div className="search-result-wrapper" tabIndex="0">
+      <div className="search-result-header">
+        <p>Matching results:</p>
+        <button className="icon-button">
+          <i className="fas fa-times"></i>
+        </button>
+      </div>
+      <ul id="search-results" className="search-result-list">
+        {searchResults}
+      </ul>
+    </div>
   )
 }

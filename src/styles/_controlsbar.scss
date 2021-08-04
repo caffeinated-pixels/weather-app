@@ -86,12 +86,10 @@ button:active {
   top: 120%;
   left: 0;
   right: 0;
-  text-align: center;
+  // text-align: center;
+  background: $body-blue;
   color: white;
 
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
   // box-shadow: ;
   // border: 2px solid white;
   // border-radius: 10px;
@@ -110,6 +108,20 @@ button:active {
     transform: scale(1);
     // transform: translateY(0);
   }
+}
+
+.search-result-header {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 0.25em;
+}
+
+.search-result-list {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .search-result-wrapper:focus {
