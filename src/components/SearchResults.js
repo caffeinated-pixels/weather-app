@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function SearchResults() {
@@ -8,15 +8,17 @@ export default function SearchResults() {
     fetchLocationResults
   } = useContext(WeatherDataContext)
 
-  const closeResults = useCallback(
-    e => {
-      console.log('close results')
-      if (e.target.id !== 'search-results') {
-        fetchLocationResults()
-      }
-    },
-    [fetchLocationResults]
-  )
+  const searchResultsRef = useRef(null)
+
+  const closeResults = e => {
+    console.log('focus lost')
+
+    // checks if element is child of search-result-wrapper
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      // calling with no argument will clear results
+      fetchLocationResults()
+    }
+  }
 
   const searchResults = locationResults.map((location, i) => {
     const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
@@ -34,23 +36,24 @@ export default function SearchResults() {
     )
   })
 
-  useEffect(() => {
-    document.addEventListener('click', closeResults)
-
-    return () => document.removeEventListener('click', closeResults)
-  }, [closeResults])
+  // automatically set focus to new searchResults
+  useEffect(() => searchResultsRef.current.focus(), [locationResults])
 
   return (
-    <div className="search-result-wrapper" tabIndex="0">
+    <div
+      id="search-results"
+      className="search-result-wrapper"
+      tabIndex="0"
+      ref={searchResultsRef}
+      onBlur={closeResults}
+    >
       <div className="search-result-header">
         <p>Matching results:</p>
-        <button className="icon-button">
+        <button className="icon-button" onClick={() => fetchLocationResults()}>
           <i className="fas fa-times"></i>
         </button>
       </div>
-      <ul id="search-results" className="search-result-list">
-        {searchResults}
-      </ul>
+      <ul className="search-result-list">{searchResults}</ul>
     </div>
   )
 }
