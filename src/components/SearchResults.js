@@ -22,17 +22,14 @@ export default function SearchResults() {
     const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
     return (
-      <div
+      <li
         key={`result${i}`}
         className={`search-result ${backgroundColor}`}
-        role="listitem"
         onClick={() => handleResultsChoice(i)}
       >
-        <p>
-          {location.name}, {location.state && `${location.state}, `}
-          {location.country}
-        </p>
-      </div>
+        {location.name}, {location.state && `${location.state}, `}
+        {location.country}
+      </li>
     )
   })
 
@@ -43,8 +40,8 @@ export default function SearchResults() {
   }, [closeResults])
 
   return (
-    <div id="search-results" className="search-result-wrapper" role="list">
+    <ul id="search-results" className="search-result-wrapper" tabIndex="0">
       {searchResults}
-    </div>
+    </ul>
   )
 }
