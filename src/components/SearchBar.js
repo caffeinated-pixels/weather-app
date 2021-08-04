@@ -33,8 +33,8 @@ export default function SearchBar() {
           onFocus={() => setSearchInput('')}
           onBlur={() => setSearchInput(currentLocation)}
         />
-        {locationResults[0] && <SearchResults />}
       </form>
+      {locationResults[0] && <SearchResults />}
     </>
   )
 }

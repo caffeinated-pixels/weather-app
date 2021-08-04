@@ -13,6 +13,8 @@ button:active {
 }
 
 .locationbar {
+  position: relative;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +54,6 @@ button:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 }
 
 .form-wrapper:focus-within {
