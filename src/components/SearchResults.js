@@ -28,6 +28,7 @@ export default function SearchResults() {
         key={`result${i}`}
         className={`search-result ${backgroundColor}`}
         onClick={() => handleResultsChoice(i)}
+        onKeyDown={e => handleResultsChoice(i, e)}
         tabIndex="0"
       >
         {location.name}, {location.state && `${location.state}, `}

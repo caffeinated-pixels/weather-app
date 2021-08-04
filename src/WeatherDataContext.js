@@ -32,8 +32,14 @@ function WeatherDataContextProvider({ children }) {
     fetchLocationResults(searchInput)
   }
 
-  const handleResultsChoice = index => {
+  const handleResultsChoice = (index, e) => {
     console.log(index)
+
+    // check if called by onKeyDown (e is truthy); return if not Enter key
+    if (e && e.key !== 'Enter') {
+      return
+    }
+
     const resultChoice = {
       city: locationResults[index].name,
       country: locationResults[index].country,
