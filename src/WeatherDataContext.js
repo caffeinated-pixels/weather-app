@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import useBrowserGeolocation from './hooks/useBrowserGeolocation'
 import useGetWeatherLocation from './hooks/useGetWeatherLocation'
 import useFetchWeatherData from './hooks/useFetchWeatherData'
 import useFetchGeocodingDirect from './hooks/useFetchGeocodingDirect'
@@ -15,7 +14,6 @@ const torontoCoords = {
 function WeatherDataContextProvider({ children }) {
   console.log('context rerender')
   const [units, setUnits] = useState('metric')
-  // const [browserGeolocation, getBrowserGeolocation] = useBrowserGeolocation()
   const [weatherLocation, getWeatherLocation] = useGetWeatherLocation()
   const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
   const [
@@ -67,20 +65,6 @@ function WeatherDataContextProvider({ children }) {
       fetchWeatherData(weatherLocation, units)
     }
   }, [units, weatherLocation, fetchWeatherData])
-
-  // useEffect(() => {
-  //   console.log('3rd context use effect')
-  //   if (locationResults[0]) {
-  //     const firstResult = {
-  //       city: locationResults[0].name,
-  //       country: locationResults[0].country,
-  //       latitude: locationResults[0].lat,
-  //       longitude: locationResults[0].lon
-  //     }
-  //
-  //     getWeatherLocation(firstResult)
-  //   }
-  // }, [locationResults, getWeatherLocation])
 
   return (
     <WeatherDataContext.Provider
