@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import axios from 'axios'
 import processWeatherData from '../helpers/processWeatherData.js'
 
 export default function useFetchWeatherData() {
@@ -20,16 +21,20 @@ export default function useFetchWeatherData() {
       const fullUrl = `${baseUrl}?lat=${locationData.latitude}&lon=${locationData.longitude}&units=${units}&APPID=${apiKey}`
 
       try {
-        const response = await fetch(fullUrl)
+        const response = await axios.get(fullUrl)
 
-        if (!response.ok)
-          throw Error('Fetch request to Open Weather API failed')
-
-        const weatherData = await response.json()
+        const weatherData = response.data
         const processedWeatherData = processWeatherData(weatherData, units)
         setWeatherData({ weatherData, processedWeatherData, isLoading: false })
-      } catch (error) {
-        console.log(error)
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range
+          console.log(err.response.data)
+          console.log(err.response.status)
+          console.log(err.response.headers)
+        } else {
+          console.log(`Weather API Error: ${err.message}`)
+        }
       }
     },
     [setWeatherData]

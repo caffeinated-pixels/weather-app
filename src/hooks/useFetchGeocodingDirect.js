@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import axios from 'axios'
 
 /* In 'direct' mode, we can query the Open Weather Geocoding API with a city
 name. It will return an array of results (up to 5 using the limit param) */
@@ -20,16 +21,20 @@ export default function useFetchGeocodingDirect() {
       const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityNameToQuery}&limit=5&appid=${apiKey}`
 
       try {
-        const response = await fetch(url)
+        const response = await axios.get(url)
+        const geocodingApiResults = response.data
 
-        if (!response.ok)
-          throw Error('Fetch request to Geocoding Direct API failed')
-
-        const geocodingApiResults = await response.json()
         // console.log(geocodingApiResults)
         setLocationResults(geocodingApiResults)
-      } catch (error) {
-        console.log(error)
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range
+          console.log(err.response.data)
+          console.log(err.response.status)
+          console.log(err.response.headers)
+        } else {
+          console.log(`Geocoding Direct Error: ${err.message}`)
+        }
       }
     },
     [setLocationResults]

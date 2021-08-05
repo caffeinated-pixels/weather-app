@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import axios from 'axios'
 
 export default function useFetchLocationName() {
   const [locationName, setLocationName] = useState({})
@@ -11,16 +12,21 @@ export default function useFetchLocationName() {
       const url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
 
       try {
-        const response = await fetch(url)
+        const response = await axios.get(url)
 
-        if (!response.ok) throw Error('Fetch request to Geocoding API failed')
-
-        const geocodingResult = await response.json()
+        const geocodingResult = response.data
         const city = geocodingResult[0].name
         const country = geocodingResult[0].country
         setLocationName({ city, country })
-      } catch (error) {
-        console.log(error)
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range
+          console.log(err.response.data)
+          console.log(err.response.status)
+          console.log(err.response.headers)
+        } else {
+          console.log(`Geocoding Reverse Error: ${err.message}`)
+        }
       }
     },
     [setLocationName]
