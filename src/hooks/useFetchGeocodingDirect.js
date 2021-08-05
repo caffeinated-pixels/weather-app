@@ -18,7 +18,7 @@ export default function useFetchGeocodingDirect() {
       console.log('Geocoding Direct API call (hook)')
 
       const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY
-      const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityNameToQuery}&limit=5&appid=${apiKey}`
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityNameToQuery}&limit=5&appid=${apiKey}`
 
       try {
         const response = await axios.get(url)
