@@ -15,7 +15,7 @@ export default function processHourlyData(hourlyData, units) {
     const date = new Date(hourly.dt * 1000)
     const hour = date.getHours()
 
-    // Display 'Now' for current hour, display date if midnight (i.e. new day), else display the actual hour in hh:00 format
+    // Display 'Now' for current hour. Display date if midnight (i.e. new day), else display the actual hour in hh:00 format
     const hourDisplay =
       i === 0
         ? 'Now'
@@ -23,11 +23,13 @@ export default function processHourlyData(hourlyData, units) {
         ? `${monthLookup[date.getMonth()]} ${date.getDate()}`
         : `${hour}:00`
 
+    const timeClass = hour === 0 ? 'hourly-time new-day' : 'hourly-time'
+
     // TODO: convert to location timezone; the time will be in the user's local time (so the location timezone may be different!!!)
 
     return (
       <div key={`hourly-${i}`} className={`hourly-box ${backgroundColor}`}>
-        <p className="hourly-time">{hourDisplay}</p>
+        <p className={timeClass}>{hourDisplay}</p>
         <div className="hourly-icon-wrapper">
           <img className="hourly-icon" src={iconUrl} alt={iconAltText} />
         </div>
