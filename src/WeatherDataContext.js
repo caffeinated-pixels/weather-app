@@ -5,21 +5,16 @@ import useFetchGeocodingDirect from './hooks/useFetchGeocodingDirect'
 
 const WeatherDataContext = React.createContext()
 
-// default coords to be used if can't get browser location
-const torontoCoords = {
-  latitude: 43.7001,
-  longitude: -79.4163
-}
-
 function WeatherDataContextProvider({ children }) {
   console.log('context rerender')
   const [units, setUnits] = useState('metric')
   const [weatherLocation, getWeatherLocation] = useGetWeatherLocation()
   const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
+
   const [
     { processedWeatherData, isLoading },
     fetchWeatherData
-  ] = useFetchWeatherData(torontoCoords)
+  ] = useFetchWeatherData()
 
   const handleChangeUnits = event => {
     setUnits(event.target.id)
