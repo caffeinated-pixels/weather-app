@@ -12,7 +12,7 @@ export default function useGetWeatherLocation() {
       return
     }
 
-    // else get the browser location and make an API call to get the city name
+    // else get location from the browser
     console.log('get getCurrentPosition call')
 
     // define options + functions to run on success & error
