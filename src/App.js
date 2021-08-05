@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Header from './components/Header'
 import LoadingScreen from './components/LoadingScreen'
+import ErrorScreen from './components/ErrorScreen'
 
 import ControlsBar from './components/ControlsBar'
 import CurrentWeather from './components/CurrentWeather'
@@ -11,23 +12,28 @@ import Footer from './components/Footer'
 import { WeatherDataContext } from './WeatherDataContext'
 
 export default function App() {
-  const { isLoading } = useContext(WeatherDataContext)
+  const { isLoading, isError } = useContext(WeatherDataContext)
 
-  const appClassName = isLoading ? 'app app-loading' : 'app'
+  // class for setting num of grid rows
+  const appClassName = isLoading || isError ? 'app app-loading' : 'app'
+
+  const mainContent = isLoading ? (
+    <LoadingScreen />
+  ) : isError ? (
+    <ErrorScreen />
+  ) : (
+    <>
+      <ControlsBar />
+      <CurrentWeather />
+      <HourlyForecast />
+      <DailyForecast />
+    </>
+  )
 
   return (
     <div className={appClassName}>
       <Header />
-      {isLoading ? (
-        <LoadingScreen />
-      ) : (
-        <>
-          <ControlsBar />
-          <CurrentWeather />
-          <HourlyForecast />
-          <DailyForecast />
-        </>
-      )}
+      {mainContent}
       <Footer />
     </div>
   )

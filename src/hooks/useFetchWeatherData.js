@@ -5,12 +5,14 @@ import processWeatherData from '../helpers/processWeatherData.js'
 export default function useFetchWeatherData() {
   const [weatherData, setWeatherData] = useState({
     weatherData: {},
-    isLoading: true
+    isLoading: true,
+    isError: false,
+    errorMsg: ''
   })
 
   const fetchWeatherData = useCallback(
     async (locationData, units = 'metric') => {
-      console.log('API call')
+      console.log('Weather Data API call')
 
       // NOTE: in two minds about doing this! Might be something to change when I add in proper error handling
       setWeatherData(prev => ({ ...prev, isLoading: true }))
@@ -35,6 +37,13 @@ export default function useFetchWeatherData() {
         } else {
           console.log(`Weather API Error: ${err.message}`)
         }
+
+        setWeatherData(prev => ({
+          weatherData: {},
+          isLoading: false,
+          isError: true,
+          errorMsg: err.message
+        }))
       }
     },
     [setWeatherData]

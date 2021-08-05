@@ -40,10 +40,13 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
-.loading-screen {
+.loading-screen,
+.error-screen {
   display: grid;
   justify-content: center;
   align-content: center;
+
+  text-align: center;
 }
 
 // SHARED CLASSES
