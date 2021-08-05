@@ -1,16 +1,22 @@
 import { useState, useCallback } from 'react'
 import axios from 'axios'
 
+const initialState = {
+  resultsArr: [],
+  searchMatchFail: false,
+  isError: false,
+  errorMsg: ''
+}
+
 /* In 'direct' mode, we can query the Open Weather Geocoding API with a city
 name. It will return an array of results (up to 5 using the limit param) */
-
 export default function useFetchGeocodingDirect() {
-  const [locationResults, setLocationResults] = useState({})
+  const [locationResults, setLocationResults] = useState(initialState)
 
   const fetchLocationResults = useCallback(
     async cityNameToQuery => {
       if (!cityNameToQuery) {
-        setLocationResults({})
+        setLocationResults(initialState)
         return
         // if no argument provided, clear the results and return
       }
@@ -25,7 +31,10 @@ export default function useFetchGeocodingDirect() {
         const geocodingApiResults = response.data
 
         // console.log(geocodingApiResults)
-        setLocationResults(geocodingApiResults)
+        setLocationResults({
+          ...initialState,
+          resultsArr: geocodingApiResults
+        })
       } catch (err) {
         if (err.response) {
           // Not in the 200 response range

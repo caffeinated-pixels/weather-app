@@ -20,7 +20,7 @@ export default function SearchResults() {
     }
   }
 
-  const searchResults = locationResults.map((location, i) => {
+  const searchResults = locationResults.resultsArr.map((location, i) => {
     const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
     return (

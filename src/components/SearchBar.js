@@ -34,7 +34,7 @@ export default function SearchBar() {
           onBlur={() => setSearchInput(currentLocation)}
         />
       </form>
-      {locationResults[0] && <SearchResults />}
+      {locationResults.resultsArr[0] && <SearchResults />}
     </>
   )
 }

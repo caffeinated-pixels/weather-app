@@ -11,6 +11,8 @@ function WeatherDataContextProvider({ children }) {
   const [weatherLocation, getWeatherLocation] = useGetWeatherLocation()
   const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
 
+  console.log(locationResults)
+
   const [
     { processedWeatherData, isLoading, isError },
     fetchWeatherData
@@ -36,11 +38,11 @@ function WeatherDataContextProvider({ children }) {
     }
 
     const resultChoice = {
-      city: locationResults[index].name,
-      country: locationResults[index].country,
-      state: locationResults[index].state,
-      latitude: locationResults[index].lat,
-      longitude: locationResults[index].lon
+      city: locationResults.resultsArr[index].name,
+      country: locationResults.resultsArr[index].country,
+      state: locationResults.resultsArr[index].state,
+      latitude: locationResults.resultsArr[index].lat,
+      longitude: locationResults.resultsArr[index].lon
     }
 
     console.log(resultChoice)
