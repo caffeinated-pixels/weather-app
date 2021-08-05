@@ -7,7 +7,7 @@ coords to get the city name & country. It will return an array of results
 export default async function fetchGeocodingAPI({ latitude, longitude }) {
   console.log('fetch geocoding reverse API helper')
   const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY
-  const url = `ttps://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
+  const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
 
   try {
     const response = await axios.get(url)
@@ -24,7 +24,7 @@ export default async function fetchGeocodingAPI({ latitude, longitude }) {
       console.log(err.response.headers)
     } else {
       console.log(`Geocoding Reverse Error: ${err.message}`)
-      return ['', '']
     }
+    return ['no city name', '🥺']
   }
 }
