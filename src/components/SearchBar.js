@@ -11,6 +11,7 @@ export default function SearchBar() {
   } = useContext(WeatherDataContext)
   const { city, country, state } = weatherLocation
   const currentLocation = `${city}, ${state ? state + ', ' : ''}${country}`
+
   const [searchInput, setSearchInput] = useState(currentLocation)
 
   return (
@@ -34,7 +35,7 @@ export default function SearchBar() {
           onBlur={() => setSearchInput(currentLocation)}
         />
       </form>
-      {locationResults.resultsArr[0] && <SearchResults />}
+      {locationResults.searchComplete && <SearchResults />}
     </>
   )
 }

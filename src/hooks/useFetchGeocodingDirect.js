@@ -3,8 +3,9 @@ import axios from 'axios'
 
 const initialState = {
   resultsArr: [],
+  searchComplete: false,
   searchMatchFail: false,
-  isError: false,
+  apiError: false,
   errorMsg: ''
 }
 
@@ -30,11 +31,20 @@ export default function useFetchGeocodingDirect() {
         const response = await axios.get(url)
         const geocodingApiResults = response.data
 
-        // console.log(geocodingApiResults)
-        setLocationResults({
-          ...initialState,
-          resultsArr: geocodingApiResults
-        })
+        if (geocodingApiResults.length > 0) {
+          setLocationResults({
+            ...initialState,
+            resultsArr: geocodingApiResults,
+            searchComplete: true
+          })
+        } else {
+          // if no matches returned for search query
+          setLocationResults({
+            ...initialState,
+            searchComplete: true,
+            searchMatchFail: true
+          })
+        }
       } catch (err) {
         if (err.response) {
           // Not in the 200 response range
@@ -44,6 +54,13 @@ export default function useFetchGeocodingDirect() {
         } else {
           console.log(`Geocoding Direct Error: ${err.message}`)
         }
+
+        setLocationResults({
+          ...initialState,
+          searchComplete: true,
+          apiError: true,
+          errorMsg: err.message
+        })
       }
     },
     [setLocationResults]

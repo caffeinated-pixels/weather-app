@@ -8,19 +8,11 @@ export default function SearchResults() {
     fetchLocationResults
   } = useContext(WeatherDataContext)
 
+  const { resultsArr, searchMatchFail, apiError } = locationResults
+
   const searchResultsRef = useRef(null)
 
-  const closeResults = e => {
-    console.log('focus lost')
-
-    // checks if element is child of search-result-wrapper
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      // calling with no argument will clear results
-      fetchLocationResults()
-    }
-  }
-
-  const searchResults = locationResults.resultsArr.map((location, i) => {
+  const searchResults = resultsArr.map((location, i) => {
     const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
     return (
@@ -37,6 +29,22 @@ export default function SearchResults() {
     )
   })
 
+  const headerText = searchMatchFail
+    ? 'No results!'
+    : apiError
+    ? 'API error! 🙄'
+    : 'Matching results:'
+
+  const closeResults = e => {
+    console.log('focus lost')
+
+    // checks if element is child of search-result-wrapper
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      // calling with no argument will clear results
+      fetchLocationResults()
+    }
+  }
+
   // automatically set focus to new searchResults
   useEffect(() => searchResultsRef.current.focus(), [locationResults])
 
@@ -49,7 +57,7 @@ export default function SearchResults() {
       onBlur={closeResults}
     >
       <div className="search-result-header">
-        <p>Matching results:</p>
+        <p>{headerText}</p>
         <button className="icon-button" onClick={() => fetchLocationResults()}>
           <i className="fas fa-times"></i>
         </button>
