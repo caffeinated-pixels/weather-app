@@ -17,7 +17,11 @@ export default function ControlsBar() {
   return (
     <div className="locationbar">
       {menuOpen ? <UnitsButtons /> : <SearchBar />}
-      <button className="icon-button" onClick={handleMenuBtnClick}>
+      <button
+        className="icon-button"
+        onClick={handleMenuBtnClick}
+        aria-label="toggle menu"
+      >
         <i className={`locationbar__icon ${iconClass}`}></i>
       </button>
     </div>

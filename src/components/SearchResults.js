@@ -58,7 +58,11 @@ export default function SearchResults() {
     >
       <div className="search-result-header">
         <p>{headerText}</p>
-        <button className="icon-button" onClick={() => fetchLocationResults()}>
+        <button
+          className="icon-button"
+          onClick={() => fetchLocationResults()}
+          aria-label="close search results"
+        >
           <i className="fas fa-times"></i>
         </button>
       </div>

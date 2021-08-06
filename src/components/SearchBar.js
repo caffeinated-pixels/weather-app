@@ -16,7 +16,11 @@ export default function SearchBar() {
 
   return (
     <>
-      <button className="icon-button" onClick={() => getWeatherLocation()}>
+      <button
+        className="icon-button"
+        onClick={() => getWeatherLocation()}
+        aria-label="get weather for current location"
+      >
         <i className="locationbar__icon fas fa-map-marker-alt"></i>
       </button>
       <form
