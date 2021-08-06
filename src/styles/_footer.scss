@@ -7,4 +7,14 @@
   font-size: 0.75rem;
 
   padding: 0.4em;
+
+  &-link {
+    text-decoration: none;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      color: #000;
+    }
+  }
 }

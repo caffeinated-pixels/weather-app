@@ -4,7 +4,17 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p>
-        coded by Stevie Gill | <i className="fab fa-github-square"></i> Repo
+        coded by{' '}
+        <a
+          className="footer-link"
+          href="https://steviegill-webportfolio.netlify.app/"
+        >
+          Stevie Gill
+        </a>{' '}
+        |{' '}
+        <a className="footer-link" href="https://github.com/caffeinated-pixels">
+          <i className="fab fa-github-square"></i> Repo
+        </a>
       </p>
     </footer>
   )
