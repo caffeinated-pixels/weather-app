@@ -137,7 +137,6 @@ button:active {
   flex: auto;
 
   display: flex;
-  justify-content: space-around;
 }
 
 .units-button {
@@ -146,6 +145,7 @@ button:active {
   padding: 0.25em 0.5em;
   background: $stripes-dk-blue;
   color: white;
+  margin-left: 2.5em;
 }
 
 .units-button-active {
