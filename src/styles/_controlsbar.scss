@@ -71,9 +71,8 @@ button:active {
   border-radius: 10px;
   display: block;
 
-  // margin: 0 auto;
   width: 100%;
-  // font-size: 1.5rem;
+  font-size: 1.4rem;
   text-align: center;
 }
 
@@ -83,30 +82,26 @@ button:active {
 
 .search-result-wrapper {
   position: absolute;
+  max-width: 320px;
+  margin: 0 auto;
   top: 100%;
   left: 0;
   right: 0;
-  // text-align: center;
+
   background: $body-blue;
   color: white;
+  font-size: 1.2rem;
 
-  // box-shadow: ;
-  // border: 2px solid white;
-  // border-radius: 10px;
   box-shadow: 1px 1px 5px grey;
   animation: fadein 150ms ease-in;
 }
 
 @keyframes fadein {
   from {
-    // opacity: 0;
     transform: scale(0);
-    // transform: translateY(-100%);
   }
   to {
-    // opacity: 1;
     transform: scale(1);
-    // transform: translateY(0);
   }
 }
 
@@ -139,7 +134,6 @@ button:active {
 }
 
 .units-button-wrapper {
-  // background: lightyellow;
   flex: auto;
 
   display: flex;
