@@ -1,8 +1,8 @@
 // main: ./main.scss
 
 .hourly-forecast-ribbon {
-  display: flex;
-  overflow-x: auto;
+  // display: flex;
+  // overflow-x: auto;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 
@@ -12,6 +12,11 @@
 
   text-align: center;
   color: white;
+
+  // selects the inner most div of the simplebar wrapper
+  .simplebar-content {
+    display: flex;
+  }
 }
 
 .hourly-box {
