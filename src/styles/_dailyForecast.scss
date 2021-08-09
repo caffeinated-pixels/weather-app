@@ -1,14 +1,19 @@
 // main: ./main.scss
 .daily-forecast {
   overflow-y: auto;
-  // max-height: 300px;
   width: 100%;
 
   max-width: $container-max-width;
   margin: 0 auto;
 
-  &:focus-within {
-    border: 2px solid orange;
+  .simplebar-content-wrapper {
+    // override inline style from SimpleBar wrapper to prevent oversized outline
+    height: auto !important;
+  }
+
+  .simplebar-content-wrapper:focus {
+    outline: 2px solid orange;
+    outline-offset: -2px;
   }
 }
 

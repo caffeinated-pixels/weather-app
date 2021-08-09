@@ -16,8 +16,9 @@
     display: flex;
   }
 
-  &:focus-within {
-    border: 2px solid orange;
+  .simplebar-content-wrapper:focus {
+    outline: 2px solid orange;
+    outline-offset: -2px;
   }
 }
 
