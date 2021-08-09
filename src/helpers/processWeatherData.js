@@ -21,7 +21,7 @@ export default function processWeatherData(weatherData, units) {
   // WIND INFO
   const windSpeed =
     units === 'metric'
-      ? (current.wind_speed * 3.6).toFixed(1) + ' km/h'
+      ? (current.wind_speed * 3.6).toFixed(1) + 'km/h'
       : current.wind_speed + ' mph'
   /* for metric, API returns m/s - so we convert to km/h (m/s * 3.6)
       for imperial, API returns mph - so no conversion necessary */
@@ -31,8 +31,8 @@ export default function processWeatherData(weatherData, units) {
   // VISIBILITY
   const visibility =
     units === 'metric'
-      ? (current.visibility / 1000).toFixed(1) + ' km'
-      : (current.visibility * 0.00062137).toFixed(1) + ' mi'
+      ? (current.visibility / 1000).toFixed(1) + 'km'
+      : (current.visibility * 0.00062137).toFixed(1) + 'mi'
   /* API always returns metres regardless of unit param
         for metric, convert to km (m / 1000)
         for imperial, convert to mi (m * 0.00062137)
@@ -43,7 +43,7 @@ export default function processWeatherData(weatherData, units) {
   const humidity = current.humidity + '%'
   const dewPoint = Math.round(current.dew_point) + tempUnit
   const uvIndex = current.uvi.toFixed(1)
-  const pressure = current.pressure + ' hPa'
+  const pressure = current.pressure + 'hPa'
 
   // PROCESS HOULRY DATA INTO ARRAY OF JSX ELEMENTS
   const hourlyBoxes = processHourlyData(hourly, units)

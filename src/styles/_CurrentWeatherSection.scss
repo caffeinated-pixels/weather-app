@@ -2,12 +2,30 @@
 
 .current-weather {
   display: grid;
-  grid-template-columns: 60% 1fr;
+  grid-template-columns: 60% 40%;
 
   max-width: $container-max-width;
   margin: 1em auto;
 
   text-align: center;
+}
+
+.current-main {
+  position: relative;
+}
+
+.current-main::after {
+  position: absolute;
+  content: '';
+  background: #000;
+  width: 2px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+  @include mq(350px) {
+    right: 5%;
+  }
 }
 
 .main-top {
@@ -16,6 +34,7 @@
   grid-template-rows: 75px auto;
   align-items: center;
   line-height: 1.3;
+  padding: 0.25em 0;
 }
 
 .main-weather-icon {
@@ -23,7 +42,7 @@
 
   object-fit: cover;
   img {
-    width: 120px;
+    width: 250px;
   }
 }
 
@@ -37,7 +56,7 @@
 }
 
 .main-minmax-temp {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .main-bottom {
@@ -50,17 +69,19 @@
 .main-feels-like,
 .main-wind {
   font-size: 0.8rem;
+  padding: 0.1em;
 }
 
 .current-extra {
   font-size: 0.8rem;
   text-align: left;
-  padding-left: 1em;
-  border-left: 2px solid black;
+  padding-left: 0.75em;
+  width: max-content;
 }
 
 .extra-list {
   padding-left: 0;
+  margin: 0 auto;
 }
 
 .extra-list-item {
