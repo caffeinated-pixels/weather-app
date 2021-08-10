@@ -22,7 +22,7 @@ $container-max-width: 800px;
 html {
   font-family: 'Roboto', sans-serif;
   @include mq(600px) {
-    font-size: 120%;
+    font-size: 140%;
   }
 }
 
