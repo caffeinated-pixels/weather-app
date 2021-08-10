@@ -11,7 +11,7 @@ function WeatherDataContextProvider({ children }) {
   const [weatherLocation, getWeatherLocation] = useGetWeatherLocation()
   const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
 
-  console.log(locationResults)
+  // console.log(locationResults)
 
   const [
     { processedWeatherData, isLoading, isError },

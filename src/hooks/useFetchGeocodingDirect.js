@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react'
-import axios from 'axios'
 
 const initialState = {
   resultsArr: [],
@@ -24,12 +23,13 @@ export default function useFetchGeocodingDirect() {
 
       console.log('Geocoding Direct API call (hook)')
 
-      const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY
-      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityNameToQuery}&limit=5&appid=${apiKey}`
+      /* instead of calling the API directly, we do it via a netlify
+       (serverless) function; this lets us hide the API from the front-end */
+      const netlifyFunctionCall = `/.netlify/functions/fetchLocationDirect?city=${cityNameToQuery}`
 
       try {
-        const response = await axios.get(url)
-        const geocodingApiResults = response.data
+        const response = await fetch(netlifyFunctionCall)
+        const geocodingApiResults = await response.json()
 
         if (geocodingApiResults.length > 0) {
           setLocationResults({
@@ -46,14 +46,7 @@ export default function useFetchGeocodingDirect() {
           })
         }
       } catch (err) {
-        if (err.response) {
-          // Not in the 200 response range
-          console.log(err.response.data)
-          console.log(err.response.status)
-          console.log(err.response.headers)
-        } else {
-          console.log(`Geocoding Direct Error: ${err.message}`)
-        }
+        console.log(`Geocoding Direct Error: ${err.message}`)
 
         setLocationResults({
           ...initialState,
