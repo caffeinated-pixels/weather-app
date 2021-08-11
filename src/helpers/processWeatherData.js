@@ -1,5 +1,6 @@
 import generateIconInfo from './generateIconInfo'
 import getWindDirection from './getWindDirection'
+import calcWindIconRotation from './calcWindIconRotation'
 import processHourlyData from './processHourlyData'
 import processDailyData from './processDailyData'
 
@@ -26,6 +27,7 @@ export default function processWeatherData(weatherData, units) {
       for imperial, API returns mph - so no conversion necessary */
 
   const windDirection = getWindDirection(current.wind_deg)
+  const windIconRotation = calcWindIconRotation(current.wind_deg)
 
   // VISIBILITY
   const visibility =
@@ -58,6 +60,7 @@ export default function processWeatherData(weatherData, units) {
     feelsLikeTemp,
     windSpeed,
     windDirection,
+    windIconRotation,
     visibility,
     precipProb,
     humidity,

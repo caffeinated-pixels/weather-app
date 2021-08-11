@@ -13,7 +13,8 @@ export default function CurrentWeatherMain() {
     maxTemp,
     feelsLikeTemp,
     windSpeed,
-    windDirection
+    windDirection,
+    windIconRotation
   } = processedWeatherData
 
   return (
@@ -35,6 +36,10 @@ export default function CurrentWeatherMain() {
         <p className="main-description">{weatherDescription}</p>
         <p className="main-feels-like">feels like {feelsLikeTemp}</p>
         <p className="main-wind">
+          <i
+            className="wind-icon fas fa-arrow-up"
+            style={{ transform: `rotate(${windIconRotation}deg)` }}
+          ></i>
           {windSpeed} {windDirection}
         </p>
       </div>
