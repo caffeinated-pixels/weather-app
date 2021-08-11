@@ -11,8 +11,6 @@ export default function useFetchWeatherData() {
 
   const fetchWeatherData = useCallback(
     async (locationData, units = 'metric') => {
-      console.log('Weather Data API call')
-
       setWeatherData(prev => ({ ...prev, isLoading: true }))
 
       /* instead of calling the API directly, we do it via a netlify
@@ -23,7 +21,6 @@ export default function useFetchWeatherData() {
         const response = await fetch(netlifyFunctionCall)
 
         const weatherData = await response.json()
-        console.log(weatherData)
         const processedWeatherData = processWeatherData(weatherData, units)
         setWeatherData({ weatherData, processedWeatherData, isLoading: false })
       } catch (err) {

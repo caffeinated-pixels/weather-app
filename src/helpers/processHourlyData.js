@@ -2,8 +2,6 @@ import { monthLookup } from './timeLookup'
 import generateIconInfo from './generateIconInfo'
 
 export default function processHourlyData(hourlyData, units) {
-  console.log('processing hourly data')
-
   const tempUnits = units === 'metric' ? '°C' : '°F'
 
   return hourlyData.map((hourly, i) => {

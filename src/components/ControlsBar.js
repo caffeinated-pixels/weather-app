@@ -5,7 +5,6 @@ import UnitsButtons from './UnitsButtons'
 export default function ControlsBar() {
   const [menuOpen, setIsMenuOpen] = useState(false)
 
-  console.log('location bar render')
   const iconClass = menuOpen
     ? 'far fa-caret-square-up'
     : 'fas fa-caret-square-down'

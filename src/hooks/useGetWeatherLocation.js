@@ -7,14 +7,11 @@ export default function useGetWeatherLocation() {
   const getWeatherLocation = useCallback(selectedLocation => {
     if (selectedLocation) {
       // If the user has already selected a location, we set that to state;
-      console.log('getWeatherLocation param')
       setWeatherLocation(selectedLocation)
       return
     }
 
     // else get location from the browser
-    console.log('get getCurrentPosition call')
-
     // define options + functions to run on success & error
     const options = {
       enableHighAccuracy: true,

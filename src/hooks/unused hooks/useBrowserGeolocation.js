@@ -5,7 +5,6 @@ export default function useBrowserGeolocation() {
   const [browserGeolocation, setLocation] = useState({})
 
   const getBrowserGeolocation = useCallback(() => {
-    console.log('get getCurrentPosition call')
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,

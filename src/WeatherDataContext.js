@@ -6,12 +6,9 @@ import useFetchGeocodingDirect from './hooks/useFetchGeocodingDirect'
 const WeatherDataContext = React.createContext()
 
 function WeatherDataContextProvider({ children }) {
-  console.log('context rerender')
   const [units, setUnits] = useState('metric')
   const [weatherLocation, getWeatherLocation] = useGetWeatherLocation()
   const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
-
-  // console.log(locationResults)
 
   const [
     { processedWeatherData, isLoading, isError },
@@ -24,14 +21,10 @@ function WeatherDataContextProvider({ children }) {
 
   const handleSearchSubmit = (e, searchInput) => {
     e.preventDefault()
-    console.log('submission detected!')
-    console.log(searchInput)
     fetchLocationResults(searchInput)
   }
 
   const handleResultsChoice = (index, e) => {
-    console.log(index)
-
     // check if called by onKeyDown (e is truthy); return if not Enter key
     if (e && e.key !== 'Enter') {
       return
@@ -45,8 +38,6 @@ function WeatherDataContextProvider({ children }) {
       longitude: locationResults.resultsArr[index].lon
     }
 
-    console.log(resultChoice)
-
     getWeatherLocation(resultChoice)
 
     // call with no argument to clear results
@@ -55,15 +46,12 @@ function WeatherDataContextProvider({ children }) {
 
   // after mounting, get user's coords from browser
   useEffect(() => {
-    console.log('1st context use effect')
     getWeatherLocation()
   }, [getWeatherLocation])
 
   /* once we have the user's coords, we can call the weather API
   we also need to re-call the API if units change */
   useEffect(() => {
-    console.log('2nd context use effect')
-
     if (weatherLocation.latitude) {
       fetchWeatherData(weatherLocation, units)
     }

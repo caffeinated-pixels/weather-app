@@ -36,8 +36,6 @@ export default function SearchResults() {
     : 'Matching results:'
 
   const closeResults = e => {
-    console.log('focus lost')
-
     // checks if element is child of search-result-wrapper
     if (!e.currentTarget.contains(e.relatedTarget)) {
       // calling with no argument will clear results

@@ -3,8 +3,6 @@ coords to get the city name & country. It will return an array of results
 (by default 1 but up to 5), but the first result should always be right. */
 
 export default async function fetchGeocodingAPI({ latitude, longitude }) {
-  console.log('fetch geocoding reverse API helper')
-
   /* instead of calling the API directly, we do it via a netlify
    (serverless) function; this lets us hide the API from the front-end */
   const netlifyFunctionCall = `/.netlify/functions/fetchLocationReverse?lat=${latitude}&lon=${longitude}`

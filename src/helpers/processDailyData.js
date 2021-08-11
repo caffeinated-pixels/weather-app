@@ -1,8 +1,6 @@
 import generateIconInfo from './generateIconInfo'
 
 export default function processDailyData(dailyData, units) {
-  console.log('processing daily data')
-
   const tempUnits = units === 'metric' ? '°C' : '°F'
 
   const components = dailyData.map((daily, i) => {

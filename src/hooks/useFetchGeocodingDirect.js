@@ -21,8 +21,6 @@ export default function useFetchGeocodingDirect() {
         // if no argument provided, clear the results and return
       }
 
-      console.log('Geocoding Direct API call (hook)')
-
       /* instead of calling the API directly, we do it via a netlify
        (serverless) function; this lets us hide the API from the front-end */
       const netlifyFunctionCall = `/.netlify/functions/fetchLocationDirect?city=${cityNameToQuery}`

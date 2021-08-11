@@ -1,9 +1,6 @@
 const axios = require('axios')
 
 exports.handler = async function(event, context) {
-  console.log(event)
-  console.log(context)
-
   const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall'
   const apiKey = process.env.OPEN_WEATHER_KEY
 

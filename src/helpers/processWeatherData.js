@@ -4,7 +4,6 @@ import processHourlyData from './processHourlyData'
 import processDailyData from './processDailyData'
 
 export default function processWeatherData(weatherData, units) {
-  console.log('processing weather data')
   const { current, daily, hourly } = weatherData
 
   // ICON & DESCRIPTION
