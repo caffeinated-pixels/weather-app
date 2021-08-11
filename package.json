@@ -5,6 +5,7 @@
   "description": "An app for fetching a local weather summary from the Open Weather API",
   "author": "Stevie Gill",
   "license": "ISC",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
