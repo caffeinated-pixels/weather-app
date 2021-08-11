@@ -19,10 +19,20 @@ $container-max-width: 800px;
   }
 }
 
+@mixin mqMax($size) {
+  @media only screen and (max-width: $size) {
+    @content; /* lets us pass content block into mixin */
+  }
+}
+
 html {
   font-family: 'Roboto', sans-serif;
   @include mq(600px) {
     font-size: 140%;
+  }
+
+  @include mqMax(300px) {
+    font-size: 90%;
   }
 }
 
