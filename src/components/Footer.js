@@ -12,7 +12,10 @@ export default function Footer() {
           Stevie Gill
         </a>{' '}
         |{' '}
-        <a className="footer-link" href="https://github.com/caffeinated-pixels">
+        <a
+          className="footer-link"
+          href="https://github.com/caffeinated-pixels/weather-app"
+        >
           <i className="fab fa-github-square"></i> Repo
         </a>
       </p>

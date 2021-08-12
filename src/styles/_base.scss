@@ -38,6 +38,11 @@ html {
 
 body {
   background: $body-blue;
+  background: linear-gradient(
+    180deg,
+    hsl(195, 50%, 77%) 0%,
+    hsl(187, 55%, 77%) 80%
+  );
 }
 
 // single column grid layout that fits the viewport height with fixed footer
@@ -51,79 +56,6 @@ body {
 // when loading, there will only be 3 rows (Header, Loading, Footer)
 .app-loading {
   grid-template-rows: auto 1fr auto;
-}
-
-.loading-screen,
-.error-screen {
-  display: grid;
-  justify-content: center;
-  align-content: center;
-
-  text-align: center;
-
-  font-size: 1.4rem;
-  font-weight: 700;
-  padding: 0.5em;
-}
-
-.cloud-wrapper {
-  margin: 40px auto 0;
-  transform: scale(0.6);
-
-  @include mq(600px) {
-    margin-top: 90px;
-    transform: scale(1);
-  }
-}
-
-.cloud {
-  position: relative;
-  background: #fff;
-  width: 175px;
-  height: 60px;
-  border-radius: 100px;
-}
-
-.cloud::before {
-  position: absolute;
-  content: '';
-  background: #fff;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  top: -45px;
-  left: 25px;
-}
-
-.cloud::after {
-  position: absolute;
-  content: '';
-  background: #fff;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  top: -25px;
-  right: 25px;
-}
-
-.sun {
-  position: absolute;
-  z-index: -1;
-  width: 100px;
-  height: 100px;
-  background: #ea6f52;
-  border-radius: 50%;
-
-  top: -60px;
-  right: -25px;
-
-  animation: animateSun 3s linear infinite alternate;
-}
-
-@keyframes animateSun {
-  to {
-    transform: translateX(-35px);
-  }
 }
 
 // SHARED CLASSES
