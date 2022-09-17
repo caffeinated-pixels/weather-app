@@ -9,7 +9,9 @@ export default function HourlyForecast() {
 
   const { hourlyBoxes } = processedWeatherData
 
-  useEffect(() => (scrollableNodeRef.current.tabIndex = '0'), [])
+  useEffect(() => {
+    scrollableNodeRef.current.tabIndex = '0'
+  }, [])
 
   return (
     <section className="hourly-forecast-ribbon">

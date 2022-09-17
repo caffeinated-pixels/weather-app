@@ -2,11 +2,8 @@ import React, { useContext, useEffect, useRef } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
 export default function SearchResults() {
-  const {
-    locationResults,
-    handleResultsChoice,
-    fetchLocationResults
-  } = useContext(WeatherDataContext)
+  const { locationResults, handleResultsChoice, fetchLocationResults } =
+    useContext(WeatherDataContext)
 
   const { resultsArr, searchMatchFail, apiError } = locationResults
 
@@ -20,7 +17,7 @@ export default function SearchResults() {
         key={`result${i}`}
         className={`search-result ${backgroundColor}`}
         onClick={() => handleResultsChoice(i)}
-        onKeyDown={e => handleResultsChoice(i, e)}
+        onKeyDown={(e) => handleResultsChoice(i, e)}
         tabIndex="0"
       >
         {location.name}, {location.state && `${location.state}, `}
@@ -35,7 +32,7 @@ export default function SearchResults() {
     ? 'API error! 🙄'
     : 'Matching results:'
 
-  const closeResults = e => {
+  const closeResults = (e) => {
     // checks if element is child of search-result-wrapper
     if (!e.currentTarget.contains(e.relatedTarget)) {
       // calling with no argument will clear results
@@ -44,7 +41,9 @@ export default function SearchResults() {
   }
 
   // automatically set focus to new searchResults
-  useEffect(() => searchResultsRef.current.focus(), [locationResults])
+  useEffect(() => {
+    searchResultsRef.current.focus()
+  }, [locationResults])
 
   return (
     <div
