@@ -4,9 +4,9 @@ export default function LoadingScreen() {
   return (
     <div className="loading-screen">
       <p>Fetching Weather Data ...</p>
-      <div class="cloud-wrapper">
-        <div class="cloud">
-          <div class="sun"></div>
+      <div className="cloud-wrapper">
+        <div className="cloud">
+          <div className="sun"></div>
         </div>
       </div>
     </div>

@@ -9,7 +9,9 @@ export default function DailyForecast() {
 
   const { dailyBoxes } = processedWeatherData
 
-  useEffect(() => (scrollableNodeRef.current.tabIndex = '0'), [])
+  useEffect(() => {
+    scrollableNodeRef.current.tabIndex = '0'
+  }, [])
 
   return (
     <section className="daily-forecast">
