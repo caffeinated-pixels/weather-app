@@ -10,6 +10,7 @@ import DailyForecast from './components/DailyForecast'
 import Footer from './components/Footer'
 
 import { WeatherDataContext } from './WeatherDataContext'
+import 'simplebar-react/dist/simplebar.min.css'
 
 export default function App() {
   const { isLoading, isError } = useContext(WeatherDataContext)

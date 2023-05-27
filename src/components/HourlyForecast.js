@@ -1,7 +1,6 @@
 import React, { useContext, useRef, useEffect } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 import SimpleBar from 'simplebar-react'
-import 'simplebar/dist/simplebar.min.css'
 
 export default function HourlyForecast() {
   const { processedWeatherData } = useContext(WeatherDataContext)
