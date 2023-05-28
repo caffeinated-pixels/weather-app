@@ -1,4 +1,4 @@
-export default function calcWindIconRotation(direction) {
+export const calcWindIconRotation = (direction: number) => {
   const rotation = direction + 180
 
   if (rotation > 360) {

@@ -1,17 +1,17 @@
 import { useState, useCallback } from 'react'
-import processWeatherData from '../helpers/processWeatherData.js'
+import { processWeatherData } from '../helpers/processWeatherData'
 
 export default function useFetchWeatherData() {
   const [weatherData, setWeatherData] = useState({
     weatherData: {},
     isLoading: true,
     isError: false,
-    errorMsg: ''
+    errorMsg: '',
   })
 
   const fetchWeatherData = useCallback(
     async (locationData, units = 'metric') => {
-      setWeatherData(prev => ({ ...prev, isLoading: true }))
+      setWeatherData((prev) => ({ ...prev, isLoading: true }))
 
       /* instead of calling the API directly, we do it via a netlify
        (serverless) function; this lets us hide the API from the front-end */
@@ -26,11 +26,11 @@ export default function useFetchWeatherData() {
       } catch (err) {
         console.log(`Weather API Error: ${err.message}`)
 
-        setWeatherData(prev => ({
+        setWeatherData((prev) => ({
           weatherData: {},
           isLoading: false,
           isError: true,
-          errorMsg: err.message
+          errorMsg: err.message,
         }))
       }
     },

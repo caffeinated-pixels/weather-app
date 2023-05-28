@@ -1,4 +1,4 @@
-const monthLookup = [
+export const monthLookup = [
   'Jan',
   'Feb',
   'Mar',
@@ -10,7 +10,5 @@ const monthLookup = [
   'Sep',
   'Oct',
   'Nov',
-  'Dec'
+  'Dec',
 ]
-
-export { monthLookup }

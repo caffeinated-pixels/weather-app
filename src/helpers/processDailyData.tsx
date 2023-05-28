@@ -1,9 +1,9 @@
-import generateIconInfo from './generateIconInfo'
-
-export default function processDailyData(dailyData, units) {
+import { generateIconInfo } from './generateIconInfo'
+// TODO: separate logic from UI
+export const processDailyData = (dailyData: DailyData[], units: string) => {
   const tempUnits = units === 'metric' ? '°C' : '°F'
 
-  const components = dailyData.map((daily, i) => {
+  const components = dailyData.map((daily, i: number) => {
     const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
     const [iconUrl, iconAltText] = generateIconInfo(daily.weather[0], '2x')

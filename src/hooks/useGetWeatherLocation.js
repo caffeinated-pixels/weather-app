@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react'
-import fetchGeocodingAPI from '../helpers/fetchGeocodingReverse'
+import { fetchGeocodingAPI } from '../helpers/fetchGeocodingReverse'
 
 export default function useGetWeatherLocation() {
   const [weatherLocation, setWeatherLocation] = useState({})
 
-  const getWeatherLocation = useCallback(selectedLocation => {
+  const getWeatherLocation = useCallback((selectedLocation) => {
     if (selectedLocation) {
       // If the user has already selected a location, we set that to state;
       setWeatherLocation(selectedLocation)
@@ -16,7 +16,7 @@ export default function useGetWeatherLocation() {
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
-      maximumAge: 0
+      maximumAge: 0,
     }
 
     async function success(pos) {
@@ -37,7 +37,7 @@ export default function useGetWeatherLocation() {
         latitude: 43.7001,
         longitude: -79.4163,
         city: 'Toronto',
-        country: 'CA'
+        country: 'CA',
       })
     }
 

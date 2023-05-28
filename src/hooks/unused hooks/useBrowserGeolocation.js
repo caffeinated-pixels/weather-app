@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import fetchGeocodingAPI from '../helpers/fetchGeocodingReverse'
+import { fetchGeocodingAPI } from '../helpers/fetchGeocodingReverse'
 
 export default function useBrowserGeolocation() {
   const [browserGeolocation, setLocation] = useState({})
@@ -8,7 +8,7 @@ export default function useBrowserGeolocation() {
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
-      maximumAge: 0
+      maximumAge: 0,
     }
 
     async function success(pos) {

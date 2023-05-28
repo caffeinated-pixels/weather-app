@@ -5,7 +5,7 @@ const initialState = {
   searchComplete: false,
   searchMatchFail: false,
   apiError: false,
-  errorMsg: ''
+  errorMsg: '',
 }
 
 /* In 'direct' mode, we can query the Open Weather Geocoding API with a city
@@ -14,7 +14,7 @@ export default function useFetchGeocodingDirect() {
   const [locationResults, setLocationResults] = useState(initialState)
 
   const fetchLocationResults = useCallback(
-    async cityNameToQuery => {
+    async (cityNameToQuery) => {
       if (!cityNameToQuery) {
         setLocationResults(initialState)
         return
@@ -33,24 +33,24 @@ export default function useFetchGeocodingDirect() {
           setLocationResults({
             ...initialState,
             resultsArr: geocodingApiResults,
-            searchComplete: true
+            searchComplete: true,
           })
         } else {
           // if no matches returned for search query
           setLocationResults({
             ...initialState,
             searchComplete: true,
-            searchMatchFail: true
+            searchMatchFail: true,
           })
         }
       } catch (err) {
-        console.log(`Geocoding Direct Error: ${err.message}`)
+        console.warn(`Geocoding Direct Error: ${err.message}`)
 
         setLocationResults({
           ...initialState,
           searchComplete: true,
           apiError: true,
-          errorMsg: err.message
+          errorMsg: err.message,
         })
       }
     },

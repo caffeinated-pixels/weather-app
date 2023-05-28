@@ -1,4 +1,5 @@
-export default function getWindDirection(degrees) {
+// TODO: refacor this to be more mathematical?
+export const getWindDirection = (degrees: number) => {
   if (degrees > 11.25 && degrees < 33.75) {
     return 'NNE'
   } else if (degrees > 33.75 && degrees < 56.25) {
