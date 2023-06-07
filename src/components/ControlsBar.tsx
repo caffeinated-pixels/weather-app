@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import SearchBar from './SearchBar'
+import { useState } from 'react'
+import { SearchBar } from './SearchBar'
 import UnitsButtons from './UnitsButtons'
 
-export default function ControlsBar() {
+export const ControlsBar = () => {
   const [menuOpen, setIsMenuOpen] = useState(false)
 
   const iconClass = menuOpen
@@ -10,7 +10,7 @@ export default function ControlsBar() {
     : 'fas fa-caret-square-down'
 
   const handleMenuBtnClick = () => {
-    setIsMenuOpen(prevState => !prevState)
+    setIsMenuOpen((prevState) => !prevState)
   }
 
   return (

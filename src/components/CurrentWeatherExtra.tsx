@@ -1,17 +1,11 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
-export default function CurrentWeatherExtra() {
+export const CurrentWeatherExtra = () => {
   const { processedWeatherData } = useContext(WeatherDataContext)
 
-  const {
-    visibility,
-    precipProb,
-    humidity,
-    dewPoint,
-    uvIndex,
-    pressure
-  } = processedWeatherData
+  const { visibility, precipProb, humidity, dewPoint, uvIndex, pressure } =
+    processedWeatherData
 
   return (
     <div className="current-extra">

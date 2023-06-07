@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
-export default function CurrentWeatherMain() {
+export const CurrentWeatherMain = () => {
   const { processedWeatherData } = useContext(WeatherDataContext)
 
   const {
@@ -14,7 +14,7 @@ export default function CurrentWeatherMain() {
     feelsLikeTemp,
     windSpeed,
     windDirection,
-    windIconRotation
+    windIconRotation,
   } = processedWeatherData
 
   return (

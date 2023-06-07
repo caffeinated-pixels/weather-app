@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 import SearchResults from './SearchResults'
 
-export default function SearchBar() {
+export const SearchBar = () => {
   const {
     weatherLocation,
     getWeatherLocation,
     handleSearchSubmit,
-    locationResults
+    locationResults,
   } = useContext(WeatherDataContext)
   const { city, country, state } = weatherLocation
   const currentLocation = `${city}, ${state ? state + ', ' : ''}${country}`
@@ -25,7 +25,7 @@ export default function SearchBar() {
       </button>
       <form
         className="form-wrapper"
-        onSubmit={e => handleSearchSubmit(e, searchInput)}
+        onSubmit={(e) => handleSearchSubmit(e, searchInput)}
       >
         <i className="search-icon fas fa-search-location"></i>
 
@@ -34,7 +34,7 @@ export default function SearchBar() {
           className="search-input"
           placeholder="search for a city"
           value={searchInput}
-          onChange={e => setSearchInput(e.target.value)}
+          onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setSearchInput('')}
           onBlur={() => setSearchInput(currentLocation)}
         />
