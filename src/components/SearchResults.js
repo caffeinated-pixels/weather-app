@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
-export default function SearchResults() {
+export const SearchResults = () => {
   const { locationResults, handleResultsChoice, fetchLocationResults } =
     useContext(WeatherDataContext)
 

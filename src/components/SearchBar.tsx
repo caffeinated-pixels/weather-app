@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
-import SearchResults from './SearchResults'
+import { SearchResults } from './SearchResults'
 
 export const SearchBar = () => {
   const {

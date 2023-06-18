@@ -1,3 +1,5 @@
+declare module '*.png'
+
 type Coordinates = {
   latitude: number
   longitude: number

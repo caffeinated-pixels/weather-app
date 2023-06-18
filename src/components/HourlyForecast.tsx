@@ -1,15 +1,16 @@
-import React, { useContext, useRef, useEffect } from 'react'
+import { useContext, useRef, useEffect } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 import SimpleBar from 'simplebar-react'
 
 export const HourlyForecast = () => {
   const { processedWeatherData } = useContext(WeatherDataContext)
-  const scrollableNodeRef = useRef(null)
+  const scrollableNodeRef = useRef<HTMLDivElement>(null)
 
   const { hourlyBoxes } = processedWeatherData
 
+  // TODO: create a custom hook for this to reduce duplication
   useEffect(() => {
-    scrollableNodeRef.current.tabIndex = '0'
+    if (scrollableNodeRef.current) scrollableNodeRef.current.tabIndex = 0
   }, [])
 
   return (
