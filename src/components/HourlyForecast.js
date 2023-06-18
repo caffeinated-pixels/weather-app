@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 import SimpleBar from 'simplebar-react'
 
-export default function HourlyForecast() {
+export const HourlyForecast = () => {
   const { processedWeatherData } = useContext(WeatherDataContext)
   const scrollableNodeRef = useRef(null)
 

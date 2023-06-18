@@ -1,6 +1,4 @@
-import React from 'react'
-
-export default function LoadingScreen() {
+export const LoadingScreen = () => {
   return (
     <div className="loading-screen">
       <p>Fetching Weather Data ...</p>

@@ -1,13 +1,14 @@
 import { useContext } from 'react'
-import Header from './components/Header'
-import LoadingScreen from './components/LoadingScreen'
-import { ErrorScreen } from './components/ErrorScreen'
-
-import { ControlsBar } from './components/ControlsBar'
-import { CurrentWeather } from './components/CurrentWeather'
-import HourlyForecast from './components/HourlyForecast'
-import { DailyForecast } from './components/DailyForecast'
-import Footer from './components/Footer'
+import {
+  Header,
+  LoadingScreen,
+  ErrorScreen,
+  ControlsBar,
+  CurrentWeather,
+  HourlyForecast,
+  DailyForecast,
+  Footer,
+} from './components'
 
 import { WeatherDataContext } from './WeatherDataContext'
 import 'simplebar-react/dist/simplebar.min.css'
