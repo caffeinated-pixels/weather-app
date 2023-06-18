@@ -6,7 +6,7 @@ import ErrorScreen from './components/ErrorScreen'
 import { ControlsBar } from './components/ControlsBar'
 import { CurrentWeather } from './components/CurrentWeather'
 import HourlyForecast from './components/HourlyForecast'
-import DailyForecast from './components/DailyForecast'
+import { DailyForecast } from './components/DailyForecast'
 import Footer from './components/Footer'
 
 import { WeatherDataContext } from './WeatherDataContext'
