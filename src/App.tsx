@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import Header from './components/Header'
 import LoadingScreen from './components/LoadingScreen'
-import ErrorScreen from './components/ErrorScreen'
+import { ErrorScreen } from './components/ErrorScreen'
 
 import { ControlsBar } from './components/ControlsBar'
 import { CurrentWeather } from './components/CurrentWeather'

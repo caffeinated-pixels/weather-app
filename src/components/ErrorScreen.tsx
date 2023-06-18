@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ErrorScreen() {
+export const ErrorScreen = () => {
   return (
     <div className="error-screen">
       <p>Sorry, there was an issue contacting Open Weather 😿</p>
