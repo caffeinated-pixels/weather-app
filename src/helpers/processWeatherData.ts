@@ -5,7 +5,6 @@ import { processHourlyData } from './processHourlyData'
 import { processDailyData } from './processDailyData'
 
 export const processWeatherData = (weatherData: WeatherData, units: string) => {
-  console.log('🚀 turbo ~ processWeatherData ~ weatherData:', weatherData)
   const { current, daily, hourly } = weatherData
 
   // ICON & DESCRIPTION

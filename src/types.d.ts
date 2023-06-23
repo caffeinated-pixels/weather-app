@@ -1,5 +1,14 @@
 declare module '*.png'
 
+type SearchLocation = {
+  name: string
+  country: string
+  lat: number
+  lon: number
+  state: string
+  local_names: Record<string, string>
+}
+
 type Coordinates = {
   latitude: number
   longitude: number

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef, FocusEvent } from 'react'
 import { WeatherDataContext } from '../WeatherDataContext'
 
 export const SearchResults = () => {
@@ -7,24 +7,26 @@ export const SearchResults = () => {
 
   const { resultsArr, searchMatchFail, apiError } = locationResults
 
-  const searchResultsRef = useRef(null)
+  const searchResultsRef = useRef<HTMLDivElement>(null)
 
-  const searchResults = resultsArr.map((location, i) => {
-    const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
+  const searchResults = resultsArr.map(
+    (location: SearchLocation, i: number) => {
+      const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
-    return (
-      <li
-        key={`result${i}`}
-        className={`search-result ${backgroundColor}`}
-        onClick={() => handleResultsChoice(i)}
-        onKeyDown={(e) => handleResultsChoice(i, e)}
-        tabIndex="0"
-      >
-        {location.name}, {location.state && `${location.state}, `}
-        {location.country}
-      </li>
-    )
-  })
+      return (
+        <li
+          key={`result${i}`}
+          className={`search-result ${backgroundColor}`}
+          onClick={() => handleResultsChoice(i)}
+          onKeyDown={(e) => handleResultsChoice(i, e)}
+          tabIndex={0}
+        >
+          {location.name}, {location.state && `${location.state}, `}
+          {location.country}
+        </li>
+      )
+    }
+  )
 
   const headerText = searchMatchFail
     ? 'No results!'
@@ -32,7 +34,7 @@ export const SearchResults = () => {
     ? 'API error! 🙄'
     : 'Matching results:'
 
-  const closeResults = (e) => {
+  const closeResults = (e: FocusEvent<HTMLDivElement>) => {
     // checks if element is child of search-result-wrapper
     if (!e.currentTarget.contains(e.relatedTarget)) {
       // calling with no argument will clear results
@@ -42,14 +44,14 @@ export const SearchResults = () => {
 
   // automatically set focus to new searchResults
   useEffect(() => {
-    searchResultsRef.current.focus()
+    if (searchResultsRef.current) searchResultsRef.current.focus()
   }, [locationResults])
 
   return (
     <div
       id="search-results"
       className="search-result-wrapper"
-      tabIndex="0"
+      tabIndex={0}
       ref={searchResultsRef}
       onBlur={closeResults}
     >
