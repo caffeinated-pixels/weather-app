@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useGetWeatherLocation from './hooks/useGetWeatherLocation'
 import useFetchWeatherData from './hooks/useFetchWeatherData'
-import useFetchGeocodingDirect from './hooks/useFetchGeocodingDirect'
+import { useFetchGeocodingDirect } from './hooks/useFetchGeocodingDirect'
 
 const WeatherDataContext = React.createContext()
 
@@ -10,12 +10,10 @@ function WeatherDataContextProvider({ children }) {
   const [weatherLocation, getWeatherLocation] = useGetWeatherLocation()
   const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
 
-  const [
-    { processedWeatherData, isLoading, isError },
-    fetchWeatherData
-  ] = useFetchWeatherData()
+  const [{ processedWeatherData, isLoading, isError }, fetchWeatherData] =
+    useFetchWeatherData()
 
-  const handleChangeUnits = event => {
+  const handleChangeUnits = (event) => {
     setUnits(event.target.id)
   }
 
@@ -35,7 +33,7 @@ function WeatherDataContextProvider({ children }) {
       country: locationResults.resultsArr[index].country,
       state: locationResults.resultsArr[index].state,
       latitude: locationResults.resultsArr[index].lat,
-      longitude: locationResults.resultsArr[index].lon
+      longitude: locationResults.resultsArr[index].lon,
     }
 
     getWeatherLocation(resultChoice)
@@ -70,7 +68,7 @@ function WeatherDataContextProvider({ children }) {
         handleSearchSubmit,
         locationResults,
         handleResultsChoice,
-        fetchLocationResults
+        fetchLocationResults,
       }}
     >
       {children}

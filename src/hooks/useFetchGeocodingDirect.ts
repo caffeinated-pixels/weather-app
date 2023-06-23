@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
+import { getErrorMessage } from '../helpers/getErrorMessage'
 
-const initialState = {
+const initialState: LocationResults = {
   resultsArr: [],
   searchComplete: false,
   searchMatchFail: false,
@@ -10,11 +11,11 @@ const initialState = {
 
 /* In 'direct' mode, we can query the Open Weather Geocoding API with a city
 name. It will return an array of results (up to 5 using the limit param) */
-export default function useFetchGeocodingDirect() {
+export const useFetchGeocodingDirect = () => {
   const [locationResults, setLocationResults] = useState(initialState)
 
   const fetchLocationResults = useCallback(
-    async (cityNameToQuery) => {
+    async (cityNameToQuery: string) => {
       if (!cityNameToQuery) {
         setLocationResults(initialState)
         return
@@ -27,7 +28,7 @@ export default function useFetchGeocodingDirect() {
 
       try {
         const response = await fetch(netlifyFunctionCall)
-        const geocodingApiResults = await response.json()
+        const geocodingApiResults: GeocodingApiResults[] = await response.json()
 
         if (geocodingApiResults.length > 0) {
           setLocationResults({
@@ -44,13 +45,14 @@ export default function useFetchGeocodingDirect() {
           })
         }
       } catch (err) {
-        console.warn(`Geocoding Direct Error: ${err.message}`)
+        const errorMessage = getErrorMessage(err)
+        console.warn(`Geocoding Reverse Error: ${errorMessage}`)
 
         setLocationResults({
           ...initialState,
           searchComplete: true,
           apiError: true,
-          errorMsg: err.message,
+          errorMsg: errorMessage,
         })
       }
     },

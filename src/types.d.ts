@@ -1,14 +1,5 @@
 declare module '*.png'
 
-type SearchLocation = {
-  name: string
-  country: string
-  lat: number
-  lon: number
-  state: string
-  local_names: Record<string, string>
-}
-
 type Coordinates = {
   latitude: number
   longitude: number
@@ -169,4 +160,30 @@ type WeatherData = {
   minutely: Minutely[]
   hourly: Hourly[]
   daily: Daily[]
+}
+
+type SearchLocation = {
+  name: string
+  country: string
+  lat: number
+  lon: number
+  state: string
+  local_names: Record<string, string>
+}
+
+type GeocodingApiResults = {
+  name: string
+  local_names: Record<string, string>
+  lat: number
+  lon: number
+  country: string
+  state: string
+}
+
+type LocationResults = {
+  resultsArr: GeocodingApiResults[]
+  searchComplete: boolean
+  searchMatchFail: boolean
+  apiError: boolean
+  errorMsg: string
 }
