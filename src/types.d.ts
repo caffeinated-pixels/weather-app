@@ -162,6 +162,7 @@ type WeatherData = {
   daily: Daily[]
 }
 
+// location data that gets returned from the GeocodingDirect api
 type SearchLocation = {
   name: string
   country: string
@@ -186,4 +187,12 @@ type LocationResults = {
   searchMatchFail: boolean
   apiError: boolean
   errorMsg: string
+}
+
+// location data that gets returned from the WeatherData query
+type LocationData = {
+  latitude: number
+  longitude: number
+  city: string
+  country: string
 }
