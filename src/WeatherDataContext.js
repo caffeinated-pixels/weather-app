@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import useGetWeatherLocation from './hooks/useGetWeatherLocation'
-import { useFetchWeatherData } from './hooks/useFetchWeatherData'
-import { useFetchGeocodingDirect } from './hooks/useFetchGeocodingDirect'
+import {
+  useGetWeatherLocation,
+  useFetchWeatherData,
+  useFetchGeocodingDirect,
+} from './hooks/'
 
 const WeatherDataContext = React.createContext()
 

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { fetchGeocodingAPI } from '../helpers/fetchGeocodingReverse'
 
-export default function useGetWeatherLocation() {
+export const useGetWeatherLocation = () => {
   const [weatherLocation, setWeatherLocation] = useState({})
 
   const getWeatherLocation = useCallback((selectedLocation) => {
