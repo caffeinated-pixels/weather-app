@@ -22,27 +22,31 @@ type CurrentWeather = {
   icon: string
 }
 
+type Temp = {
+  day: number
+  min: number
+  max: number
+  night: number
+  eve: number
+  morn: number
+}
+
+type FeelsLike = {
+  day: number
+  night: number
+  eve: number
+  morn: number
+}
+
 type DailyData = {
-  dt: number
-  sunrise: number
-  sunset: number
-  moonrise: number
-  moonset: number
-  moon_phase: number
-  temp: {
-    day: number
-    min: number
-    max: number
-    night: number
-    eve: number
-    morn: number
-  }
-  feels_like: {
-    day: number
-    night: number
-    eve: number
-    morn: number
-  }
+  dt: UnixTimeStamp
+  sunrise: UnixTimeStamp
+  sunset: UnixTimeStamp
+  moonrise: UnixTimeStamp
+  moonset: UnixTimeStamp
+  moon_phase: UnixTimeStamp
+  temp: Temp
+  feels_like: FeelsLike
   pressure: number
   humidity: number
   dew_point: number
@@ -56,7 +60,7 @@ type DailyData = {
 }
 
 type HourlyData = {
-  dt: number
+  dt: UnixTimeStamp
   temp: number
   feels_like: number
   pressure: number
@@ -103,20 +107,8 @@ type Daily = {
   moonrise: UnixTimeStamp
   moonset: UnixTimeStamp
   moon_phase: number
-  temp: {
-    day: number
-    min: number
-    max: number
-    night: number
-    eve: number
-    morn: number
-  }
-  feels_like: {
-    day: number
-    night: number
-    eve: number
-    morn: number
-  }
+  temp: Temp
+  feels_like: FeelsLike
   pressure: number
   humidity: number
   dew_point: number
@@ -135,25 +127,25 @@ type WeatherData = {
   timezone: string
   timezone_offset: number
   current: {
-    dt: 1686014575
-    sunrise: 1685957819
-    sunset: 1686012875
-    temp: 20.47
-    feels_like: 20.06
-    pressure: 1012
-    humidity: 57
-    dew_point: 11.67
-    uvi: 0
-    clouds: 0
-    visibility: 10000
-    wind_speed: 2.06
-    wind_deg: 270
+    dt: UnixTimeStamp
+    sunrise: UnixTimeStamp
+    sunset: UnixTimeStamp
+    temp: number
+    feels_like: number
+    pressure: number
+    humidity: number
+    dew_point: number
+    uvi: number
+    clouds: number
+    visibility: number
+    wind_speed: number
+    wind_deg: number
     weather: [
       {
-        id: 800
-        main: 'Clear'
-        description: 'clear sky'
-        icon: '01n'
+        id: number
+        main: string
+        description: string
+        icon: string
       }
     ]
   }
@@ -161,6 +153,16 @@ type WeatherData = {
   hourly: Hourly[]
   daily: Daily[]
 }
+
+type WeatherDataResults = {
+  weatherData: WeatherData | {}
+  processedWeatherData: any
+  isLoading: boolean
+  isError: boolean
+  errorMsg: string
+}
+
+type ProcessedWeatherData = {}
 
 // location data that gets returned from the GeocodingDirect api
 type SearchLocation = {
