@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, createContext } from 'react'
 import {
   useGetWeatherLocation,
   useFetchWeatherData,
   useFetchGeocodingDirect,
 } from './hooks/'
 
-const WeatherDataContext = React.createContext()
+const WeatherDataContext = createContext()
 
 function WeatherDataContextProvider({ children }) {
   const [units, setUnits] = useState('metric')
