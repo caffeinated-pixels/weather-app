@@ -25,7 +25,7 @@ export const useFetchWeatherData = () => {
   const fetchWeatherData = useCallback(
     async (locationData: LocationData, units = 'metric') => {
       setWeatherData((prev) => ({ ...prev, isLoading: true }))
-      console.log('locationData', locationData)
+
       /* instead of calling the API directly, we do it via a netlify
        (serverless) function; this lets us hide the API from the front-end */
       const netlifyFunctionCall = `/.netlify/functions/fetchWeatherData?lat=${locationData.latitude}&lon=${locationData.longitude}&units=${units}`
@@ -44,7 +44,7 @@ export const useFetchWeatherData = () => {
         })
       } catch (err) {
         const errorMessage = getErrorMessage(err)
-        console.log(`Weather API Error: ${errorMessage}`)
+        console.warn(`Weather API Error: ${errorMessage}`)
 
         setWeatherData((prev) => ({
           weatherData: {},
