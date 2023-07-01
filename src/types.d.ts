@@ -195,4 +195,5 @@ type LocationData = {
   longitude: number
   city: string
   country: string
+  state?: string
 }

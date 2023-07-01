@@ -4,7 +4,7 @@ import { fetchGeocodingAPI } from '../helpers/fetchGeocodingReverse'
 export const useGetWeatherLocation = () => {
   const [weatherLocation, setWeatherLocation] = useState({})
 
-  const getWeatherLocation = useCallback((selectedLocation) => {
+  const getWeatherLocation = useCallback((selectedLocation: LocationData) => {
     if (selectedLocation) {
       // If the user has already selected a location, we set that to state;
       setWeatherLocation(selectedLocation)
@@ -19,7 +19,7 @@ export const useGetWeatherLocation = () => {
       maximumAge: 0,
     }
 
-    async function success(pos) {
+    async function success(pos: GeolocationPosition) {
       const latitude = pos.coords.latitude
       const longitude = pos.coords.longitude
 
@@ -29,7 +29,7 @@ export const useGetWeatherLocation = () => {
       setWeatherLocation({ latitude, longitude, city, country })
     }
 
-    function error(err) {
+    function error(err: GeolocationPositionError) {
       console.warn(`ERROR(${err.code}): ${err.message}`)
 
       // if failed to get location, set the location to Toronto
