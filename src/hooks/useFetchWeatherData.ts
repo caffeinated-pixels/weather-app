@@ -2,14 +2,6 @@ import { useState, useCallback } from 'react'
 import { processWeatherData } from '../helpers/processWeatherData'
 import { getErrorMessage } from '../helpers/getErrorMessage'
 
-type WeatherDataResults = {
-  weatherData: any
-  processedWeatherData: any
-  isLoading: boolean
-  isError: boolean
-  errorMsg: string
-}
-
 const initialState: WeatherDataResults = {
   weatherData: {},
   processedWeatherData: {},
@@ -35,6 +27,7 @@ export const useFetchWeatherData = () => {
 
         const weatherData = await response.json()
         const processedWeatherData = processWeatherData(weatherData, units)
+
         setWeatherData({
           weatherData,
           processedWeatherData,
@@ -42,17 +35,18 @@ export const useFetchWeatherData = () => {
           isError: false,
           errorMsg: '',
         })
+        console.log('processedWeatherData', processedWeatherData)
       } catch (err) {
         const errorMessage = getErrorMessage(err)
         console.warn(`Weather API Error: ${errorMessage}`)
 
-        setWeatherData((prev) => ({
+        setWeatherData({
           weatherData: {},
           processedWeatherData: {},
           isLoading: false,
           isError: true,
           errorMsg: errorMessage,
-        }))
+        })
       }
     },
     [setWeatherData]

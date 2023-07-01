@@ -4,7 +4,10 @@ import { calcWindIconRotation } from './calcWindIconRotation'
 import { processHourlyData } from './processHourlyData'
 import { processDailyData } from './processDailyData'
 
-export const processWeatherData = (weatherData: WeatherData, units: string) => {
+export const processWeatherData = (
+  weatherData: WeatherData,
+  units: string
+): ProcessedWeatherData => {
   const { current, daily, hourly } = weatherData
 
   // ICON & DESCRIPTION

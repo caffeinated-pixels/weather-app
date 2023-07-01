@@ -154,15 +154,34 @@ type WeatherData = {
   daily: Daily[]
 }
 
+type ProcessedWeatherData = {
+  iconUrl: string
+  iconAltText: string
+  weatherDescription: string
+  currentTemp: string
+  minTemp: string
+  maxTemp: string
+  feelsLikeTemp: string
+  windSpeed: string
+  windDirection: string
+  windIconRotation: number
+  visibility: string
+  precipProb: string
+  humidity: string
+  dewPoint: string
+  uvIndex: string
+  pressure: string
+  hourlyBoxes: JSX.Element[]
+  dailyBoxes: JSX.Element[]
+}
+
 type WeatherDataResults = {
   weatherData: WeatherData | {}
-  processedWeatherData: any
+  processedWeatherData: ProcessedWeatherData | {}
   isLoading: boolean
   isError: boolean
   errorMsg: string
 }
-
-type ProcessedWeatherData = {}
 
 // location data that gets returned from the GeocodingDirect api
 type SearchLocation = {
