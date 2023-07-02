@@ -52,5 +52,5 @@ export const useFetchWeatherData = () => {
     [setWeatherData]
   )
 
-  return [weatherData, fetchWeatherData]
+  return { weatherData, fetchWeatherData }
 }

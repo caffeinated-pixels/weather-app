@@ -44,5 +44,5 @@ export const useGetWeatherLocation = () => {
     navigator.geolocation.getCurrentPosition(success, error, options)
   }, [])
 
-  return [weatherLocation, getWeatherLocation]
+  return { weatherLocation, getWeatherLocation }
 }

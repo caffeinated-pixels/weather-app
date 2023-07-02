@@ -59,5 +59,5 @@ export const useFetchGeocodingDirect = () => {
     [setLocationResults]
   )
 
-  return [locationResults, fetchLocationResults]
+  return { locationResults, fetchLocationResults }
 }

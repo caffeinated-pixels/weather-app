@@ -9,11 +9,13 @@ const WeatherDataContext = createContext()
 
 function WeatherDataContextProvider({ children }) {
   const [units, setUnits] = useState('metric')
-  const [weatherLocation, getWeatherLocation] = useGetWeatherLocation()
-  const [locationResults, fetchLocationResults] = useFetchGeocodingDirect()
+  const { weatherLocation, getWeatherLocation } = useGetWeatherLocation()
+  const { locationResults, fetchLocationResults } = useFetchGeocodingDirect()
 
-  const [{ processedWeatherData, isLoading, isError }, fetchWeatherData] =
-    useFetchWeatherData()
+  const {
+    weatherData: { processedWeatherData, isLoading, isError },
+    fetchWeatherData,
+  } = useFetchWeatherData()
 
   const handleChangeUnits = (event) => {
     setUnits(event.target.id)
