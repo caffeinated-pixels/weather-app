@@ -54,7 +54,7 @@ function WeatherDataContextProvider({ children }) {
   /* once we have the user's coords, we can call the weather API
   we also need to re-call the API if units change */
   useEffect(() => {
-    if (weatherLocation.latitude) {
+    if (weatherLocation?.latitude) {
       fetchWeatherData(weatherLocation, units)
     }
   }, [units, weatherLocation, fetchWeatherData])
