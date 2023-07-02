@@ -14,6 +14,7 @@ export const SearchResults = () => {
       const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
       return (
+        // TODO: fix key prop warning
         <li
           key={`result${i}`}
           className={`search-result ${backgroundColor}`}

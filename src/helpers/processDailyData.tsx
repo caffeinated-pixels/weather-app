@@ -15,6 +15,7 @@ export const processDailyData = (dailyData: DailyData[], units: string) => {
     const maxTemp = Math.round(daily.temp.max) + tempUnits
 
     return (
+      // TODO: fix key prop warning
       <div key={`daily-${i}`} className={`daily-box ${backgroundColor}`}>
         <p className="daily-date">{dateDisplay}</p>
         <div className="daily-icon-wrapper">
