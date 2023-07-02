@@ -218,3 +218,18 @@ type LocationData = {
   country: string
   state?: string
 }
+
+// TODO: replace any with proper types
+type WeatherDataContext = {
+  weatherLocation: LocationData
+  processedWeatherData: ProcessedWeatherData
+  isLoading: boolean
+  isError: boolean
+  units: string
+  locationResults: LocationResults
+  handleChangeUnits: any
+  getWeatherLocation: any
+  handleSearchSubmit: any
+  handleResultsChoice: any
+  fetchLocationResults: any
+}

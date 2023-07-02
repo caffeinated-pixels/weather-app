@@ -4,7 +4,7 @@ import { fetchGeocodingAPI } from '../helpers/fetchGeocodingReverse'
 export const useGetWeatherLocation = () => {
   const [weatherLocation, setWeatherLocation] = useState<LocationData>()
 
-  const getWeatherLocation = useCallback((selectedLocation: LocationData) => {
+  const getWeatherLocation = useCallback((selectedLocation?: LocationData) => {
     if (selectedLocation) {
       // If the user has already selected a location, we set that to state;
       setWeatherLocation(selectedLocation)

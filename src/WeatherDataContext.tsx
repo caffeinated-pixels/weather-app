@@ -1,13 +1,28 @@
-import { useEffect, useState, createContext } from 'react'
+import { useEffect, useState, createContext, ReactNode } from 'react'
 import {
   useGetWeatherLocation,
   useFetchWeatherData,
   useFetchGeocodingDirect,
 } from './hooks/'
 
-const WeatherDataContext = createContext()
+// const WeatherDataContext = createContext<WeatherDataContext>({
+//   weatherLocation: {},
+//   processedWeatherData: {},
+//   isLoading: true,
+//   isError: false,
+//   units: 'metric',
+//   locationResults: {},
+//   handleChangeUnits: () => {},
+//   getWeatherLocation: () => {},
+//   handleSearchSubmit: () => {},
+//   handleResultsChoice: () => {},
+//   fetchLocationResults: () => {},
+// })
 
-function WeatherDataContextProvider({ children }) {
+// TODO: replace any with proper types
+const WeatherDataContext = createContext<any>(null)
+
+function WeatherDataContextProvider({ children }: { children: ReactNode }) {
   const [units, setUnits] = useState('metric')
   const { weatherLocation, getWeatherLocation } = useGetWeatherLocation()
   const { locationResults, fetchLocationResults } = useFetchGeocodingDirect()
@@ -17,16 +32,16 @@ function WeatherDataContextProvider({ children }) {
     fetchWeatherData,
   } = useFetchWeatherData()
 
-  const handleChangeUnits = (event) => {
+  const handleChangeUnits = (event: any) => {
     setUnits(event.target.id)
   }
 
-  const handleSearchSubmit = (e, searchInput) => {
+  const handleSearchSubmit = (e: any, searchInput: string) => {
     e.preventDefault()
     fetchLocationResults(searchInput)
   }
 
-  const handleResultsChoice = (index, e) => {
+  const handleResultsChoice = (index: number, e: any) => {
     // check if called by onKeyDown (e is truthy); return if not Enter key
     if (e && e.key !== 'Enter') {
       return
@@ -67,10 +82,10 @@ function WeatherDataContextProvider({ children }) {
         isLoading,
         isError,
         units,
+        locationResults,
         handleChangeUnits,
         getWeatherLocation,
         handleSearchSubmit,
-        locationResults,
         handleResultsChoice,
         fetchLocationResults,
       }}

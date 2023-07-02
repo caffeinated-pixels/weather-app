@@ -15,7 +15,7 @@ export const useFetchGeocodingDirect = () => {
   const [locationResults, setLocationResults] = useState(initialState)
 
   const fetchLocationResults = useCallback(
-    async (cityNameToQuery: string) => {
+    async (cityNameToQuery?: string) => {
       if (!cityNameToQuery) {
         setLocationResults(initialState)
         return
