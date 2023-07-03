@@ -14,8 +14,8 @@ name. It will return an array of results (up to 5 using the limit param) */
 export const useFetchGeocodingDirect = () => {
   const [locationResults, setLocationResults] = useState(initialState)
 
-  const fetchLocationResults = useCallback(
-    async (cityNameToQuery?: string) => {
+  const fetchLocationResults: FetchLocationResults = useCallback(
+    async (cityNameToQuery) => {
       if (!cityNameToQuery) {
         setLocationResults(initialState)
         return

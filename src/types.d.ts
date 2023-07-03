@@ -219,7 +219,19 @@ type LocationData = {
   state?: string
 }
 
-// TODO: replace any with proper types
+type HandleChangeUnits = (event: ChangeEvent<HTMLButtonElement>) => void
+
+type HandleSearchSubmit = (
+  e: ChangeEvent<HTMLInputElement>,
+  searchInput: string
+) => void
+
+type HandleResultsChoice = (index: number, e?: React.KeyboardEvent) => void
+
+type GetWeatherLocation = (selectedLocation?: LocationData) => void
+
+type FetchLocationResults = (cityNameToQuery?: string) => Promise<void>
+
 type WeatherDataContext = {
   weatherLocation: LocationData
   processedWeatherData: ProcessedWeatherData
@@ -227,9 +239,9 @@ type WeatherDataContext = {
   isError: boolean
   units: string
   locationResults: LocationResults
-  handleChangeUnits: any
-  getWeatherLocation: any
-  handleSearchSubmit: any
-  handleResultsChoice: any
-  fetchLocationResults: any
+  handleChangeUnits: HandleChangeUnits
+  getWeatherLocation: GetWeatherLocation
+  handleSearchSubmit: HandleSearchSubmit
+  handleResultsChoice: HandleResultsChoice
+  fetchLocationResults: FetchLocationResults
 }

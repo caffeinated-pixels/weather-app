@@ -1,33 +1,12 @@
-import {
-  useEffect,
-  useState,
-  createContext,
-  ReactNode,
-  ChangeEvent,
-  KeyboardEvent,
-} from 'react'
+import { useEffect, useState, createContext, ReactNode } from 'react'
 import {
   useGetWeatherLocation,
   useFetchWeatherData,
   useFetchGeocodingDirect,
 } from './hooks/'
 
-// const WeatherDataContext = createContext<WeatherDataContext>({
-//   weatherLocation: {},
-//   processedWeatherData: {},
-//   isLoading: true,
-//   isError: false,
-//   units: 'metric',
-//   locationResults: {},
-//   handleChangeUnits: () => {},
-//   getWeatherLocation: () => {},
-//   handleSearchSubmit: () => {},
-//   handleResultsChoice: () => {},
-//   fetchLocationResults: () => {},
-// })
-
 // TODO: replace any with proper types
-const WeatherDataContext = createContext<any>(null)
+const WeatherDataContext = createContext<any>(undefined)
 
 function WeatherDataContextProvider({ children }: { children: ReactNode }) {
   const [units, setUnits] = useState('metric')
@@ -39,19 +18,16 @@ function WeatherDataContextProvider({ children }: { children: ReactNode }) {
     fetchWeatherData,
   } = useFetchWeatherData()
 
-  const handleChangeUnits = (event: ChangeEvent<HTMLButtonElement>) => {
+  const handleChangeUnits: HandleChangeUnits = (event) => {
     setUnits(event.target.id)
   }
 
-  const handleSearchSubmit = (
-    e: ChangeEvent<HTMLInputElement>,
-    searchInput: string
-  ) => {
+  const handleSearchSubmit: HandleSearchSubmit = (e, searchInput) => {
     e.preventDefault()
     fetchLocationResults(searchInput)
   }
 
-  const handleResultsChoice = (index: number, e: KeyboardEvent) => {
+  const handleResultsChoice: HandleResultsChoice = (index, e) => {
     // check if called by onKeyDown (e is truthy); return if not Enter key
     if (e && e.key !== 'Enter') {
       return
