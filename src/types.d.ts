@@ -176,8 +176,8 @@ type ProcessedWeatherData = {
 }
 
 type WeatherDataResults = {
-  weatherData: WeatherData | {}
-  processedWeatherData: ProcessedWeatherData | {}
+  weatherData: WeatherData | null
+  processedWeatherData: ProcessedWeatherData | null
   isLoading: boolean
   isError: boolean
   errorMsg: string
@@ -233,8 +233,8 @@ type GetWeatherLocation = (selectedLocation?: LocationData) => void
 type FetchLocationResults = (cityNameToQuery?: string) => Promise<void>
 
 type WeatherDataContext = {
-  weatherLocation: LocationData
-  processedWeatherData: ProcessedWeatherData
+  weatherLocation: LocationData | null
+  processedWeatherData: ProcessedWeatherData | null
   isLoading: boolean
   isError: boolean
   units: string

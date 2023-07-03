@@ -1,9 +1,9 @@
-import { useContext, useEffect, useRef, FocusEvent } from 'react'
-import { WeatherDataContext } from '../WeatherDataContext'
+import { useEffect, useRef, FocusEvent } from 'react'
+import { useWeatherDataContext } from '../hooks'
 
 export const SearchResults = () => {
   const { locationResults, handleResultsChoice, fetchLocationResults } =
-    useContext(WeatherDataContext)
+    useWeatherDataContext()
 
   const { resultsArr, searchMatchFail, apiError } = locationResults
 

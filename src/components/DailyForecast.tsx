@@ -1,12 +1,12 @@
-import { useContext, useRef, useEffect } from 'react'
-import { WeatherDataContext } from '../WeatherDataContext'
+import { useRef, useEffect } from 'react'
 import SimpleBar from 'simplebar-react'
+import { useWeatherDataContext } from '../hooks'
 
 export const DailyForecast = () => {
-  const { processedWeatherData } = useContext(WeatherDataContext)
+  const { processedWeatherData } = useWeatherDataContext()
   const scrollableNodeRef = useRef<HTMLDivElement>(null)
 
-  const { dailyBoxes } = processedWeatherData
+  const { dailyBoxes } = processedWeatherData ?? {}
 
   useEffect(() => {
     if (scrollableNodeRef.current) scrollableNodeRef.current.tabIndex = 0

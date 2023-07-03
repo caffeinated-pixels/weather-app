@@ -6,7 +6,7 @@ import {
 } from './hooks/'
 
 // TODO: replace any with proper types
-const WeatherDataContext = createContext<any>(undefined)
+const WeatherDataContext = createContext<WeatherDataContext | null>(null)
 
 function WeatherDataContextProvider({ children }: { children: ReactNode }) {
   const [units, setUnits] = useState('metric')

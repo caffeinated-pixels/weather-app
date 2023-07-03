@@ -3,8 +3,8 @@ import { processWeatherData } from '../helpers/processWeatherData'
 import { getErrorMessage } from '../helpers/getErrorMessage'
 
 const initialState: WeatherDataResults = {
-  weatherData: {},
-  processedWeatherData: {},
+  weatherData: null,
+  processedWeatherData: null,
   isLoading: true,
   isError: false,
   errorMsg: '',
@@ -41,8 +41,8 @@ export const useFetchWeatherData = () => {
         console.warn(`Weather API Error: ${errorMessage}`)
 
         setWeatherData({
-          weatherData: {},
-          processedWeatherData: {},
+          weatherData: null,
+          processedWeatherData: null,
           isLoading: false,
           isError: true,
           errorMsg: errorMessage,

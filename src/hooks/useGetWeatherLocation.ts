@@ -2,7 +2,9 @@ import { useState, useCallback } from 'react'
 import { fetchGeocodingAPI } from '../helpers/fetchGeocodingReverse'
 
 export const useGetWeatherLocation = () => {
-  const [weatherLocation, setWeatherLocation] = useState<LocationData>()
+  const [weatherLocation, setWeatherLocation] = useState<LocationData | null>(
+    null
+  )
 
   const getWeatherLocation: GetWeatherLocation = useCallback(
     (selectedLocation) => {

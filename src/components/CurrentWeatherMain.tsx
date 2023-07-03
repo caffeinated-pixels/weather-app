@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
-import { WeatherDataContext } from '../WeatherDataContext'
+import { useWeatherDataContext } from '../hooks'
 
 export const CurrentWeatherMain = () => {
-  const { processedWeatherData } = useContext(WeatherDataContext)
+  const { processedWeatherData } = useWeatherDataContext()
 
   const {
     iconUrl,
@@ -15,7 +14,7 @@ export const CurrentWeatherMain = () => {
     windSpeed,
     windDirection,
     windIconRotation,
-  } = processedWeatherData
+  } = processedWeatherData ?? {}
 
   return (
     <div className="current-main">

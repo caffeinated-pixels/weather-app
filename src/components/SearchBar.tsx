@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react'
-import { WeatherDataContext } from '../WeatherDataContext'
+import { useState } from 'react'
 import { SearchResults } from './SearchResults'
+import { useWeatherDataContext } from '../hooks'
 
 export const SearchBar = () => {
   const {
@@ -8,7 +8,7 @@ export const SearchBar = () => {
     getWeatherLocation,
     handleSearchSubmit,
     locationResults,
-  } = useContext(WeatherDataContext)
+  } = useWeatherDataContext()
 
   const currentLocation = weatherLocation
     ? `${weatherLocation.city}, ${

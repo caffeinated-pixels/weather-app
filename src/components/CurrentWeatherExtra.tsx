@@ -1,11 +1,10 @@
-import { useContext } from 'react'
-import { WeatherDataContext } from '../WeatherDataContext'
+import { useWeatherDataContext } from '../hooks'
 
 export const CurrentWeatherExtra = () => {
-  const { processedWeatherData } = useContext(WeatherDataContext)
+  const { processedWeatherData } = useWeatherDataContext()
 
   const { visibility, precipProb, humidity, dewPoint, uvIndex, pressure } =
-    processedWeatherData
+    processedWeatherData ?? {}
 
   return (
     <div className="current-extra">

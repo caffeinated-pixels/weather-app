@@ -1,8 +1,7 @@
-import { useContext } from 'react'
-import { WeatherDataContext } from '../WeatherDataContext'
+import { useWeatherDataContext } from '../hooks'
 
 export default function UnitsButtons() {
-  const { units, handleChangeUnits } = useContext(WeatherDataContext)
+  const { units, handleChangeUnits } = useWeatherDataContext()
 
   const metricBtnClass =
     units === 'metric' ? 'units-button units-button-active' : 'units-button'

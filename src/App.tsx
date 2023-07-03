@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import {
   Header,
   LoadingScreen,
@@ -10,11 +9,11 @@ import {
   Footer,
 } from './components'
 
-import { WeatherDataContext } from './WeatherDataContext'
 import 'simplebar-react/dist/simplebar.min.css'
+import { useWeatherDataContext } from './hooks'
 
 export const App = () => {
-  const { isLoading, isError } = useContext(WeatherDataContext)
+  const { isLoading, isError } = useWeatherDataContext()
 
   // class for setting num of grid rows
   const appClassName = isLoading || isError ? 'app app-loading' : 'app'
