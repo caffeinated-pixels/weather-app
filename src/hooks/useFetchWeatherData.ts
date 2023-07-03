@@ -35,7 +35,6 @@ export const useFetchWeatherData = () => {
           isError: false,
           errorMsg: '',
         })
-        console.log('processedWeatherData', processedWeatherData)
       } catch (err) {
         const errorMessage = getErrorMessage(err)
         console.warn(`Weather API Error: ${errorMessage}`)
