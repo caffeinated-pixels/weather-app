@@ -9,8 +9,12 @@ export const SearchBar = () => {
     handleSearchSubmit,
     locationResults,
   } = useContext(WeatherDataContext)
-  const { city, country, state } = weatherLocation
-  const currentLocation = `${city}, ${state ? state + ', ' : ''}${country}`
+
+  const currentLocation = weatherLocation
+    ? `${weatherLocation.city}, ${
+        weatherLocation.state ? weatherLocation.state + ', ' : ''
+      }${weatherLocation.country}`
+    : ''
 
   const [searchInput, setSearchInput] = useState(currentLocation)
 
