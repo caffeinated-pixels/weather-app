@@ -1,4 +1,11 @@
-import { useEffect, useState, createContext, ReactNode } from 'react'
+import {
+  useEffect,
+  useState,
+  createContext,
+  ReactNode,
+  ChangeEvent,
+  KeyboardEvent,
+} from 'react'
 import {
   useGetWeatherLocation,
   useFetchWeatherData,
@@ -32,16 +39,19 @@ function WeatherDataContextProvider({ children }: { children: ReactNode }) {
     fetchWeatherData,
   } = useFetchWeatherData()
 
-  const handleChangeUnits = (event: any) => {
+  const handleChangeUnits = (event: ChangeEvent<HTMLButtonElement>) => {
     setUnits(event.target.id)
   }
 
-  const handleSearchSubmit = (e: any, searchInput: string) => {
+  const handleSearchSubmit = (
+    e: ChangeEvent<HTMLInputElement>,
+    searchInput: string
+  ) => {
     e.preventDefault()
     fetchLocationResults(searchInput)
   }
 
-  const handleResultsChoice = (index: number, e: any) => {
+  const handleResultsChoice = (index: number, e: KeyboardEvent) => {
     // check if called by onKeyDown (e is truthy); return if not Enter key
     if (e && e.key !== 'Enter') {
       return
