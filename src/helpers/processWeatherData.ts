@@ -1,7 +1,7 @@
 import { generateIconInfo } from './generateIconInfo'
 import { getWindDirection } from './getWindDirection'
 import { calcWindIconRotation } from './calcWindIconRotation'
-import { processHourlyData } from './processHourlyData'
+import { ProcessedHourlyData } from '../components'
 import { processDailyData } from './processDailyData'
 
 export const processWeatherData = (
@@ -50,7 +50,7 @@ export const processWeatherData = (
   const pressure = current.pressure + 'hPa'
 
   // PROCESS HOULRY DATA INTO ARRAY OF JSX ELEMENTS
-  const hourlyBoxes = processHourlyData(hourly, units)
+  const hourlyBoxes = ProcessedHourlyData(hourly, units)
   const dailyBoxes = processDailyData(daily, units)
 
   return {
