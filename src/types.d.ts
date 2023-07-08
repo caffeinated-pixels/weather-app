@@ -172,7 +172,7 @@ type ProcessedWeatherData = {
   uvIndex: string
   pressure: string
   hourlyBoxes: JSX.Element
-  dailyBoxes: JSX.Element[]
+  dailyBoxes: JSX.Element
 }
 
 type WeatherDataResults = {
