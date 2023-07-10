@@ -4,9 +4,14 @@ import {
   useFetchWeatherData,
   useFetchGeocodingDirect,
 } from './hooks/'
+import {
+  HandleChangeUnits,
+  HandleResultsChoice,
+  HandleSearchSubmit,
+  WeatherDataContextType,
+} from './types/openWeatherData'
 
-// TODO: replace any with proper types
-const WeatherDataContext = createContext<WeatherDataContext | null>(null)
+const WeatherDataContext = createContext<WeatherDataContextType | null>(null)
 
 function WeatherDataContextProvider({ children }: { children: ReactNode }) {
   const [units, setUnits] = useState('metric')
@@ -19,7 +24,7 @@ function WeatherDataContextProvider({ children }: { children: ReactNode }) {
   } = useFetchWeatherData()
 
   const handleChangeUnits: HandleChangeUnits = (event) => {
-    setUnits(event.target.id)
+    setUnits(event.currentTarget.id)
   }
 
   const handleSearchSubmit: HandleSearchSubmit = (e, searchInput) => {

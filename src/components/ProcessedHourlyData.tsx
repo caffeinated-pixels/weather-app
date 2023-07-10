@@ -1,5 +1,6 @@
 import { monthLookup } from '../helpers/timeLookup'
 import { generateIconInfo } from '../helpers/generateIconInfo'
+import { HourlyData } from '../types/openWeatherData'
 
 // TODO: separate logic from UI
 export const ProcessedHourlyData = (
