@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { fetchGeocodingAPI } from '../helpers/fetchGeocodingReverse'
-import { GetWeatherLocation, LocationData } from '../types/openWeatherData'
+import { LocationData } from '../types/openWeatherData'
+import { GetWeatherLocation } from '../WeatherDataContext'
 
 export const useGetWeatherLocation = () => {
   const [weatherLocation, setWeatherLocation] = useState<LocationData | null>(

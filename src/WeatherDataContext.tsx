@@ -5,11 +5,42 @@ import {
   useFetchGeocodingDirect,
 } from './hooks/'
 import {
-  HandleChangeUnits,
-  HandleResultsChoice,
-  HandleSearchSubmit,
-  WeatherDataContextType,
+  LocationData,
+  LocationResults,
+  ProcessedWeatherData,
 } from './types/openWeatherData'
+
+export type HandleChangeUnits = (
+  event: React.MouseEvent<HTMLButtonElement>
+) => void
+
+export type HandleSearchSubmit = (
+  e: React.FormEvent<HTMLFormElement>,
+  searchInput: string
+) => void
+
+export type HandleResultsChoice = (
+  index: number,
+  e?: React.KeyboardEvent
+) => void
+
+export type GetWeatherLocation = (selectedLocation?: LocationData) => void
+
+export type FetchLocationResults = (cityNameToQuery?: string) => Promise<void>
+
+export type WeatherDataContextType = {
+  weatherLocation: LocationData | null
+  processedWeatherData: ProcessedWeatherData | null
+  isLoading: boolean
+  isError: boolean
+  units: string
+  locationResults: LocationResults
+  handleChangeUnits: HandleChangeUnits
+  getWeatherLocation: GetWeatherLocation
+  handleSearchSubmit: HandleSearchSubmit
+  handleResultsChoice: HandleResultsChoice
+  fetchLocationResults: FetchLocationResults
+}
 
 const WeatherDataContext = createContext<WeatherDataContextType | null>(null)
 

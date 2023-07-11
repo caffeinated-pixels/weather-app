@@ -1,5 +1,3 @@
-import { FormEvent, MouseEvent, KeyboardEvent } from 'react'
-
 export type Coordinates = {
   latitude: number
   longitude: number
@@ -191,31 +189,4 @@ export type LocationData = Coordinates & {
   city: string
   country: string
   state?: string
-}
-
-export type HandleChangeUnits = (event: MouseEvent<HTMLButtonElement>) => void
-
-export type HandleSearchSubmit = (
-  e: FormEvent<HTMLFormElement>,
-  searchInput: string
-) => void
-
-export type HandleResultsChoice = (index: number, e?: KeyboardEvent) => void
-
-export type GetWeatherLocation = (selectedLocation?: LocationData) => void
-
-export type FetchLocationResults = (cityNameToQuery?: string) => Promise<void>
-
-export type WeatherDataContextType = {
-  weatherLocation: LocationData | null
-  processedWeatherData: ProcessedWeatherData | null
-  isLoading: boolean
-  isError: boolean
-  units: string
-  locationResults: LocationResults
-  handleChangeUnits: HandleChangeUnits
-  getWeatherLocation: GetWeatherLocation
-  handleSearchSubmit: HandleSearchSubmit
-  handleResultsChoice: HandleResultsChoice
-  fetchLocationResults: FetchLocationResults
 }

@@ -1,10 +1,7 @@
 import { useState, useCallback } from 'react'
 import { getErrorMessage } from '../helpers/getErrorMessage'
-import {
-  FetchLocationResults,
-  GeocodingApiResult,
-  LocationResults,
-} from '../types/openWeatherData'
+import { GeocodingApiResult, LocationResults } from '../types/openWeatherData'
+import { FetchLocationResults } from '../WeatherDataContext'
 
 const initialState: LocationResults = {
   resultsArr: [],
