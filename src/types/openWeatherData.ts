@@ -12,8 +12,7 @@ export type GeocodingApiResult = {
   local_names: Record<string, string>
 }
 
-// TODO: refactor weather data types to be more DRY
-export type CurrentWeather = {
+export type CurrentWeatherSummary = {
   id: number
   main: string
   description: string
@@ -33,96 +32,56 @@ type FeelsLikeDaytimes = Omit<Temp, 'min' | 'max'>
 
 type UnixTimeStamp = number
 
-export type DailyData = {
-  dt: UnixTimeStamp
+type SunTimes = {
   sunrise: UnixTimeStamp
   sunset: UnixTimeStamp
+}
+
+type MoonTimes = {
   moonrise: UnixTimeStamp
   moonset: UnixTimeStamp
   moon_phase: UnixTimeStamp
+}
+
+type SunAndMoonTimes = SunTimes & MoonTimes
+
+type WindData = {
+  wind_speed: number
+  wind_deg: number
+  wind_gust: number
+}
+
+type GeneralWeatherData = {
+  dt: UnixTimeStamp
   temp: Temp
   feels_like: FeelsLikeDaytimes
   pressure: number
   humidity: number
   dew_point: number
-  wind_speed: number
-  wind_deg: number
-  wind_gust: number
-  weather: CurrentWeather[]
+  weather: CurrentWeatherSummary[]
   clouds: number
   pop: number
   uvi: number
 }
 
-export type HourlyData = {
-  dt: UnixTimeStamp
-  temp: number
-  feels_like: number
-  pressure: number
-  humidity: number
-  dew_point: number
-  uvi: number
-  clouds: number
-  visibility: number
-  wind_speed: number
-  wind_deg: number
-  wind_gust: number
-  weather: CurrentWeather[]
-  pop: number
-}
+export type DailyData = SunAndMoonTimes & WindData & GeneralWeatherData
+
+export type HourlyData = WindData &
+  GeneralWeatherData & {
+    temp: number
+    visibility: number
+  }
 
 type Minutely = {
   dt: UnixTimeStamp
   precipitation: number
 }
 
-type Hourly = {
-  dt: UnixTimeStamp
-  temp: number
-  feels_like: number
-  pressure: number
-  humidity: number
-  dew_point: number
-  uvi: number
-  clouds: number
-  visibility: number
-  wind_speed: number
-  wind_deg: number
-  wind_gust: number
-  weather: CurrentWeather[]
-  pop: number
-}
+type Daily = SunAndMoonTimes & WindData & GeneralWeatherData
 
-type Daily = {
-  dt: UnixTimeStamp
-  sunrise: UnixTimeStamp
-  sunset: UnixTimeStamp
-  moonrise: UnixTimeStamp
-  moonset: UnixTimeStamp
-  moon_phase: number
-  temp: Temp
-  feels_like: FeelsLikeDaytimes
-  pressure: number
-  humidity: number
-  dew_point: number
-  wind_speed: number
-  wind_deg: number
-  wind_gust: number
-  weather: CurrentWeather[]
-  clouds: number
-  pop: number
-  uvi: number
-}
-
-export type WeatherData = {
-  lat: number
-  lon: number
-  timezone: string
-  timezone_offset: number
-  current: {
+type CurrentWeatherData = SunTimes &
+  Omit<WindData, 'wind_gust'> & {
     dt: UnixTimeStamp
-    sunrise: UnixTimeStamp
-    sunset: UnixTimeStamp
     temp: number
     feels_like: number
     pressure: number
@@ -131,19 +90,17 @@ export type WeatherData = {
     uvi: number
     clouds: number
     visibility: number
-    wind_speed: number
-    wind_deg: number
-    weather: [
-      {
-        id: number
-        main: string
-        description: string
-        icon: string
-      }
-    ]
+    weather: CurrentWeatherSummary[]
   }
+
+export type FullWeatherData = {
+  lat: number
+  lon: number
+  timezone: string
+  timezone_offset: number
+  current: CurrentWeatherData
   minutely: Minutely[]
-  hourly: Hourly[]
+  hourly: HourlyData[]
   daily: Daily[]
 }
 
@@ -169,7 +126,7 @@ export type ProcessedWeatherData = {
 }
 
 export type WeatherDataResults = {
-  weatherData: WeatherData | null
+  weatherData: FullWeatherData | null
   processedWeatherData: ProcessedWeatherData | null
   isLoading: boolean
   isError: boolean
@@ -184,7 +141,7 @@ export type LocationResults = {
   errorMsg: string
 }
 
-// location data that gets returned from the WeatherData query
+// location data that gets returned from the FullWeatherData query
 export type LocationData = Coordinates & {
   city: string
   country: string
