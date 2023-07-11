@@ -80,17 +80,11 @@ type Minutely = {
 type Daily = SunAndMoonTimes & WindData & GeneralWeatherData
 
 type CurrentWeatherData = SunTimes &
-  Omit<WindData, 'wind_gust'> & {
-    dt: UnixTimeStamp
+  Omit<WindData, 'wind_gust'> &
+  GeneralWeatherData & {
     temp: number
-    feels_like: number
-    pressure: number
-    humidity: number
-    dew_point: number
-    uvi: number
-    clouds: number
     visibility: number
-    weather: CurrentWeatherSummary[]
+    feels_like: number
   }
 
 export type FullWeatherData = {
