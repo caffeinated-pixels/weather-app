@@ -1,5 +1,6 @@
 import { monthLookup } from '../helpers/timeLookup'
 import { generateIconInfo } from '../helpers/generateIconInfo'
+import { HourlyData } from '../types/openWeatherData'
 
 // TODO: separate logic from UI
 export const ProcessedHourlyData = (
@@ -29,10 +30,7 @@ export const ProcessedHourlyData = (
 
         const timeClass = hour === 0 ? 'hourly-time new-day' : 'hourly-time'
 
-        // TODO: convert to location timezone; the time will be in the user's local time (so the location timezone may be different!!!)
-
         return (
-          // TODO: fix key prop warning
           <div key={`hourly-${i}`} className={`hourly-box ${backgroundColor}`}>
             <p className={timeClass}>{hourDisplay}</p>
             <div className="hourly-icon-wrapper">

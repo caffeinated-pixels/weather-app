@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import { getErrorMessage } from '../helpers/getErrorMessage'
+import { GeocodingApiResult, LocationResults } from '../types/openWeatherData'
+import { FetchLocationResults } from '../WeatherDataContext'
 
 const initialState: LocationResults = {
   resultsArr: [],
@@ -28,7 +30,7 @@ export const useFetchGeocodingDirect = () => {
 
       try {
         const response = await fetch(netlifyFunctionCall)
-        const geocodingApiResults: GeocodingApiResults[] = await response.json()
+        const geocodingApiResults: GeocodingApiResult[] = await response.json()
 
         if (geocodingApiResults.length > 0) {
           setLocationResults({

@@ -1,3 +1,4 @@
+import { Coordinates, GeocodingApiResult } from '../types/openWeatherData'
 import { getErrorMessage } from './getErrorMessage'
 
 /* In 'reverse' mode, we can query the Open Weather Geocoding API with lat & lon
@@ -13,7 +14,7 @@ export const fetchGeocodingAPI = async ({
 
   try {
     const response = await fetch(netlifyFunctionCall)
-    const geocodingResult: GeocodingResult[] = await response.json()
+    const geocodingResult: GeocodingApiResult[] = await response.json()
 
     const city = geocodingResult[0].name
     const country = geocodingResult[0].country

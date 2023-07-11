@@ -4,9 +4,45 @@ import {
   useFetchWeatherData,
   useFetchGeocodingDirect,
 } from './hooks/'
+import {
+  LocationData,
+  LocationResults,
+  ProcessedWeatherData,
+} from './types/openWeatherData'
 
-// TODO: replace any with proper types
-const WeatherDataContext = createContext<WeatherDataContext | null>(null)
+export type HandleChangeUnits = (
+  event: React.MouseEvent<HTMLButtonElement>
+) => void
+
+export type HandleSearchSubmit = (
+  e: React.FormEvent<HTMLFormElement>,
+  searchInput: string
+) => void
+
+export type HandleResultsChoice = (
+  index: number,
+  e?: React.KeyboardEvent
+) => void
+
+export type GetWeatherLocation = (selectedLocation?: LocationData) => void
+
+export type FetchLocationResults = (cityNameToQuery?: string) => Promise<void>
+
+export type WeatherDataContextType = {
+  weatherLocation: LocationData | null
+  processedWeatherData: ProcessedWeatherData | null
+  isLoading: boolean
+  isError: boolean
+  units: string
+  locationResults: LocationResults
+  handleChangeUnits: HandleChangeUnits
+  getWeatherLocation: GetWeatherLocation
+  handleSearchSubmit: HandleSearchSubmit
+  handleResultsChoice: HandleResultsChoice
+  fetchLocationResults: FetchLocationResults
+}
+
+const WeatherDataContext = createContext<WeatherDataContextType | null>(null)
 
 function WeatherDataContextProvider({ children }: { children: ReactNode }) {
   const [units, setUnits] = useState('metric')
@@ -19,7 +55,7 @@ function WeatherDataContextProvider({ children }: { children: ReactNode }) {
   } = useFetchWeatherData()
 
   const handleChangeUnits: HandleChangeUnits = (event) => {
-    setUnits(event.target.id)
+    setUnits(event.currentTarget.id)
   }
 
   const handleSearchSubmit: HandleSearchSubmit = (e, searchInput) => {

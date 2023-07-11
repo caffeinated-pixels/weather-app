@@ -1,5 +1,6 @@
 import { useEffect, useRef, FocusEvent } from 'react'
 import { useWeatherDataContext } from '../hooks'
+import { GeocodingApiResult } from '../types/openWeatherData'
 
 export const SearchResults = () => {
   const { locationResults, handleResultsChoice, fetchLocationResults } =
@@ -10,7 +11,7 @@ export const SearchResults = () => {
   const searchResultsRef = useRef<HTMLDivElement>(null)
 
   const searchResults = resultsArr.map(
-    (location: SearchLocation, i: number) => {
+    (location: GeocodingApiResult, i: number) => {
       const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
 
       return (
