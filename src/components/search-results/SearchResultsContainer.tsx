@@ -1,6 +1,6 @@
 import { forwardRef, ForwardedRef, ReactNode } from 'react'
 import { CloseResults } from './SearchResults'
-import { FetchLocationResults } from '../WeatherDataContext'
+import { FetchLocationResults } from '../../WeatherDataContext'
 
 type SearchResultsContainerProps = {
   closeResults: CloseResults
