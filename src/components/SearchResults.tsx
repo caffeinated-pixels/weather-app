@@ -1,6 +1,6 @@
 import { useEffect, useRef, FocusEvent } from 'react'
 import { useWeatherDataContext } from '../hooks'
-import { GeocodingApiResult } from '../types/openWeatherData'
+import { SearchResultsList } from './SearchResultsList'
 
 export const SearchResults = () => {
   const { locationResults, handleResultsChoice, fetchLocationResults } =
@@ -9,26 +9,6 @@ export const SearchResults = () => {
   const { resultsArr, searchMatchFail, apiError } = locationResults
 
   const searchResultsRef = useRef<HTMLDivElement>(null)
-
-  const searchResults = resultsArr.map(
-    (location: GeocodingApiResult, i: number) => {
-      const backgroundColor = i % 2 === 0 ? 'stripe-light' : 'stripe-dark'
-
-      return (
-        // TODO: fix key prop warning
-        <li
-          key={`result${i}`}
-          className={`search-result ${backgroundColor}`}
-          onClick={() => handleResultsChoice(i)}
-          onKeyDown={(e) => handleResultsChoice(i, e)}
-          tabIndex={0}
-        >
-          {location.name}, {location.state && `${location.state}, `}
-          {location.country}
-        </li>
-      )
-    }
-  )
 
   const headerText = searchMatchFail
     ? 'No results!'
@@ -67,7 +47,10 @@ export const SearchResults = () => {
           <i className="fas fa-times"></i>
         </button>
       </div>
-      <ul className="search-result-list">{searchResults}</ul>
+      <SearchResultsList
+        resultsArr={resultsArr}
+        handleResultsChoice={handleResultsChoice}
+      />
     </div>
   )
 }
