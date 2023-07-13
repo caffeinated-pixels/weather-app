@@ -1,6 +1,9 @@
 import { useEffect, useRef, FocusEvent } from 'react'
 import { useWeatherDataContext } from '../hooks'
 import { SearchResultsList } from './SearchResultsList'
+import { SearchResultsContainer } from './SearchResultsContainer'
+
+export type CloseResults = (e: FocusEvent<HTMLDivElement>) => void
 
 export const SearchResults = () => {
   const { locationResults, handleResultsChoice, fetchLocationResults } =
@@ -16,7 +19,7 @@ export const SearchResults = () => {
     ? 'API error! 🙄'
     : 'Matching results:'
 
-  const closeResults = (e: FocusEvent<HTMLDivElement>) => {
+  const closeResults: CloseResults = (e) => {
     // checks if element is child of search-result-wrapper
     if (!e.currentTarget.contains(e.relatedTarget)) {
       // calling with no argument will clear results
@@ -30,27 +33,16 @@ export const SearchResults = () => {
   }, [locationResults])
 
   return (
-    <div
-      id="search-results"
-      className="search-result-wrapper"
-      tabIndex={0}
+    <SearchResultsContainer
+      closeResults={closeResults}
+      headerText={headerText}
+      fetchLocationResults={fetchLocationResults}
       ref={searchResultsRef}
-      onBlur={closeResults}
     >
-      <div className="search-result-header">
-        <p>{headerText}</p>
-        <button
-          className="icon-button"
-          onClick={() => fetchLocationResults()}
-          aria-label="close search results"
-        >
-          <i className="fas fa-times"></i>
-        </button>
-      </div>
       <SearchResultsList
         resultsArr={resultsArr}
         handleResultsChoice={handleResultsChoice}
       />
-    </div>
+    </SearchResultsContainer>
   )
 }
