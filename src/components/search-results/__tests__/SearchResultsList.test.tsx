@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { SearchResultsList } from '../SearchResultsList'
 import { GeocodingApiResult } from '../../../types/openWeatherData'
 import '@testing-library/jest-dom'
+import userEvent from '@testing-library/user-event'
 
 const mockResultsArr: GeocodingApiResult[] = [
   {
@@ -61,5 +62,51 @@ describe('SearchResultsList', () => {
     renderSearchResultsList()
 
     expect(screen.getByRole('list')).toBeInTheDocument()
+  })
+
+  it('should render the correct number of results', () => {
+    renderSearchResultsList()
+
+    expect(screen.getAllByRole('listitem').length).toBe(5)
+  })
+
+  it('should render the correct text for each result', () => {
+    renderSearchResultsList()
+
+    const listItems = screen.getAllByRole('listitem')
+
+    listItems.forEach((item, i) => {
+      expect(item).toHaveTextContent(
+        `${mockResultsArr[i].name}, ${
+          mockResultsArr[i].state && `${mockResultsArr[i].state}, `
+        }${mockResultsArr[i].country}`
+      )
+    })
+  })
+
+  it('should call handleResultsChoice when a result is clicked', async () => {
+    renderSearchResultsList()
+
+    const listItems = screen.getAllByRole('listitem')
+
+    await userEvent.click(listItems[0])
+    expect(mockHandleResultsChoice).toHaveBeenCalled()
+
+    for (let i = 0; i < listItems.length; i++) {
+      await userEvent.click(listItems[i])
+      expect(mockHandleResultsChoice).toHaveBeenCalledWith(i)
+    }
+  })
+
+  it('should call handleResultsChoice when a result is focused and enter is pressed', async () => {
+    renderSearchResultsList()
+
+    const listItems = screen.getAllByRole('listitem')
+
+    for (let i = 0; i < listItems.length; i++) {
+      listItems[i].focus()
+      await userEvent.keyboard('{enter}')
+      expect(mockHandleResultsChoice).toHaveBeenCalled()
+    }
   })
 })
