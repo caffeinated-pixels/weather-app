@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import { SearchResultsContainer } from './SearchResultsContainer'
+import { SearchResultsContainer } from '../SearchResultsContainer'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import renderer from 'react-test-renderer'
