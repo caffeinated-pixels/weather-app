@@ -3,6 +3,7 @@ import { SearchResultsList } from '../SearchResultsList'
 import { GeocodingApiResult } from '../../../types/openWeatherData'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
+import renderer from 'react-test-renderer'
 
 const mockResultsArr: GeocodingApiResult[] = [
   {
@@ -58,6 +59,18 @@ const renderSearchResultsList = () => {
 }
 
 describe('SearchResultsList', () => {
+  it('should match the snapshot', () => {
+    const domTree = renderer
+      .create(
+        <SearchResultsList
+          resultsArr={mockResultsArr}
+          handleResultsChoice={mockHandleResultsChoice}
+        />
+      )
+      .toJSON()
+    expect(domTree).toMatchSnapshot()
+  })
+
   it('should render the SearchResultsList component', () => {
     renderSearchResultsList()
 
