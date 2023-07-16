@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react'
 import { processWeatherData } from '../helpers/processWeatherData'
 import { getErrorMessage } from '../helpers/getErrorMessage'
 import { LocationData, WeatherDataResults } from '../types/openWeatherData'
+import { UNITS } from '../constants/constants'
 
 const initialState: WeatherDataResults = {
   weatherData: null,
@@ -16,7 +17,7 @@ export const useFetchWeatherData = () => {
     useState<WeatherDataResults>(initialState)
 
   const fetchWeatherData = useCallback(
-    async (locationData: LocationData, units = 'metric') => {
+    async (locationData: LocationData, units = UNITS.METRIC) => {
       setWeatherData((prev) => ({ ...prev, isLoading: true }))
 
       /* instead of calling the API directly, we do it via a netlify
