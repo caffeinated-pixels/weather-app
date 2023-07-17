@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResults should match the snapshot 1`] = `
+<div
+  className="search-result-wrapper"
+  id="search-results"
+  onBlur={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="search-result-header"
+  >
+    <p>
+      Matching results:
+    </p>
+    <button
+      aria-label="close search results"
+      className="icon-button"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-times"
+      />
+    </button>
+  </div>
+  <ul
+    className="search-result-list"
+  >
+    <li
+      className="search-result stripe-light"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+    >
+      Brighton
+      , 
+      England, 
+      GB
+    </li>
+    <li
+      className="search-result stripe-dark"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+    >
+      Brighton
+      , 
+      Colorado, 
+      US
+    </li>
+    <li
+      className="search-result stripe-light"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+    >
+      Brighton
+      , 
+      Newfoundland and Labrador, 
+      CA
+    </li>
+    <li
+      className="search-result stripe-dark"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+    >
+      Brighton
+      , 
+      Alabama, 
+      US
+    </li>
+    <li
+      className="search-result stripe-light"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+    >
+      Brighton
+      , 
+      Illinois, 
+      US
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`SearchResultsList should match the snapshot 1`] = `
+<ul
+  className="search-result-list"
+>
+  <li
+    className="search-result stripe-light"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    Brighton
+    , 
+    England, 
+    GB
+  </li>
+  <li
+    className="search-result stripe-dark"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    Brighton
+    , 
+    Colorado, 
+    US
+  </li>
+  <li
+    className="search-result stripe-light"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    Brighton
+    , 
+    Newfoundland and Labrador, 
+    CA
+  </li>
+  <li
+    className="search-result stripe-dark"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    Brighton
+    , 
+    Alabama, 
+    US
+  </li>
+  <li
+    className="search-result stripe-light"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    Brighton
+    , 
+    Illinois, 
+    US
+  </li>
+</ul>
+`;

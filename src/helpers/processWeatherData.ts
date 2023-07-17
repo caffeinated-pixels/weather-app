@@ -3,10 +3,11 @@ import { getWindDirection } from './getWindDirection'
 import { calcWindIconRotation } from './calcWindIconRotation'
 import { ProcessedHourlyData, ProcessedDailyData } from '../components'
 import { ProcessedWeatherData, FullWeatherData } from '../types/openWeatherData'
+import { Units } from '../WeatherDataContext'
 
 export const processWeatherData = (
   weatherData: FullWeatherData,
-  units: string
+  units: Units
 ): ProcessedWeatherData => {
   const { current, daily, hourly } = weatherData
 

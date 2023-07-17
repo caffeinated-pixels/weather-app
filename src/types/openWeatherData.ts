@@ -9,7 +9,7 @@ export type GeocodingApiResult = {
   lat: number
   lon: number
   state: string
-  local_names: Record<string, string>
+  local_names?: Record<string, string>
 }
 
 export type CurrentWeatherSummary = {

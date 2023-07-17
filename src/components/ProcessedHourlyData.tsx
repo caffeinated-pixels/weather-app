@@ -1,12 +1,10 @@
 import { monthLookup } from '../helpers/timeLookup'
 import { generateIconInfo } from '../helpers/generateIconInfo'
 import { HourlyData } from '../types/openWeatherData'
+import { Units } from '../WeatherDataContext'
 
 // TODO: separate logic from UI
-export const ProcessedHourlyData = (
-  hourlyData: HourlyData[],
-  units: string
-) => {
+export const ProcessedHourlyData = (hourlyData: HourlyData[], units: Units) => {
   const tempUnits = units === 'metric' ? '°C' : '°F'
 
   return (
