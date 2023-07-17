@@ -2,6 +2,7 @@ import { useEffect, useRef, FocusEvent } from 'react'
 import { useWeatherDataContext } from '../../hooks'
 import { SearchResultsContainer } from './SearchResultsContainer'
 import { SearchResultsList } from './SearchResultsList'
+import { SEARCH_TEXT } from '../../constants/constants'
 
 export type CloseResults = (e: FocusEvent<HTMLDivElement>) => void
 
@@ -14,10 +15,10 @@ export const SearchResults = () => {
   const searchResultsRef = useRef<HTMLDivElement>(null)
 
   const headerText = searchMatchFail
-    ? 'No results!'
+    ? SEARCH_TEXT.NO_SEARCH_RESULTS
     : apiError
-    ? 'API error! 🙄'
-    : 'Matching results:'
+    ? SEARCH_TEXT.API_ERROR
+    : SEARCH_TEXT.RESULTS_RETURNED
 
   const closeResults: CloseResults = (e) => {
     // checks if element is child of search-result-wrapper

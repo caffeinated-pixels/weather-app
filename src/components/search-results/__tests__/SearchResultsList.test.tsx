@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import renderer from 'react-test-renderer'
 
-const mockResultsArr: GeocodingApiResult[] = [
+export const mockResultsArr: GeocodingApiResult[] = [
   {
     name: 'Brighton',
     local_names: {
