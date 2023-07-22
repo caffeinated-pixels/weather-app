@@ -1,4 +1,4 @@
-// main: ./main.scss
+@use 'abstracts/mixins';
 
 .loading-screen,
 .error-screen {
@@ -17,7 +17,7 @@
   margin: 40px auto 0;
   transform: scale(0.6);
 
-  @include mq(600px) {
+  @include mixins.mq(600px) {
     margin-top: 90px;
     transform: scale(1);
   }

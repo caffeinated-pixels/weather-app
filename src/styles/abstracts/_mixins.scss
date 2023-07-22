@@ -1,0 +1,11 @@
+@mixin mq($size) {
+  @media only screen and (min-width: $size) {
+    @content; /* lets us pass content block into mixin */
+  }
+}
+
+@mixin mqMax($size) {
+  @media only screen and (max-width: $size) {
+    @content; /* lets us pass content block into mixin */
+  }
+}

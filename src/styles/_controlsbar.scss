@@ -1,4 +1,5 @@
-// main: ./main.scss
+@use 'abstracts/mixins';
+@use 'abstracts/colors';
 
 button {
   display: inline-block;
@@ -36,11 +37,11 @@ button:active {
 
 .icon-button:hover,
 .icon-button:focus {
-  color: $header-orange;
+  color: colors.$header-orange;
 }
 
 .icon-button:focus {
-  outline: 1px solid $header-orange;
+  outline: 1px solid colors.$header-orange;
   outline-offset: -4px;
 }
 
@@ -49,7 +50,7 @@ button:active {
 }
 
 .form-wrapper {
-  background: $locationbar-blue;
+  background: colors.$locationbar-blue;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -57,7 +58,7 @@ button:active {
 }
 
 .form-wrapper:focus-within {
-  outline: 2px solid $header-orange;
+  outline: 2px solid colors.$header-orange;
   box-shadow: 1px 1px 5px grey;
 }
 
@@ -66,7 +67,7 @@ button:active {
 }
 
 .search-input {
-  background: $locationbar-blue;
+  background: colors.$locationbar-blue;
   border: none;
   border-radius: 10px;
   display: block;
@@ -89,14 +90,14 @@ button:active {
   right: 0;
   z-index: 99;
 
-  background: $body-blue;
+  background: colors.$body-blue;
   color: white;
   font-size: 1.2rem;
 
   box-shadow: 1px 1px 5px grey;
   animation: fadein 150ms ease-in;
 
-  @include mq(600px) {
+  @include mixins.mq(600px) {
     max-width: 100%;
   }
 }
@@ -125,7 +126,7 @@ button:active {
 }
 
 .search-result-wrapper:focus {
-  outline: 2px solid $header-orange;
+  outline: 2px solid colors.$header-orange;
 }
 
 .search-result {
@@ -135,7 +136,7 @@ button:active {
 
 .search-result:hover,
 .search-result:focus {
-  color: $header-orange;
+  color: colors.$header-orange;
 }
 
 .units-button-wrapper {
@@ -148,13 +149,13 @@ button:active {
   border-radius: 7px;
   font-size: 1.1rem;
   padding: 0.25em 0.5em;
-  background: $stripes-dk-blue;
+  background: colors.$stripes-dk-blue;
   color: white;
   margin-left: 2.5em;
 }
 
 .units-button-active {
-  background: $header-orange;
+  background: colors.$header-orange;
   color: #fff;
 }
 
