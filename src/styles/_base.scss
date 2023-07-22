@@ -1,41 +1,19 @@
-// COLOR VARIABLES
-$header-orange: hsl(9, 93%, 46%);
-$body-blue: #a9d4e2;
-$locationbar-blue: #b6e4f3;
-$stripes-lt-blue: #7da7b4;
-$stripes-dk-blue: #527c89;
-
-$text-white: #fff;
-$text-black: #000;
-
-$container-max-width: 800px;
-
-// MIXINS
-@mixin mq($size) {
-  @media only screen and (min-width: $size) {
-    @content; /* lets us pass content block into mixin */
-  }
-}
-
-@mixin mqMax($size) {
-  @media only screen and (max-width: $size) {
-    @content; /* lets us pass content block into mixin */
-  }
-}
+@use 'abstracts/colors';
+@use 'abstracts/mixins';
 
 html {
   font-family: 'Roboto', sans-serif;
-  @include mq(600px) {
+  @include mixins.mq(600px) {
     font-size: 140%;
   }
 
-  @include mqMax(300px) {
+  @include mixins.mqMax(300px) {
     font-size: 90%;
   }
 }
 
 body {
-  background: $body-blue;
+  background: colors.$body-blue;
   background: linear-gradient(
     180deg,
     hsl(195, 50%, 77%) 0%,
@@ -58,11 +36,11 @@ body {
 
 // SHARED CLASSES
 .stripe-light {
-  background: $stripes-lt-blue;
-  color: $text-black;
+  background: colors.$stripes-lt-blue;
+  color: colors.$text-black;
 }
 
 .stripe-dark {
-  background: $stripes-dk-blue;
-  color: $text-white;
+  background: colors.$stripes-dk-blue;
+  color: colors.$text-white;
 }

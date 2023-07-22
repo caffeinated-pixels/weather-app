@@ -1,6 +1,8 @@
+@use 'abstracts/colors';
+
 .header {
-  background: $header-orange;
-  color: $text-white;
+  background: colors.$header-orange;
+  color: colors.$text-white;
   text-align: center;
 
   &__contents {

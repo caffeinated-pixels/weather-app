@@ -1,8 +1,10 @@
+@use 'abstracts/sizes';
+
 .daily-forecast {
   overflow-y: auto;
   width: 100%;
 
-  max-width: $container-max-width;
+  max-width: sizes.$container-max-width;
   margin: 0 auto;
 
   .simplebar-content-wrapper {

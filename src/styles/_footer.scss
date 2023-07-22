@@ -1,5 +1,7 @@
+@use 'abstracts/colors';
+
 .footer {
-  background: $header-orange;
+  background: colors.$header-orange;
 
   text-align: center;
   font-size: 0.75rem;

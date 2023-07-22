@@ -1,8 +1,11 @@
+@use 'abstracts/sizes';
+@use 'abstracts/mixins';
+
 .current-weather {
   display: grid;
   grid-template-columns: 60% 40%;
 
-  max-width: $container-max-width;
+  max-width: sizes.$container-max-width;
   margin: 1em auto;
 
   text-align: center;
@@ -21,7 +24,7 @@
   bottom: 0;
   right: 0;
 
-  @include mq(350px) {
+  @include mixins.mq(350px) {
     right: 5%;
   }
 }
