@@ -1,5 +1,5 @@
-import { CurrentWeatherMain } from './CurrentWeatherMain'
 import { CurrentWeatherExtra } from './CurrentWeatherExtra'
+import { CurrentWeatherMain } from './CurrentWeatherMain'
 
 export const CurrentWeather = () => {
   return (

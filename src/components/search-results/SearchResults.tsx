@@ -1,8 +1,9 @@
-import { useEffect, useRef, FocusEvent } from 'react'
+import { FocusEvent, useEffect, useRef } from 'react'
+
+import { SEARCH_TEXT } from '../../constants/constants'
 import { useWeatherDataContext } from '../../hooks'
 import { SearchResultsContainer } from './SearchResultsContainer'
 import { SearchResultsList } from './SearchResultsList'
-import { SEARCH_TEXT } from '../../constants/constants'
 
 export type CloseResults = (e: FocusEvent<HTMLDivElement>) => void
 

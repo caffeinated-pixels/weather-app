@@ -1,5 +1,5 @@
-import { monthLookup } from '../helpers/timeLookup'
 import { generateIconInfo } from '../helpers/generateIconInfo'
+import { monthLookup } from '../helpers/timeLookup'
 import { HourlyData } from '../types/openWeatherData'
 import { Units } from '../WeatherDataContext'
 

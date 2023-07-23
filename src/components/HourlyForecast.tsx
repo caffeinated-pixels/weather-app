@@ -1,5 +1,6 @@
-import { useRef, useEffect } from 'react'
+import { useEffect,useRef } from 'react'
 import SimpleBar from 'simplebar-react'
+
 import { useWeatherDataContext } from '../hooks'
 
 export const HourlyForecast = () => {

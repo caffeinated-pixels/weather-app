@@ -1,8 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import { SearchResultsContainer } from '../SearchResultsContainer'
 import '@testing-library/jest-dom'
+
+import { fireEvent,render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import renderer from 'react-test-renderer'
+
+import { SearchResultsContainer } from '../SearchResultsContainer'
 
 const closeResults = jest.fn()
 const headerText = 'Search Results'

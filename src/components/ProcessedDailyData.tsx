@@ -1,6 +1,6 @@
-import { Units } from '../WeatherDataContext'
 import { generateIconInfo } from '../helpers/generateIconInfo'
 import { DailyData } from '../types/openWeatherData'
+import { Units } from '../WeatherDataContext'
 // TODO: separate logic from UI
 export const ProcessedDailyData = (dailyData: DailyData[], units: Units) => {
   const tempUnits = units === 'metric' ? '°C' : '°F'

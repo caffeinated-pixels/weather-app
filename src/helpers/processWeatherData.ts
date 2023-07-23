@@ -1,9 +1,9 @@
+import { ProcessedDailyData,ProcessedHourlyData } from '../components'
+import { FullWeatherData,ProcessedWeatherData } from '../types/openWeatherData'
+import { Units } from '../WeatherDataContext'
+import { calcWindIconRotation } from './calcWindIconRotation'
 import { generateIconInfo } from './generateIconInfo'
 import { getWindDirection } from './getWindDirection'
-import { calcWindIconRotation } from './calcWindIconRotation'
-import { ProcessedHourlyData, ProcessedDailyData } from '../components'
-import { ProcessedWeatherData, FullWeatherData } from '../types/openWeatherData'
-import { Units } from '../WeatherDataContext'
 
 export const processWeatherData = (
   weatherData: FullWeatherData,

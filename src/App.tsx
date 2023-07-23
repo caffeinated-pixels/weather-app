@@ -1,15 +1,15 @@
+import 'simplebar-react/dist/simplebar.min.css'
+
 import {
-  Header,
-  LoadingScreen,
-  ErrorScreen,
   ControlsBar,
   CurrentWeather,
-  HourlyForecast,
   DailyForecast,
+  ErrorScreen,
   Footer,
+  Header,
+  HourlyForecast,
+  LoadingScreen,
 } from './components'
-
-import 'simplebar-react/dist/simplebar.min.css'
 import { useWeatherDataContext } from './hooks'
 
 export const App = () => {

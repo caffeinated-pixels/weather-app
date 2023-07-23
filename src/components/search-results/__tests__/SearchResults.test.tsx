@@ -1,17 +1,19 @@
+import '@testing-library/jest-dom'
+
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import renderer from 'react-test-renderer'
-import { SearchResults } from '../SearchResults'
-import '@testing-library/jest-dom'
+
+import { SEARCH_TEXT, UNITS } from '../../../constants/constants'
+import { LocationResults } from '../../../types/openWeatherData'
 import {
   FetchLocationResults,
   HandleResultsChoice,
   WeatherDataContext,
   WeatherDataContextType,
 } from '../../../WeatherDataContext'
-import { LocationResults } from '../../../types/openWeatherData'
+import { SearchResults } from '../SearchResults'
 import { mockResultsArr } from './SearchResultsList.test'
-import { SEARCH_TEXT, UNITS } from '../../../constants/constants'
 
 const mockFetchLocationResults = jest.fn() as FetchLocationResults
 const mockHandleResultsChoice = jest.fn() as HandleResultsChoice
