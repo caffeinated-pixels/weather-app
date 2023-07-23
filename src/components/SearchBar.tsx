@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { SearchResults } from './search-results/SearchResults'
+
 import { useWeatherDataContext } from '../hooks'
+import { SearchResults } from './search-results/SearchResults'
 
 export const SearchBar = () => {
   const {

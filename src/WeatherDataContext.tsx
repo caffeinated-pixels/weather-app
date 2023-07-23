@@ -1,15 +1,16 @@
-import { useEffect, useState, createContext, ReactNode } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
+
+import { UNITS } from './constants/constants'
 import {
-  useGetWeatherLocation,
-  useFetchWeatherData,
   useFetchGeocodingDirect,
+  useFetchWeatherData,
+  useGetWeatherLocation,
 } from './hooks/'
 import {
   LocationData,
   LocationResults,
   ProcessedWeatherData,
 } from './types/openWeatherData'
-import { UNITS } from './constants/constants'
 
 export type HandleChangeUnits = (
   event: React.MouseEvent<HTMLButtonElement>
@@ -122,4 +123,4 @@ function WeatherDataContextProvider({ children }: { children: ReactNode }) {
   )
 }
 
-export { WeatherDataContextProvider, WeatherDataContext }
+export { WeatherDataContext, WeatherDataContextProvider }

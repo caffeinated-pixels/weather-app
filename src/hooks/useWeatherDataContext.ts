@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+
 import { WeatherDataContext } from '../WeatherDataContext'
 
 export const useWeatherDataContext = () => {

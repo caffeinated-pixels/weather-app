@@ -1,5 +1,5 @@
-import { HandleResultsChoice } from '../../WeatherDataContext'
 import { GeocodingApiResult } from '../../types/openWeatherData'
+import { HandleResultsChoice } from '../../WeatherDataContext'
 
 type SearchResultsProps = {
   resultsArr: GeocodingApiResult[]

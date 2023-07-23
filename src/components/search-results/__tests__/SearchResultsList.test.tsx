@@ -1,9 +1,11 @@
-import { render, screen } from '@testing-library/react'
-import { SearchResultsList } from '../SearchResultsList'
-import { GeocodingApiResult } from '../../../types/openWeatherData'
 import '@testing-library/jest-dom'
+
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import renderer from 'react-test-renderer'
+
+import { GeocodingApiResult } from '../../../types/openWeatherData'
+import { SearchResultsList } from '../SearchResultsList'
 
 export const mockResultsArr: GeocodingApiResult[] = [
   {

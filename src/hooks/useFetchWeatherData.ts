@@ -1,8 +1,9 @@
-import { useState, useCallback } from 'react'
-import { processWeatherData } from '../helpers/processWeatherData'
-import { getErrorMessage } from '../helpers/getErrorMessage'
-import { LocationData, WeatherDataResults } from '../types/openWeatherData'
+import { useCallback,useState } from 'react'
+
 import { UNITS } from '../constants/constants'
+import { getErrorMessage } from '../helpers/getErrorMessage'
+import { processWeatherData } from '../helpers/processWeatherData'
+import { LocationData, WeatherDataResults } from '../types/openWeatherData'
 
 const initialState: WeatherDataResults = {
   weatherData: null,

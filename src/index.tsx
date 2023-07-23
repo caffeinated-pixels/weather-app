@@ -1,5 +1,7 @@
-import { createRoot } from 'react-dom/client'
 import './styles/main.scss'
+
+import { createRoot } from 'react-dom/client'
+
 import { App } from './App'
 import { WeatherDataContextProvider } from './WeatherDataContext'
 
