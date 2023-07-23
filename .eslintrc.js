@@ -1,53 +1,4 @@
 module.exports = {
-  // env: {
-  //   browser: true,
-  //   es2021: true,
-  //   node: true,
-  //   jest: true,
-  // },
-  // // parser: '@typescript-eslint/parser',
-  // // parserOptions: {
-  // //   ecmaFeatures: {
-  // //     jsx: true,
-  // //   },
-  // //   ecmaVersion: 12,
-  // //   sourceType: 'module',
-  // // },
-  // extends: [
-  //   'react-app',
-  //   'react-app/jest',
-  //   'eslint:recommended',
-  //   'plugin:import/recommended',
-  //   // 'plugin:import/typescript',
-  // ],
-  // plugins: ['import'],
-  // // settings: {
-  // //   react: {
-  // //     version: 'detect',
-  // //   },
-  // //   'import/resolver': {
-  // //     typescript: {
-  // //       project: './tsconfig.json',
-  // //     },
-  // //   },
-  // //   'import/parsers': {
-  // //     '@typescript-eslint/parser': ['.ts', '.tsx'],
-  // //   },
-  // //   'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
-  // // },
-  // rules: {
-  //   'sort-imports': [
-  //     'error',
-  //     {
-  //       ignoreCase: false,
-  //       ignoreDeclarationSort: false,
-  //       ignoreMemberSort: false,
-  //       memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-  //       allowSeparatedGroups: false,
-  //     },
-  //   ],
-  // },
-
   env: {
     browser: true,
     es2021: true,
@@ -62,7 +13,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['import'],
+  plugins: ['simple-import-sort'],
   extends: [
     'eslint:recommended',
     'plugin:import/recommended',
@@ -94,16 +45,12 @@ module.exports = {
     },
   ],
   rules: {
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: false,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: false,
-      },
-    ],
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+    'no-console': 'error',
+    'simple-import-sort/exports': 'error',
+    'simple-import-sort/imports': 'error',
   },
   globals: {
     initialState: true,
