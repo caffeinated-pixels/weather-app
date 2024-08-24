@@ -1,7 +1,7 @@
 const axios = require('axios')
 
-exports.handler = async function(event, context) {
-  const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall'
+exports.handler = async function (event) {
+  const baseUrl = 'https://api.openweathermap.org/data/3.0/onecall'
   const apiKey = process.env.OPEN_WEATHER_KEY
 
   const { lat, lon, units } = event.queryStringParameters
@@ -12,12 +12,12 @@ exports.handler = async function(event, context) {
     const response = await axios.get(fullUrl)
     return {
       statusCode: 200,
-      body: JSON.stringify(response.data)
+      body: JSON.stringify(response.data),
     }
   } catch (err) {
     return {
       statusCode: err.response.status,
-      body: err.toString()
+      body: err.toString(),
     }
   }
 }
